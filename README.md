@@ -7,10 +7,12 @@ Fastwork Desktop Aplikasi Inventory
 - [x] [SQL Server LocalDB 2019](https://www.microsoft.com/en-us/download/details.aspx?id=101064)
 - [x] [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/older-downloads/)
 - [x] [Inno Setup](https://jrsoftware.org/isinfo.php)
+- [x] [Dapper ORM C#](https://github.com/DapperLib/Dapper)
+- [x] [Serilog](https://serilog.net/)
 
 ## Prerequisites
 - Visual Studio 2019 Community and above
-- .NET Framework 4.5
+- .NET Framework 4.6.1
 
 ## Getting Started
 
