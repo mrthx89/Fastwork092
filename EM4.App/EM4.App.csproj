@@ -58,7 +58,9 @@
     <Reference Include="DevExpress.XtraBars.v19.2" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core" />
     <Reference Include="DevExpress.XtraEditors.v19.2" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -95,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Data\EM4Context.cs" />
     <Compile Include="Helper\JSONHelper.cs" />
+    <Compile Include="Helper\LayoutsHelper.cs" />
     <Compile Include="Helper\LogDataHelper.cs" />
     <Compile Include="Helper\MsgBoxHelper.cs" />
     <Compile Include="Migrations\202309291606440_initDB.cs" />
@@ -113,6 +116,12 @@
     <Compile Include="Model\Entity\TUser.cs" />
     <Compile Include="Repository\User.cs" />
     <Compile Include="Repository\Utils.cs" />
+    <Compile Include="UI\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +136,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\frmManajemenUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmManajemenUser.Designer.cs">
+      <DependentUpon>frmManajemenUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +152,9 @@
     <Compile Include="Utils\sharedData.cs" />
     <EmbeddedResource Include="Migrations\202309291606440_initDB.resx">
       <DependentUpon>202309291606440_initDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -154,12 +172,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\frmManajemenUser.resx">
+      <DependentUpon>frmManajemenUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\EM4.App.Model.AppSetting.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TInventor.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TStockCard.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TStockIn.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TStockOut.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TTypeTransaction.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TUOM.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.Entity.TUser.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

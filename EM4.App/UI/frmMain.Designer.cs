@@ -186,6 +186,7 @@ namespace EM4.App.UI
             this.bbiManagementUser.Id = 12;
             this.bbiManagementUser.ImageOptions.LargeImageIndex = 3;
             this.bbiManagementUser.Name = "bbiManagementUser";
+            this.bbiManagementUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiManagementUser_ItemClick);
             // 
             // imageCollectionLarge
             // 

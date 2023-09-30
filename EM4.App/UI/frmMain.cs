@@ -126,5 +126,32 @@ namespace EM4.App.UI
                 bbiLoginOut.PerformClick();
             }
         }
+
+        private bool isLogin()
+        {
+            return (Constant.UserLogin != null && Constant.UserLogin.UserID != null && Constant.UserLogin.UserID.Length >= 1);
+        }
+
+        private void bbiManagementUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (isLogin())
+            {
+                System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmManajemenUser));
+                if (frmOld != null)
+                {
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+                else
+                {
+                    frmOld = new frmManajemenUser
+                    {
+                        MdiParent = this
+                    };
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+            }
+        }
     }
 }
