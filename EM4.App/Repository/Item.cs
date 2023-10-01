@@ -32,6 +32,53 @@ namespace EM4.App.Repository
             return hasil;
         }
 
+        public static Tuple<bool, List<TUOM>> saveUOMs(List<TUOM> uoms)
+        {
+            Tuple<bool, List<TUOM>> hasil = new Tuple<bool, List<TUOM>>(false, null);
+            using (Data.EM4Context dbContext = new Data.EM4Context(Constant.appSetting.KoneksiString))
+            {
+                try
+                {
+                    var userExists = dbContext.TUOMs.ToList();
+                    foreach (var item in userExists)
+                    {
+                        if (uoms.FirstOrDefault(o => o.ID == item.ID) == null)
+                        {
+                            dbContext.TUOMs.Remove(item);
+                        }
+                    }
+
+                    foreach (var item in uoms)
+                    {
+                        var existingItem = dbContext.TUOMs.FirstOrDefault(i => i.ID == item.ID);
+                        if (existingItem != null)
+                        {
+                            item.IDUserEdit = Constant.UserLogin.ID;
+                            item.TglEdit = DateTime.Now;
+                            dbContext.Entry(existingItem).CurrentValues.SetValues(item);
+                        }
+                        else
+                        {
+                            item.IDUserEntri = Constant.UserLogin.ID;
+                            item.TglEntri = DateTime.Now;
+                            item.IDUserEdit = Guid.Empty;
+                            item.TglEdit = null;
+                            dbContext.TUOMs.Add(item);
+                        }
+                    }
+
+                    dbContext.SaveChanges();
+
+                    hasil = new Tuple<bool, List<TUOM>>(true, dbContext.TUOMs.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.saveUOMs", ex);
+                }
+            }
+            return hasil;
+        }
+
         public static Tuple<bool, List<ItemMaster>> getInventors(Dictionary<string, dynamic> filter)
         {
             Tuple<bool, List<ItemMaster>> hasil = new Tuple<bool, List<ItemMaster>>(false, null);
@@ -235,7 +282,7 @@ namespace EM4.App.Repository
                         context.TInventors.Add(Constant.mapper.Map<ItemMaster, TInventor>(data));
                     }
 
-                    hasil = new Tuple<bool, ItemMaster>(true, null);
+                    hasil = new Tuple<bool, ItemMaster>(true, data);
                     context.SaveChanges();
                 }
                 catch (Exception ex)

@@ -41,12 +41,45 @@ namespace EM4.App.UI
 
         private void mnBaru_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            addOrEdit(null);
         }
 
         private void mnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            try
+            {
+                var item = (ItemMaster)tInventorBindingSource.Current;
+                if (item != null)
+                {
+                    addOrEdit(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
+            }
+        }
 
+        private void addOrEdit(ItemMaster data)
+        {
+            using (frmEntriItem frm = new frmEntriItem(data))
+            {
+                try
+                {
+                    if (frm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        mnRefresh.PerformClick();
+
+                        gridView1.ClearSelection();
+                        gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
+                        gridView1.SelectRow(gridView1.FocusedRowHandle);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{this.Name}.mnBaru_ItemClick", ex);
+                }
+            }
         }
 
         private void mnHapus_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

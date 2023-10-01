@@ -24,6 +24,12 @@ namespace EM4.App.UI
         {
             InitializeComponent();
             this.data = data;
+        }
+
+        private void frmEntriItem_Load(object sender, EventArgs e)
+        {
+            Constant.layoutsHelper.RestoreLayouts(this.Name, dataLayoutControl1);
+            refreshLookUp();
             if (data == null)
             {
                 //Create Baru
@@ -42,11 +48,6 @@ namespace EM4.App.UI
                     TglHapus = DateTime.Parse("1900-01-01")
                 };
             }
-        }
-
-        private void frmEntriItem_Load(object sender, EventArgs e)
-        {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, dataLayoutControl1);
             itemMasterBindingSource.DataSource = data;
             dataLayoutControl1.Refresh();
         }
@@ -116,9 +117,70 @@ namespace EM4.App.UI
 
         private void IDUOMSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index == 0)
+            if (e.Button.Index == 1)
             {
+                lookUpSatuan();
+            }
+        }
 
+        private void lookUpSatuan()
+        {
+            using (frmDaftarSatuan frm = new frmDaftarSatuan())
+            {
+                try
+                {
+                    frm.ShowDialog(this);
+                    refreshLookUp();
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{this.Name}.lookUpSatuan", ex);
+                }
+            }
+        }
+
+        private void refreshLookUp()
+        {
+            using (WaitDialogForm dlg = new WaitDialogForm("Sedang mengambil data"))
+            {
+                try
+                {
+                    dlg.TopMost = false;
+                    dlg.Show();
+
+                    var call = Repository.Item.getUOMs();
+                    if (call.Item1)
+                    {
+                        IDUOMSearchLookUpEdit.Properties.DataSource = (from x in call.Item2
+                                                                      select new { x.ID, x.Satuan }).ToList();
+                    }
+                    else
+                    {
+                        IDUOMSearchLookUpEdit.Properties.DataSource = null;
+                    }
+                    IDUOMSearchLookUpEdit.Properties.ValueMember = "ID";
+                    IDUOMSearchLookUpEdit.Properties.DisplayMember = "Satuan";
+
+                    var callUser = Repository.User.getLookUp();
+                    if (callUser.Item1)
+                    {
+                        IDUserEditSearchLookUpEdit.Properties.DataSource = callUser.Item2;
+                        IDUserEntriSearchLookUpEdit.Properties.DataSource = callUser.Item2;
+                    }
+                    else
+                    {
+                        IDUserEditSearchLookUpEdit.Properties.DataSource = null;
+                        IDUserEntriSearchLookUpEdit.Properties.DataSource = null;
+                    }
+                    IDUserEntriSearchLookUpEdit.Properties.ValueMember = "ID";
+                    IDUserEntriSearchLookUpEdit.Properties.DisplayMember = "Nama";
+                    IDUserEditSearchLookUpEdit.Properties.ValueMember = "ID";
+                    IDUserEditSearchLookUpEdit.Properties.DisplayMember = "Nama";
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{this.Name}.refreshLookUp", ex);
+                }
             }
         }
     }

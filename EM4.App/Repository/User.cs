@@ -108,7 +108,7 @@ namespace EM4.App.Repository
                 }
                 catch (Exception ex)
                 {
-                    MsgBoxHelper.MsgError("User.getLookUp", ex);
+                    MsgBoxHelper.MsgError("User.saveUsers", ex);
                 }
             }
             return hasil;
