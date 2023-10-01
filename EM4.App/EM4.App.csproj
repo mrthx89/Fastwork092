@@ -190,7 +190,6 @@
     <EmbeddedResource Include="Migrations\202309301754156_StokMasuk.resx">
       <DependentUpon>202309301754156_StokMasuk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UI\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>

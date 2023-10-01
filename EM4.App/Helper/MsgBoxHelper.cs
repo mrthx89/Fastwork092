@@ -35,42 +35,42 @@ namespace EM4.App.Helper
         }
         public static DialogResult MsgQuestionYesNo(string Events, XtraForm Parent, string Promt)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Parent, Promt, Constant.NamaApplikasi, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
         public static DialogResult MsgQuestionYesNo(string Events, string Promt)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Promt, Constant.NamaApplikasi, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
         public static DialogResult MsgQuestionYesNo(string Events, XtraForm Parent, string Promt, MessageBoxDefaultButton DefaultButton)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Parent, Promt, Constant.NamaApplikasi, MessageBoxButtons.YesNo, MessageBoxIcon.Question, DefaultButton);
         }
         public static DialogResult MsgQuestionYesNo(string Events, string Promt, MessageBoxDefaultButton DefaultButton)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Promt, Constant.NamaApplikasi, MessageBoxButtons.YesNo, MessageBoxIcon.Question, DefaultButton);
         }
         public static DialogResult MsgQuestionYesNoCancel(string Events, XtraForm Parent, string Promt)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Parent, Promt, Constant.NamaApplikasi, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
         }
         public static DialogResult MsgQuestionYesNoCancel(string Events, string Promt)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Promt, Constant.NamaApplikasi, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
         }
         public static DialogResult MsgQuestionOkCancel(string Events, XtraForm Parent, string Promt)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Parent, Promt, Constant.NamaApplikasi, MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
         public static DialogResult MsgQuestionOkCancel(string Events, string Promt)
         {
-            LogDataHelper.TulisLogDebug(Promt + Environment.NewLine + "Events :" + Events);
+            LogDataHelper.TulisLogInformation(Promt + Environment.NewLine + "Events :" + Events);
             return XtraMessageBox.Show(Promt, Constant.NamaApplikasi, MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
         public static void MsgWarn(string Events, XtraForm Parent, string Promt)

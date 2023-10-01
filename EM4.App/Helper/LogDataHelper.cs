@@ -22,48 +22,42 @@ namespace EM4.App.Helper
         {
             if (!System.IO.Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
                 System.IO.Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
-            Log.Information(Message);
-            Log.CloseAndFlush();
+            Log.Logger.Information(Message);
         }
 
         public static void TulisLogInformation<T>(string Message, T Object)
         {
             if (!System.IO.Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
                 System.IO.Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
-            Log.Information<T>(Message, Object);
-            Log.CloseAndFlush();
+            Log.Logger.Information<T>(Message, Object);
         }
 
         public static void TulisLogError(string Message)
         {
             if (!System.IO.Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
                 System.IO.Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
-            Log.Error(Message);
-            Log.CloseAndFlush();
+            Log.Logger.Error(Message);
         }
 
         public static void TulisLogError<T>(string Message, T Object)
         {
             if (!System.IO.Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
                 System.IO.Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
-            Log.Error<T>(Message, Object);
-            Log.CloseAndFlush();
+            Log.Logger.Error<T>(Message, Object);
         }
 
         public static void TulisLogError(Exception ex, string Message)
         {
             if (!System.IO.Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
                 System.IO.Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
-            Log.Error(ex, Message);
-            Log.CloseAndFlush();
+            Log.Logger.Error(ex, Message);
         }
 
         public static void TulisLogError<T>(Exception ex, string Message, T Object)
         {
             if (!System.IO.Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
                 System.IO.Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
-            Log.Error<T>(ex, Message, Object);
-            Log.CloseAndFlush();
+            Log.Logger.Error<T>(ex, Message, Object);
         }
 
         public static void TulisLogDebug(string Message)
