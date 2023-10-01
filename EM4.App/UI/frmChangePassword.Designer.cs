@@ -139,6 +139,7 @@ namespace EM4.App.UI
             // 
             // txtPassLama
             // 
+            this.txtPassLama.EnterMoveNextControl = true;
             this.txtPassLama.Location = new System.Drawing.Point(12, 45);
             this.txtPassLama.MenuManager = this.barManager1;
             this.txtPassLama.Name = "txtPassLama";
@@ -149,6 +150,7 @@ namespace EM4.App.UI
             // 
             // txtPassBaru
             // 
+            this.txtPassBaru.EnterMoveNextControl = true;
             this.txtPassBaru.Location = new System.Drawing.Point(12, 90);
             this.txtPassBaru.MenuManager = this.barManager1;
             this.txtPassBaru.Name = "txtPassBaru";
@@ -159,6 +161,7 @@ namespace EM4.App.UI
             // 
             // txtRePassBaru
             // 
+            this.txtRePassBaru.EnterMoveNextControl = true;
             this.txtRePassBaru.Location = new System.Drawing.Point(12, 135);
             this.txtRePassBaru.MenuManager = this.barManager1;
             this.txtRePassBaru.Name = "txtRePassBaru";

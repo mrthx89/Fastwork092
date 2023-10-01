@@ -13,7 +13,7 @@ namespace EM4.App.Helper
     public class LayoutsHelper
     {
         private string pathLayoutsSetting = Path.Combine(Environment.CurrentDirectory, "System", "Layouts");
-        public bool RestoreLayout { get; set; }
+        public bool IsRestoreLayout { get; set; }
         public LayoutsHelper(string pathLayouts)
         {
             changePathLayouts(pathLayouts);
@@ -34,7 +34,7 @@ namespace EM4.App.Helper
 
         private string FolderLayouts()
         {
-            if (RestoreLayout)
+            if (IsRestoreLayout)
                 return Path.Combine(pathLayoutsSetting, "Default");
             else
                 return pathLayoutsSetting;
@@ -67,7 +67,7 @@ namespace EM4.App.Helper
             {
                 if (System.IO.File.Exists(Path.Combine(FolderLayouts(), FormName + Control.Name + ".xml")))
                 {
-                    if (RestoreLayout)
+                    if (IsRestoreLayout)
                         System.IO.File.Copy(Path.Combine(pathLayoutsSetting, "Default", FormName + Control.Name + ".xml"),
                             Path.Combine(pathLayoutsSetting, FormName + Control.Name + ".xml"), true);
                     Control.RestoreLayoutFromXml(Path.Combine(FolderLayouts(), FormName + Control.Name + ".xml"));
@@ -85,7 +85,7 @@ namespace EM4.App.Helper
             {
                 if (System.IO.File.Exists(Path.Combine(FolderLayouts(), FormName + Control.Name + ".xml")))
                 {
-                    if (RestoreLayout)
+                    if (IsRestoreLayout)
                         System.IO.File.Copy(Path.Combine(pathLayoutsSetting, "Default", FormName + Control.Name + ".xml"),
                             Path.Combine(pathLayoutsSetting, FormName + Control.Name + ".xml"), true);
                     Control.RestoreLayoutFromXml(Path.Combine(FolderLayouts(), FormName + Control.Name + ".xml"));
@@ -103,7 +103,7 @@ namespace EM4.App.Helper
             {
                 if (System.IO.File.Exists(Path.Combine(FolderLayouts(), FormName + Control.Name + Control.LevelName + ".xml")))
                 {
-                    if (RestoreLayout)
+                    if (IsRestoreLayout)
                         System.IO.File.Copy(Path.Combine(pathLayoutsSetting, "Default", FormName + Control.Name + Control.LevelName + ".xml"),
                             Path.Combine(pathLayoutsSetting, FormName + Control.Name + ".xml"), true);
                     Control.RestoreLayoutFromXml(Path.Combine(FolderLayouts(), FormName + Control.Name + Control.LevelName + ".xml"));

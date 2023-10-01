@@ -31,6 +31,7 @@ namespace EM4.App.UI
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            this.Text = $"{Constant.NamaApplikasi} [{Application.ProductVersion}]";
             ribbonControl1.SelectedPage = ribbonPage1;
             activekanUser();
             bbiLoginOut.PerformClick();
@@ -145,6 +146,28 @@ namespace EM4.App.UI
                 else
                 {
                     frmOld = new frmManajemenUser
+                    {
+                        MdiParent = this
+                    };
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+            }
+        }
+
+        private void bbiMasterItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (isLogin())
+            {
+                System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmDaftarMasterItem));
+                if (frmOld != null)
+                {
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+                else
+                {
+                    frmOld = new frmDaftarMasterItem
                     {
                         MdiParent = this
                     };

@@ -1,4 +1,5 @@
-﻿using EM4.App.Helper;
+﻿using AutoMapper;
+using EM4.App.Helper;
 using EM4.App.Model;
 using EM4.App.Model.Entity;
 using System;
@@ -16,5 +17,7 @@ namespace EM4.App.Utils
         public static AppSetting appSetting = null;
         public static TUser UserLogin = null;
         public static LayoutsHelper layoutsHelper = new LayoutsHelper(Path.Combine(Environment.CurrentDirectory, "System", "Layouts"));
+        public static IMapper mapper = new AutoMapperConfig().Configure(); // Buat instance mapper
+
     }
 }

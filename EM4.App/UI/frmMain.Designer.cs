@@ -106,12 +106,22 @@ namespace EM4.App.UI
             this.imageCollectionSmall.Images.SetKeyName(2, "bopermission_16x16");
             this.imageCollectionSmall.InsertImage(global::EM4.App.Properties.Resources.usergroup_16x16, "usergroup_16x16", typeof(global::EM4.App.Properties.Resources), 3);
             this.imageCollectionSmall.Images.SetKeyName(3, "usergroup_16x16");
+            this.imageCollectionSmall.Images.SetKeyName(4, "001-products.png");
+            this.imageCollectionSmall.Images.SetKeyName(5, "002-import.png");
+            this.imageCollectionSmall.Images.SetKeyName(6, "003-export.png");
+            this.imageCollectionSmall.Images.SetKeyName(7, "004-distribution.png");
+            this.imageCollectionSmall.Images.SetKeyName(8, "005-restock.png");
+            this.imageCollectionSmall.Images.SetKeyName(9, "006-order.png");
+            this.imageCollectionSmall.Images.SetKeyName(10, "007-stock.png");
+            this.imageCollectionSmall.Images.SetKeyName(11, "008-return.png");
+            this.imageCollectionSmall.Images.SetKeyName(12, "009-logistics-delivery.png");
+            this.imageCollectionSmall.Images.SetKeyName(13, "010-material-management.png");
             // 
             // barStatusUser
             // 
             this.barStatusUser.Caption = "User : (none)";
             this.barStatusUser.Id = 1;
-            this.barStatusUser.ImageOptions.SvgImage = global::EM4.App.Properties.Resources.actions_user;
+            this.barStatusUser.ImageOptions.Image = global::EM4.App.Properties.Resources.customer_32x32;
             this.barStatusUser.Name = "barStatusUser";
             this.barStatusUser.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -142,42 +152,50 @@ namespace EM4.App.UI
             // 
             this.bbiMasterItem.Caption = "Master Item";
             this.bbiMasterItem.Id = 5;
+            this.bbiMasterItem.ImageOptions.LargeImageIndex = 4;
             this.bbiMasterItem.Name = "bbiMasterItem";
+            this.bbiMasterItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiMasterItem_ItemClick);
             // 
             // bbiStokMasuk
             // 
             this.bbiStokMasuk.Caption = "Stok Masuk";
             this.bbiStokMasuk.Id = 6;
+            this.bbiStokMasuk.ImageOptions.LargeImageIndex = 5;
             this.bbiStokMasuk.Name = "bbiStokMasuk";
             // 
             // bbiStokKeluar
             // 
             this.bbiStokKeluar.Caption = "Stok Keluar";
             this.bbiStokKeluar.Id = 7;
+            this.bbiStokKeluar.ImageOptions.LargeImageIndex = 6;
             this.bbiStokKeluar.Name = "bbiStokKeluar";
             // 
             // bbiLaporanSaldoStok
             // 
             this.bbiLaporanSaldoStok.Caption = "Laporan Saldo Stok";
             this.bbiLaporanSaldoStok.Id = 8;
+            this.bbiLaporanSaldoStok.ImageOptions.LargeImageIndex = 12;
             this.bbiLaporanSaldoStok.Name = "bbiLaporanSaldoStok";
             // 
             // bbiListBarangMasuk
             // 
             this.bbiListBarangMasuk.Caption = "List Barang Masuk";
             this.bbiListBarangMasuk.Id = 9;
+            this.bbiListBarangMasuk.ImageOptions.LargeImageIndex = 8;
             this.bbiListBarangMasuk.Name = "bbiListBarangMasuk";
             // 
             // bbiListBarangKeluar
             // 
             this.bbiListBarangKeluar.Caption = "List Barang Keluar";
             this.bbiListBarangKeluar.Id = 10;
+            this.bbiListBarangKeluar.ImageOptions.LargeImageIndex = 9;
             this.bbiListBarangKeluar.Name = "bbiListBarangKeluar";
             // 
             // bbiLaporanKartuStok
             // 
             this.bbiLaporanKartuStok.Caption = "Laporan Kartu Stok";
             this.bbiLaporanKartuStok.Id = 11;
+            this.bbiLaporanKartuStok.ImageOptions.LargeImageIndex = 13;
             this.bbiLaporanKartuStok.Name = "bbiLaporanKartuStok";
             // 
             // bbiManagementUser
@@ -200,6 +218,16 @@ namespace EM4.App.UI
             this.imageCollectionLarge.Images.SetKeyName(2, "bopermission_32x32");
             this.imageCollectionLarge.InsertImage(global::EM4.App.Properties.Resources.usergroup_32x321, "usergroup_32x321", typeof(global::EM4.App.Properties.Resources), 3);
             this.imageCollectionLarge.Images.SetKeyName(3, "usergroup_32x321");
+            this.imageCollectionLarge.Images.SetKeyName(4, "001-products.png");
+            this.imageCollectionLarge.Images.SetKeyName(5, "002-import.png");
+            this.imageCollectionLarge.Images.SetKeyName(6, "003-export.png");
+            this.imageCollectionLarge.Images.SetKeyName(7, "004-distribution.png");
+            this.imageCollectionLarge.Images.SetKeyName(8, "005-restock.png");
+            this.imageCollectionLarge.Images.SetKeyName(9, "006-order.png");
+            this.imageCollectionLarge.Images.SetKeyName(10, "007-stock.png");
+            this.imageCollectionLarge.Images.SetKeyName(11, "008-return.png");
+            this.imageCollectionLarge.Images.SetKeyName(12, "009-logistics-delivery.png");
+            this.imageCollectionLarge.Images.SetKeyName(13, "010-material-management.png");
             // 
             // ribbonPageCategory1
             // 

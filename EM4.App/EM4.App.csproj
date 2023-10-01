@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.151\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -104,6 +107,10 @@
     <Compile Include="Migrations\202309291606440_initDB.Designer.cs">
       <DependentUpon>202309291606440_initDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309301754156_StokMasuk.cs" />
+    <Compile Include="Migrations\202309301754156_StokMasuk.Designer.cs">
+      <DependentUpon>202309301754156_StokMasuk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AppSetting.cs" />
     <Compile Include="Model\Entity\BaseTable.cs" />
@@ -114,6 +121,8 @@
     <Compile Include="Model\Entity\TTypeTransaction.cs" />
     <Compile Include="Model\Entity\TUOM.cs" />
     <Compile Include="Model\Entity\TUser.cs" />
+    <Compile Include="Model\ViewModel\ItemMaster.cs" />
+    <Compile Include="Repository\Item.cs" />
     <Compile Include="Repository\User.cs" />
     <Compile Include="Repository\Utils.cs" />
     <Compile Include="UI\frmChangePassword.cs">
@@ -121,6 +130,30 @@
     </Compile>
     <Compile Include="UI\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmDaftarMasterItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDaftarMasterItem.Designer.cs">
+      <DependentUpon>frmDaftarMasterItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmDaftarSatuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDaftarSatuan.Designer.cs">
+      <DependentUpon>frmDaftarSatuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmEntriItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmEntriItem.Designer.cs">
+      <DependentUpon>frmEntriItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmEntriStokMasuk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmEntriStokMasuk.Designer.cs">
+      <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
@@ -148,13 +181,30 @@
     <Compile Include="UI\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AutoMapperConfig.cs" />
     <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\sharedData.cs" />
     <EmbeddedResource Include="Migrations\202309291606440_initDB.resx">
       <DependentUpon>202309291606440_initDB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309301754156_StokMasuk.resx">
+      <DependentUpon>202309301754156_StokMasuk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UI\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDaftarMasterItem.resx">
+      <DependentUpon>frmDaftarMasterItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDaftarSatuan.resx">
+      <DependentUpon>frmDaftarSatuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmEntriItem.resx">
+      <DependentUpon>frmEntriItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmEntriStokMasuk.resx">
+      <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -188,6 +238,7 @@
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TTypeTransaction.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUOM.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUser.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.ViewModel.ItemMaster.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -257,6 +308,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\usergroup_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-products.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\003-export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\004-distribution.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\005-restock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\006-order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\007-stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\008-return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\009-logistics-delivery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\010-material-management.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

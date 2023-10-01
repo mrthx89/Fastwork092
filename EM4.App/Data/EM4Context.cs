@@ -48,12 +48,12 @@ namespace EM4.App.Data
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_PLU") { IsUnique = true }));
 
             modelBuilder.Entity<TStockIn>()
-                .Property(p => p.DocNo)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_DocNo") { IsUnique = true }));
+                .Property(p => p.NoPO)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_NoPO")));
 
             modelBuilder.Entity<TStockIn>()
-                .Property(p => p.DocNo)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_DocNo") { IsUnique = true }));
+                .Property(p => p.NoSJ)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_NoSJ")));
 
             modelBuilder.Entity<TStockOut>()
                 .Property(p => p.DocNo)

@@ -19,7 +19,13 @@ namespace EM4.App.Model.Entity
         public DateTime Tanggal { get; set; }
         [Required]
         [StringLength(30)]
-        public string DocNo { get; set; }
+        public string NoPO { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string NoSJ { get; set; }
+        [Required]
+        [StringLength(150)]
+        public string Supplier { get; set; }
         [Required]
         public Guid IDInventor { get; set; }
         [Required]
