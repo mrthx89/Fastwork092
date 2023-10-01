@@ -13,6 +13,8 @@ using System.Configuration;
 using System.Globalization;
 using System.Threading;
 using System.Drawing;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace EM4.App
 {
@@ -107,6 +109,7 @@ namespace EM4.App
         {
             try
             {
+                initDB();
                 Application.Run(new UI.frmMain());
             }
             catch (Exception ex)
@@ -151,6 +154,28 @@ namespace EM4.App
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Log")))
             {
                 Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Log"));
+            }
+        }
+
+        private static void initDB()
+        {
+            try
+            {
+                // Buat mdf baru jika tidak ada
+                string path = AppDomain.CurrentDomain.BaseDirectory; // Direktori aplikasi
+                AppDomain.CurrentDomain.SetData("DataDirectory", path);
+                Database.SetInitializer(new CreateDatabaseIfNotExists<Data.EM4Context>());
+
+                // Buat instance migrator dengan konfigurasi Anda
+                var configuration = new Migrations.Configuration(); // Sesuaikan dengan konfigurasi migrasi Anda
+                var migrator = new DbMigrator(configuration);
+
+                // Jalankan migrasi
+                migrator.Update();
+            }
+            catch (Exception ex)
+            {
+                MsgBoxHelper.MsgError("mdlPublic.initDB", ex);
             }
         }
     }

@@ -116,6 +116,7 @@ namespace EM4.App.UI
             this.ClientSize = new System.Drawing.Size(228, 218);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.IconOptions.Image = global::EM4.App.Properties.Resources.inventory;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";

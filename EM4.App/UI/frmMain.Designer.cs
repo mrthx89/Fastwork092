@@ -308,6 +308,7 @@ namespace EM4.App.UI
             this.ClientSize = new System.Drawing.Size(1146, 657);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
+            this.IconOptions.Image = global::EM4.App.Properties.Resources.inventory;
             this.IsMdiContainer = true;
             this.Name = "frmMain";
             this.Ribbon = this.ribbonControl1;

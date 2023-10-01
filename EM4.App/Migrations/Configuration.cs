@@ -11,7 +11,7 @@ namespace EM4.App.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false; // Atur ke false untuk menghindari kehilangan data
+            AutomaticMigrationDataLossAllowed = true; // Atur ke false untuk menghindari kehilangan data
         }
 
         protected override void Seed(EM4.App.Data.EM4Context context)
