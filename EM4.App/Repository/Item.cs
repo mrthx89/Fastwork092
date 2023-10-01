@@ -137,6 +137,60 @@ namespace EM4.App.Repository
             return hasil;
         }
 
+        public static Tuple<bool, List<ItemLookUp>> getLookUpInventors(DateTime Tanggal, Dictionary<string, dynamic> filter)
+        {
+            Tuple<bool, List<ItemLookUp>> hasil = new Tuple<bool, List<ItemLookUp>>(false, null);
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    var data = context.TInventors.AsQueryable();
+                    if (filter != null && filter.Count >= 1)
+                    {
+                        foreach (var item in filter)
+                        {
+                            if (item.Key.Equals("PLU"))
+                            {
+                                string a = (string)item.Value;
+                                data = data.Where(o => o.PLU.Contains(a));
+                            }
+                            else if (item.Key.Equals("DESC"))
+                            {
+                                string a = (string)item.Value;
+                                data = data.Where(o => o.Desc.Contains(a));
+                            }
+                        }
+                    }
+                    var saldoQuery = from stockCard in context.TStockCards.Where(o => o.Tanggal <= Tanggal)
+                                     join item in data on stockCard.IDInventor equals item.ID
+                                     group stockCard by stockCard.IDInventor into grouped
+                                     select new
+                                     {
+                                         IDInventor = grouped.Key,
+                                         Saldo = grouped.Sum(t => t.QtyMasuk - t.QtyKeluar)
+                                     };
+                    var items = (from item in data
+                                 from saldo in saldoQuery.Where(o => o.IDInventor == item.ID).DefaultIfEmpty()
+                                 from satuan in context.TUOMs.Where(o => o.ID == item.IDUOM).DefaultIfEmpty()
+                                 select new ItemLookUp
+                                 {
+                                     ID = item.ID,
+                                     PLU = item.PLU,
+                                     Desc = item.Desc,
+                                     IDUOM = item.IDUOM,
+                                     Satuan = (satuan != null ? satuan.Satuan : ""),
+                                     Saldo = (saldo != null ? saldo.Saldo : 0)
+                                 }).ToList();
+                    hasil = new Tuple<bool, List<ItemLookUp>>(true, items);
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.getLookUpInventors", ex);
+                }
+            }
+            return hasil;
+        }
+
         public static Tuple<bool, ItemMaster> getInventor(Guid ID)
         {
             Tuple<bool, ItemMaster> hasil = new Tuple<bool, ItemMaster>(false, null);

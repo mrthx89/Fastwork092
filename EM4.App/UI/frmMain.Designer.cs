@@ -162,6 +162,7 @@ namespace EM4.App.UI
             this.bbiStokMasuk.Id = 6;
             this.bbiStokMasuk.ImageOptions.LargeImageIndex = 5;
             this.bbiStokMasuk.Name = "bbiStokMasuk";
+            this.bbiStokMasuk.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiStokMasuk_ItemClick);
             // 
             // bbiStokKeluar
             // 

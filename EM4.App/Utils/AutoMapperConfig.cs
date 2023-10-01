@@ -17,6 +17,10 @@ namespace EM4.App.Utils
             {
                 cfg.CreateMap<TInventor, ItemMaster>();
                 cfg.CreateMap<ItemMaster, TInventor>();
+                cfg.CreateMap<TStockIn, StokMasuk>();
+                cfg.CreateMap<StokMasuk, TStockIn>();
+                cfg.CreateMap<TStockCard, StokMasuk>();
+                cfg.CreateMap<StokMasuk, TStockCard>();
             });
 
             return config.CreateMapper();

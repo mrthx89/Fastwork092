@@ -124,8 +124,11 @@
     <Compile Include="Model\Entity\TTypeTransaction.cs" />
     <Compile Include="Model\Entity\TUOM.cs" />
     <Compile Include="Model\Entity\TUser.cs" />
+    <Compile Include="Model\ViewModel\ItemLookUp.cs" />
     <Compile Include="Model\ViewModel\ItemMaster.cs" />
+    <Compile Include="Model\ViewModel\StokMasuk.cs" />
     <Compile Include="Repository\Item.cs" />
+    <Compile Include="Repository\StokMasuk.cs" />
     <Compile Include="Repository\User.cs" />
     <Compile Include="Repository\Utils.cs" />
     <Compile Include="UI\frmChangePassword.cs">
@@ -241,6 +244,7 @@
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUOM.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUser.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.ItemMaster.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.ViewModel.StokMasuk.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
