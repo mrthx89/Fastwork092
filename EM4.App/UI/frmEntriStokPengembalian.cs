@@ -17,22 +17,22 @@ using EM4.App.Model.Entity;
 
 namespace EM4.App.UI
 {
-    public partial class frmEntriStokKeluar : DevExpress.XtraEditors.XtraForm
+    public partial class frmEntriStokPengembalian : DevExpress.XtraEditors.XtraForm
     {
-        private Model.ViewModel.StokKeluar data = null;
-        public frmEntriStokKeluar(Model.ViewModel.StokKeluar data)
+        private Model.ViewModel.StokPengembalian data = null;
+        public frmEntriStokPengembalian(Model.ViewModel.StokPengembalian data)
         {
             InitializeComponent();
 
             this.data = data;
         }
 
-        private void frmEntriStokKeluar_Load(object sender, EventArgs e)
+        private void frmEntriStokPengembalian_Load(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, dataLayoutControl1);
             if (data == null)
             {
-                data = new Model.ViewModel.StokKeluar()
+                data = new Model.ViewModel.StokPengembalian()
                 {
                     ID = Guid.NewGuid(),
                     IDInventor = Guid.Empty,
@@ -43,8 +43,6 @@ namespace EM4.App.UI
                     Keterangan = "",
                     NamaBarang = "",
                     DocNo = "",
-                    PIC = "",
-                    Belt = "",
                     Qty = 0,
                     Tanggal = DateTime.Now,
                     TglEdit = DateTime.Parse("1900-01-01"),
@@ -53,7 +51,7 @@ namespace EM4.App.UI
                 };
             }
             refreshLookUp();
-            StokKeluarBindingSource.DataSource = data;
+            StokPengembalianBindingSource.DataSource = data;
             dataLayoutControl1.Refresh();
         }
 
@@ -66,7 +64,7 @@ namespace EM4.App.UI
                     dlg.TopMost = false;
                     dlg.Show();
 
-                    data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokOut).Item2;
+                    data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokPengembalian).Item2;
                     SaldoTextEdit.EditValue = data.Saldo;
 
                     dataLayoutControl1.Validate();
@@ -96,7 +94,7 @@ namespace EM4.App.UI
 
                     if (!dxErrorProvider1.HasErrors)
                     {
-                        var save = Repository.StokKeluar.saveStokKeluar(data);
+                        var save = Repository.StokPengembalian.saveStokPengembalian(data);
                         if (save.Item1)
                         {
                             this.data = save.Item2;
@@ -127,7 +125,7 @@ namespace EM4.App.UI
                 {
                     data.IDUOM = item.IDUOM;
                     data.NamaBarang = item.Desc;
-                    data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokOut).Item2;
+                    data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokPengembalian).Item2;
                     
                     IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
                     NamaBarangTextEdit.EditValue = item.Desc;
@@ -199,7 +197,7 @@ namespace EM4.App.UI
             }
         }
 
-        private void frmEntriStokKeluar_FOrmClosing(object sender, FormClosingEventArgs e)
+        private void frmEntriStokPengembalian_FOrmClosing(object sender, FormClosingEventArgs e)
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
             Constant.layoutsHelper.SaveLayouts(this.Name, dataLayoutControl1);
@@ -234,7 +232,7 @@ namespace EM4.App.UI
         {
             try
             {
-                data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, TanggalDateEdit.DateTime, data.ID, Repository.StokKeluar.TypeTransaction.stokOut).Item2;
+                data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, TanggalDateEdit.DateTime, data.ID, Repository.StokKeluar.TypeTransaction.stokPengembalian).Item2;
                 QtyCalcEdit.EditValue = data.Saldo;
             }
             catch (Exception ex)

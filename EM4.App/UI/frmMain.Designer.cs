@@ -56,6 +56,7 @@ namespace EM4.App.UI
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.bbiLaporanMutasiStok = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionSmall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionLarge)).BeginInit();
@@ -80,10 +81,11 @@ namespace EM4.App.UI
             this.bbiListBarangMasuk,
             this.bbiListBarangKeluar,
             this.bbiLaporanKartuStok,
-            this.bbiManagementUser});
+            this.bbiManagementUser,
+            this.bbiLaporanMutasiStok});
             this.ribbonControl1.LargeImages = this.imageCollectionLarge;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 13;
+            this.ribbonControl1.MaxItemId = 14;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsTouch.ShowTouchUISelectorInQAT = true;
             this.ribbonControl1.OptionsTouch.ShowTouchUISelectorVisibilityItemInQATMenu = true;
@@ -285,6 +287,7 @@ namespace EM4.App.UI
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiLaporanSaldoStok);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiLaporanMutasiStok);
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiLaporanKartuStok);
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiListBarangMasuk, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiListBarangKeluar);
@@ -302,6 +305,14 @@ namespace EM4.App.UI
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // bbiLaporanMutasiStok
+            // 
+            this.bbiLaporanMutasiStok.Caption = "Mutasi Saldo Stok";
+            this.bbiLaporanMutasiStok.Id = 13;
+            this.bbiLaporanMutasiStok.ImageOptions.LargeImageIndex = 7;
+            this.bbiLaporanMutasiStok.Name = "bbiLaporanMutasiStok";
+            this.bbiLaporanMutasiStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnMutasiSaldoStok_ItemClick);
             // 
             // frmMain
             // 
@@ -354,6 +365,7 @@ namespace EM4.App.UI
         private DevExpress.XtraBars.BarButtonItem bbiListBarangKeluar;
         private DevExpress.XtraBars.BarButtonItem bbiLaporanKartuStok;
         private DevExpress.XtraBars.BarButtonItem bbiManagementUser;
+        private DevExpress.XtraBars.BarButtonItem bbiLaporanMutasiStok;
     }
 }
 

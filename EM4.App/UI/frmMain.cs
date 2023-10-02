@@ -52,6 +52,7 @@ namespace EM4.App.UI
                 bbiStokMasuk.Enabled = false;
                 bbiLaporanSaldoStok.Enabled = false;
                 bbiLaporanKartuStok.Enabled = false;
+                bbiLaporanMutasiStok.Enabled = false;
                 bbiListBarangKeluar.Enabled = false;
                 bbiListBarangMasuk.Enabled = false;
 
@@ -76,6 +77,7 @@ namespace EM4.App.UI
                 bbiStokMasuk.Enabled = true;
                 bbiLaporanSaldoStok.Enabled = Constant.UserLogin.IsAdmin;
                 bbiLaporanKartuStok.Enabled = Constant.UserLogin.IsAdmin;
+                bbiLaporanMutasiStok.Enabled = Constant.UserLogin.IsAdmin;
                 bbiListBarangKeluar.Enabled = Constant.UserLogin.IsAdmin;
                 bbiListBarangMasuk.Enabled = Constant.UserLogin.IsAdmin;
             }
@@ -200,19 +202,43 @@ namespace EM4.App.UI
         {
             if (isLogin())
             {
-                using (frmEntriStokKeluar frm = new frmEntriStokKeluar(null))
+                var dialog = new Dialog.flyoutOptionStokKeluar(this, new Dialog.dlgOptionStokKeluar()).ShowFormPopup();
+                if (dialog.Item1 == DialogResult.OK && dialog.Item2 == 1)
                 {
-                    try
+                    using (frmEntriStokKeluar frm = new frmEntriStokKeluar(null))
                     {
-                        frm.StartPosition = FormStartPosition.CenterParent;
-                        frm.ShowDialog(this);
+                        try
+                        {
+                            frm.StartPosition = FormStartPosition.CenterParent;
+                            frm.ShowDialog(this);
+                        }
+                        catch (Exception ex)
+                        {
+                            EM4.App.Helper.MsgBoxHelper.MsgError($"{this.Name}.bbiStokKeluar_ItemClick", ex);
+                        }
                     }
-                    catch (Exception ex)
+                }
+                else if (dialog.Item1 == DialogResult.OK && dialog.Item2 == 2)
+                {
+                    using (frmEntriStokPengembalian frm = new frmEntriStokPengembalian(null))
                     {
-                        EM4.App.Helper.MsgBoxHelper.MsgError($"{this.Name}.bbiStokKeluar_ItemClick", ex);
+                        try
+                        {
+                            frm.StartPosition = FormStartPosition.CenterParent;
+                            frm.ShowDialog(this);
+                        }
+                        catch (Exception ex)
+                        {
+                            EM4.App.Helper.MsgBoxHelper.MsgError($"{this.Name}.bbiStokKeluar_ItemClick", ex);
+                        }
                     }
                 }
             }
+        }
+
+        private void mnMutasiSaldoStok_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
