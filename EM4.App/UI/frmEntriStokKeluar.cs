@@ -17,22 +17,22 @@ using EM4.App.Model.Entity;
 
 namespace EM4.App.UI
 {
-    public partial class frmEntriStokMasuk : DevExpress.XtraEditors.XtraForm
+    public partial class frmEntriStokKeluar : DevExpress.XtraEditors.XtraForm
     {
-        private Model.ViewModel.StokMasuk data = null;
-        public frmEntriStokMasuk(Model.ViewModel.StokMasuk data)
+        private Model.ViewModel.StokKeluar data = null;
+        public frmEntriStokKeluar(Model.ViewModel.StokKeluar data)
         {
             InitializeComponent();
 
             this.data = data;
         }
 
-        private void frmEntriStokMasuk_Load(object sender, EventArgs e)
+        private void frmEntriStokKeluar_Load(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, dataLayoutControl1);
             if (data == null)
             {
-                data = new Model.ViewModel.StokMasuk()
+                data = new Model.ViewModel.StokKeluar()
                 {
                     ID = Guid.NewGuid(),
                     IDInventor = Guid.Empty,
@@ -42,18 +42,18 @@ namespace EM4.App.UI
                     IDUserHapus = Guid.Empty,
                     Keterangan = "",
                     NamaBarang = "",
-                    NoPO = "",
-                    NoSJ = "",
+                    DocNo = "",
+                    PIC = "",
+                    Belt = "",
                     Qty = 0,
-                    Supplier = "",
                     Tanggal = DateTime.Now,
                     TglEdit = DateTime.Parse("1900-01-01"),
                     TglEntri = DateTime.Parse("1900-01-01"),
-                    TglHapus = DateTime.Parse("1900-01-01")
+                    TglHapus = DateTime.Parse("1900-01-01"),
                 };
             }
             refreshLookUp();
-            stokMasukBindingSource.DataSource = data;
+            StokKeluarBindingSource.DataSource = data;
             dataLayoutControl1.Refresh();
         }
 
@@ -65,6 +65,9 @@ namespace EM4.App.UI
                 {
                     dlg.TopMost = false;
                     dlg.Show();
+
+                    data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, data.Tanggal).Item2;
+                    SaldoTextEdit.EditValue = data.Saldo;
 
                     dataLayoutControl1.Validate();
                     this.Validate();
@@ -80,10 +83,20 @@ namespace EM4.App.UI
                         dxErrorProvider1.SetError(QtyCalcEdit, "Qty harus diisi dengan benar!");
                     }
 
+                    if (data.Saldo < data.Qty)
+                    {
+                        var dialog = MsgBoxHelper.MsgQuestionYesNo($"{this.Name}.mnSimpan_ItemClick", 
+                                                                   $"Saldo item {data.NamaBarang} ini sebanyak {data.Saldo.ToString("n0")} sedangkan pengeluaran sebanyak {data.Qty.ToString("n0")}, hal ini akan menyebabkan saldo item menjadi minus.{Environment.NewLine}Yakin ingin melanjutkan penyimpanan?", 
+                                                                   MessageBoxDefaultButton.Button2);
+                        if (dialog == DialogResult.No)
+                        {
+                            dxErrorProvider1.SetError(QtyCalcEdit, "Qty harus diisi dengan benar!");
+                        }
+                    }
 
                     if (!dxErrorProvider1.HasErrors)
                     {
-                        var save = Repository.StokMasuk.saveStokMasuk(data);
+                        var save = Repository.StokKeluar.saveStokKeluar(data);
                         if (save.Item1)
                         {
                             this.data = save.Item2;
@@ -114,8 +127,11 @@ namespace EM4.App.UI
                 {
                     data.IDUOM = item.IDUOM;
                     data.NamaBarang = item.Desc;
+                    data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal).Item2;
+                    
                     IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
                     NamaBarangTextEdit.EditValue = item.Desc;
+                    SaldoTextEdit.EditValue = item.Saldo;
                 }
             }
             catch (Exception ex)
@@ -183,7 +199,7 @@ namespace EM4.App.UI
             }
         }
 
-        private void frmEntriStokMasuk_FOrmClosing(object sender, FormClosingEventArgs e)
+        private void frmEntriStokKeluar_FOrmClosing(object sender, FormClosingEventArgs e)
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
             Constant.layoutsHelper.SaveLayouts(this.Name, dataLayoutControl1);
@@ -211,6 +227,19 @@ namespace EM4.App.UI
                         MsgBoxHelper.MsgError($"{this.Name}.IDInventorSearchLookUpEdit_ButtonClick", ex);
                     }
                 }
+            }
+        }
+
+        private void TanggalDateEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, TanggalDateEdit.DateTime).Item2;
+                QtyCalcEdit.EditValue = data.Saldo;
+            }
+            catch (Exception ex)
+            {
+                MsgBoxHelper.MsgError($"{this.Name}.TanggalDateEdit_EditValueChanged", ex);
             }
         }
     }

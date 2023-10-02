@@ -195,5 +195,24 @@ namespace EM4.App.UI
                 }
             }
         }
+
+        private void bbiStokKeluar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (isLogin())
+            {
+                using (frmEntriStokKeluar frm = new frmEntriStokKeluar(null))
+                {
+                    try
+                    {
+                        frm.StartPosition = FormStartPosition.CenterParent;
+                        frm.ShowDialog(this);
+                    }
+                    catch (Exception ex)
+                    {
+                        EM4.App.Helper.MsgBoxHelper.MsgError($"{this.Name}.bbiStokKeluar_ItemClick", ex);
+                    }
+                }
+            }
+        }
     }
 }

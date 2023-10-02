@@ -1,7 +1,7 @@
 ﻿
 namespace EM4.App.UI
 {
-    partial class frmEntriStokMasuk
+    partial class frmEntriStokKeluar
     {
         /// <summary>
         /// Required designer variable.
@@ -39,10 +39,7 @@ namespace EM4.App.UI
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.TanggalDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.stokMasukBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.NoPOTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.NoSJTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.SupplierTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.StokKeluarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.IDInventorSearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPLU = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,12 +55,14 @@ namespace EM4.App.UI
             this.TglEditDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.KeteranganMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.NamaBarangTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.DocNoTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.BeltTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PICTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.QtyCalcEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.SaldoTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForTanggal = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForNoPO = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForNoSJ = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForSupplier = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForIDInventor = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForIDUOM = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForQty = new DevExpress.XtraLayout.LayoutControlItem();
@@ -73,17 +72,17 @@ namespace EM4.App.UI
             this.ItemForIDUserEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForTglEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForNamaBarang = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForDocNo = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForBelt = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForPIC = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForSaldo = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.QtyCalcEdit = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TanggalDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TanggalDateEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stokMasukBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NoPOTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NoSJTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SupplierTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StokKeluarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IDInventorSearchLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IDUOMSearchLookUpEdit.Properties)).BeginInit();
@@ -98,12 +97,14 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.TglEditDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KeteranganMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NamaBarangTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BeltTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PICTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaldoTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTanggal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNoPO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNoSJ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForSupplier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDInventor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForQty)).BeginInit();
@@ -113,8 +114,11 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUserEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNamaBarang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDocNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBelt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPIC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForSaldo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -183,9 +187,6 @@ namespace EM4.App.UI
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.TanggalDateEdit);
-            this.dataLayoutControl1.Controls.Add(this.NoPOTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.NoSJTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.SupplierTextEdit);
             this.dataLayoutControl1.Controls.Add(this.IDInventorSearchLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.IDUOMSearchLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.IDUserEntriSearchLookUpEdit);
@@ -194,8 +195,12 @@ namespace EM4.App.UI
             this.dataLayoutControl1.Controls.Add(this.TglEditDateEdit);
             this.dataLayoutControl1.Controls.Add(this.KeteranganMemoEdit);
             this.dataLayoutControl1.Controls.Add(this.NamaBarangTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DocNoTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BeltTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.PICTextEdit);
             this.dataLayoutControl1.Controls.Add(this.QtyCalcEdit);
-            this.dataLayoutControl1.DataSource = this.stokMasukBindingSource;
+            this.dataLayoutControl1.Controls.Add(this.SaldoTextEdit);
+            this.dataLayoutControl1.DataSource = this.StokKeluarBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -207,7 +212,7 @@ namespace EM4.App.UI
             // 
             // TanggalDateEdit
             // 
-            this.TanggalDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Tanggal", true));
+            this.TanggalDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "Tanggal", true));
             this.TanggalDateEdit.EditValue = null;
             this.TanggalDateEdit.EnterMoveNextControl = true;
             this.TanggalDateEdit.Location = new System.Drawing.Point(79, 12);
@@ -224,52 +229,17 @@ namespace EM4.App.UI
             this.TanggalDateEdit.Size = new System.Drawing.Size(328, 20);
             this.TanggalDateEdit.StyleController = this.dataLayoutControl1;
             this.TanggalDateEdit.TabIndex = 4;
+            this.TanggalDateEdit.EditValueChanged += new System.EventHandler(this.TanggalDateEdit_EditValueChanged);
             // 
-            // stokMasukBindingSource
+            // StokKeluarBindingSource
             // 
-            this.stokMasukBindingSource.DataSource = typeof(EM4.App.Model.ViewModel.StokMasuk);
-            // 
-            // NoPOTextEdit
-            // 
-            this.NoPOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "NoPO", true));
-            this.NoPOTextEdit.EnterMoveNextControl = true;
-            this.NoPOTextEdit.Location = new System.Drawing.Point(79, 36);
-            this.NoPOTextEdit.MenuManager = this.barManager1;
-            this.NoPOTextEdit.Name = "NoPOTextEdit";
-            this.NoPOTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.NoPOTextEdit.Size = new System.Drawing.Size(328, 20);
-            this.NoPOTextEdit.StyleController = this.dataLayoutControl1;
-            this.NoPOTextEdit.TabIndex = 5;
-            // 
-            // NoSJTextEdit
-            // 
-            this.NoSJTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "NoSJ", true));
-            this.NoSJTextEdit.EnterMoveNextControl = true;
-            this.NoSJTextEdit.Location = new System.Drawing.Point(79, 60);
-            this.NoSJTextEdit.MenuManager = this.barManager1;
-            this.NoSJTextEdit.Name = "NoSJTextEdit";
-            this.NoSJTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.NoSJTextEdit.Size = new System.Drawing.Size(328, 20);
-            this.NoSJTextEdit.StyleController = this.dataLayoutControl1;
-            this.NoSJTextEdit.TabIndex = 6;
-            // 
-            // SupplierTextEdit
-            // 
-            this.SupplierTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Supplier", true));
-            this.SupplierTextEdit.EnterMoveNextControl = true;
-            this.SupplierTextEdit.Location = new System.Drawing.Point(79, 84);
-            this.SupplierTextEdit.MenuManager = this.barManager1;
-            this.SupplierTextEdit.Name = "SupplierTextEdit";
-            this.SupplierTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.SupplierTextEdit.Size = new System.Drawing.Size(328, 20);
-            this.SupplierTextEdit.StyleController = this.dataLayoutControl1;
-            this.SupplierTextEdit.TabIndex = 7;
+            this.StokKeluarBindingSource.DataSource = typeof(EM4.App.Model.ViewModel.StokKeluar);
             // 
             // IDInventorSearchLookUpEdit
             // 
-            this.IDInventorSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDInventor", true));
+            this.IDInventorSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "IDInventor", true));
             this.IDInventorSearchLookUpEdit.EnterMoveNextControl = true;
-            this.IDInventorSearchLookUpEdit.Location = new System.Drawing.Point(79, 108);
+            this.IDInventorSearchLookUpEdit.Location = new System.Drawing.Point(79, 60);
             this.IDInventorSearchLookUpEdit.MenuManager = this.barManager1;
             this.IDInventorSearchLookUpEdit.Name = "IDInventorSearchLookUpEdit";
             this.IDInventorSearchLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
@@ -322,9 +292,9 @@ namespace EM4.App.UI
             // 
             // IDUOMSearchLookUpEdit
             // 
-            this.IDUOMSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUOM", true));
+            this.IDUOMSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "IDUOM", true));
             this.IDUOMSearchLookUpEdit.EnterMoveNextControl = true;
-            this.IDUOMSearchLookUpEdit.Location = new System.Drawing.Point(79, 156);
+            this.IDUOMSearchLookUpEdit.Location = new System.Drawing.Point(79, 108);
             this.IDUOMSearchLookUpEdit.MenuManager = this.barManager1;
             this.IDUOMSearchLookUpEdit.Name = "IDUOMSearchLookUpEdit";
             this.IDUOMSearchLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
@@ -346,7 +316,7 @@ namespace EM4.App.UI
             // 
             // IDUserEntriSearchLookUpEdit
             // 
-            this.IDUserEntriSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUserEntri", true));
+            this.IDUserEntriSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "IDUserEntri", true));
             this.IDUserEntriSearchLookUpEdit.EnterMoveNextControl = true;
             this.IDUserEntriSearchLookUpEdit.Location = new System.Drawing.Point(79, 288);
             this.IDUserEntriSearchLookUpEdit.MenuManager = this.barManager1;
@@ -369,7 +339,7 @@ namespace EM4.App.UI
             // 
             // TglEntriDateEdit
             // 
-            this.TglEntriDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "TglEntri", true));
+            this.TglEntriDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "TglEntri", true));
             this.TglEntriDateEdit.EditValue = null;
             this.TglEntriDateEdit.EnterMoveNextControl = true;
             this.TglEntriDateEdit.Location = new System.Drawing.Point(79, 312);
@@ -390,7 +360,7 @@ namespace EM4.App.UI
             // 
             // IDUserEditSearchLookUpEdit
             // 
-            this.IDUserEditSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUserEdit", true));
+            this.IDUserEditSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "IDUserEdit", true));
             this.IDUserEditSearchLookUpEdit.EnterMoveNextControl = true;
             this.IDUserEditSearchLookUpEdit.Location = new System.Drawing.Point(278, 288);
             this.IDUserEditSearchLookUpEdit.MenuManager = this.barManager1;
@@ -413,7 +383,7 @@ namespace EM4.App.UI
             // 
             // TglEditDateEdit
             // 
-            this.TglEditDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "TglEdit", true));
+            this.TglEditDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "TglEdit", true));
             this.TglEditDateEdit.EditValue = null;
             this.TglEditDateEdit.EnterMoveNextControl = true;
             this.TglEditDateEdit.Location = new System.Drawing.Point(278, 312);
@@ -434,25 +404,96 @@ namespace EM4.App.UI
             // 
             // KeteranganMemoEdit
             // 
-            this.KeteranganMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Keterangan", true));
-            this.KeteranganMemoEdit.Location = new System.Drawing.Point(79, 204);
+            this.KeteranganMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "Keterangan", true));
+            this.KeteranganMemoEdit.Location = new System.Drawing.Point(79, 180);
             this.KeteranganMemoEdit.MenuManager = this.barManager1;
             this.KeteranganMemoEdit.Name = "KeteranganMemoEdit";
-            this.KeteranganMemoEdit.Size = new System.Drawing.Size(328, 80);
+            this.KeteranganMemoEdit.Size = new System.Drawing.Size(328, 104);
             this.KeteranganMemoEdit.StyleController = this.dataLayoutControl1;
             this.KeteranganMemoEdit.TabIndex = 16;
             // 
             // NamaBarangTextEdit
             // 
-            this.NamaBarangTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "NamaBarang", true));
+            this.NamaBarangTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "NamaBarang", true));
             this.NamaBarangTextEdit.EnterMoveNextControl = true;
-            this.NamaBarangTextEdit.Location = new System.Drawing.Point(79, 132);
+            this.NamaBarangTextEdit.Location = new System.Drawing.Point(79, 84);
             this.NamaBarangTextEdit.MenuManager = this.barManager1;
             this.NamaBarangTextEdit.Name = "NamaBarangTextEdit";
             this.NamaBarangTextEdit.Properties.ReadOnly = true;
             this.NamaBarangTextEdit.Size = new System.Drawing.Size(328, 20);
             this.NamaBarangTextEdit.StyleController = this.dataLayoutControl1;
             this.NamaBarangTextEdit.TabIndex = 17;
+            // 
+            // DocNoTextEdit
+            // 
+            this.DocNoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "DocNo", true));
+            this.DocNoTextEdit.EnterMoveNextControl = true;
+            this.DocNoTextEdit.Location = new System.Drawing.Point(79, 36);
+            this.DocNoTextEdit.MenuManager = this.barManager1;
+            this.DocNoTextEdit.Name = "DocNoTextEdit";
+            this.DocNoTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.DocNoTextEdit.Size = new System.Drawing.Size(328, 20);
+            this.DocNoTextEdit.StyleController = this.dataLayoutControl1;
+            this.DocNoTextEdit.TabIndex = 18;
+            // 
+            // BeltTextEdit
+            // 
+            this.BeltTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "Belt", true));
+            this.BeltTextEdit.EnterMoveNextControl = true;
+            this.BeltTextEdit.Location = new System.Drawing.Point(79, 156);
+            this.BeltTextEdit.MenuManager = this.barManager1;
+            this.BeltTextEdit.Name = "BeltTextEdit";
+            this.BeltTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.BeltTextEdit.Size = new System.Drawing.Size(128, 20);
+            this.BeltTextEdit.StyleController = this.dataLayoutControl1;
+            this.BeltTextEdit.TabIndex = 19;
+            // 
+            // PICTextEdit
+            // 
+            this.PICTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "PIC", true));
+            this.PICTextEdit.EnterMoveNextControl = true;
+            this.PICTextEdit.Location = new System.Drawing.Point(278, 156);
+            this.PICTextEdit.MenuManager = this.barManager1;
+            this.PICTextEdit.Name = "PICTextEdit";
+            this.PICTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.PICTextEdit.Size = new System.Drawing.Size(129, 20);
+            this.PICTextEdit.StyleController = this.dataLayoutControl1;
+            this.PICTextEdit.TabIndex = 20;
+            // 
+            // QtyCalcEdit
+            // 
+            this.QtyCalcEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "Qty", true));
+            this.QtyCalcEdit.EnterMoveNextControl = true;
+            this.QtyCalcEdit.Location = new System.Drawing.Point(79, 132);
+            this.QtyCalcEdit.MenuManager = this.barManager1;
+            this.QtyCalcEdit.Name = "QtyCalcEdit";
+            this.QtyCalcEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.QtyCalcEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.QtyCalcEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.QtyCalcEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.QtyCalcEdit.Properties.Mask.EditMask = "n0";
+            this.QtyCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.QtyCalcEdit.Size = new System.Drawing.Size(128, 20);
+            this.QtyCalcEdit.StyleController = this.dataLayoutControl1;
+            this.QtyCalcEdit.TabIndex = 21;
+            // 
+            // SaldoTextEdit
+            // 
+            this.SaldoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "Saldo", true));
+            this.SaldoTextEdit.EnterMoveNextControl = true;
+            this.SaldoTextEdit.Location = new System.Drawing.Point(278, 132);
+            this.SaldoTextEdit.MenuManager = this.barManager1;
+            this.SaldoTextEdit.Name = "SaldoTextEdit";
+            this.SaldoTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.SaldoTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.SaldoTextEdit.Properties.Mask.EditMask = "n0";
+            this.SaldoTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.SaldoTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.SaldoTextEdit.Properties.ReadOnly = true;
+            this.SaldoTextEdit.Size = new System.Drawing.Size(129, 20);
+            this.SaldoTextEdit.StyleController = this.dataLayoutControl1;
+            this.SaldoTextEdit.TabIndex = 22;
             // 
             // Root
             // 
@@ -470,9 +511,6 @@ namespace EM4.App.UI
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForTanggal,
-            this.ItemForNoPO,
-            this.ItemForNoSJ,
-            this.ItemForSupplier,
             this.ItemForIDInventor,
             this.ItemForIDUOM,
             this.ItemForQty,
@@ -481,7 +519,11 @@ namespace EM4.App.UI
             this.ItemForTglEntri,
             this.ItemForIDUserEdit,
             this.ItemForTglEdit,
-            this.ItemForNamaBarang});
+            this.ItemForNamaBarang,
+            this.ItemForDocNo,
+            this.ItemForBelt,
+            this.ItemForPIC,
+            this.ItemForSaldo});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
             this.layoutControlGroup1.Size = new System.Drawing.Size(399, 324);
@@ -495,37 +537,10 @@ namespace EM4.App.UI
             this.ItemForTanggal.Text = "Tanggal";
             this.ItemForTanggal.TextSize = new System.Drawing.Size(64, 13);
             // 
-            // ItemForNoPO
-            // 
-            this.ItemForNoPO.Control = this.NoPOTextEdit;
-            this.ItemForNoPO.Location = new System.Drawing.Point(0, 24);
-            this.ItemForNoPO.Name = "ItemForNoPO";
-            this.ItemForNoPO.Size = new System.Drawing.Size(399, 24);
-            this.ItemForNoPO.Text = "No PO";
-            this.ItemForNoPO.TextSize = new System.Drawing.Size(64, 13);
-            // 
-            // ItemForNoSJ
-            // 
-            this.ItemForNoSJ.Control = this.NoSJTextEdit;
-            this.ItemForNoSJ.Location = new System.Drawing.Point(0, 48);
-            this.ItemForNoSJ.Name = "ItemForNoSJ";
-            this.ItemForNoSJ.Size = new System.Drawing.Size(399, 24);
-            this.ItemForNoSJ.Text = "No SJ";
-            this.ItemForNoSJ.TextSize = new System.Drawing.Size(64, 13);
-            // 
-            // ItemForSupplier
-            // 
-            this.ItemForSupplier.Control = this.SupplierTextEdit;
-            this.ItemForSupplier.Location = new System.Drawing.Point(0, 72);
-            this.ItemForSupplier.Name = "ItemForSupplier";
-            this.ItemForSupplier.Size = new System.Drawing.Size(399, 24);
-            this.ItemForSupplier.Text = "Supplier";
-            this.ItemForSupplier.TextSize = new System.Drawing.Size(64, 13);
-            // 
             // ItemForIDInventor
             // 
             this.ItemForIDInventor.Control = this.IDInventorSearchLookUpEdit;
-            this.ItemForIDInventor.Location = new System.Drawing.Point(0, 96);
+            this.ItemForIDInventor.Location = new System.Drawing.Point(0, 48);
             this.ItemForIDInventor.Name = "ItemForIDInventor";
             this.ItemForIDInventor.Size = new System.Drawing.Size(399, 24);
             this.ItemForIDInventor.Text = "Item";
@@ -534,7 +549,7 @@ namespace EM4.App.UI
             // ItemForIDUOM
             // 
             this.ItemForIDUOM.Control = this.IDUOMSearchLookUpEdit;
-            this.ItemForIDUOM.Location = new System.Drawing.Point(0, 144);
+            this.ItemForIDUOM.Location = new System.Drawing.Point(0, 96);
             this.ItemForIDUOM.Name = "ItemForIDUOM";
             this.ItemForIDUOM.Size = new System.Drawing.Size(399, 24);
             this.ItemForIDUOM.Text = "Satuan";
@@ -543,18 +558,18 @@ namespace EM4.App.UI
             // ItemForQty
             // 
             this.ItemForQty.Control = this.QtyCalcEdit;
-            this.ItemForQty.Location = new System.Drawing.Point(0, 168);
+            this.ItemForQty.Location = new System.Drawing.Point(0, 120);
             this.ItemForQty.Name = "ItemForQty";
-            this.ItemForQty.Size = new System.Drawing.Size(399, 24);
+            this.ItemForQty.Size = new System.Drawing.Size(199, 24);
             this.ItemForQty.Text = "Qty";
             this.ItemForQty.TextSize = new System.Drawing.Size(64, 13);
             // 
             // ItemForKeterangan
             // 
             this.ItemForKeterangan.Control = this.KeteranganMemoEdit;
-            this.ItemForKeterangan.Location = new System.Drawing.Point(0, 192);
+            this.ItemForKeterangan.Location = new System.Drawing.Point(0, 168);
             this.ItemForKeterangan.Name = "ItemForKeterangan";
-            this.ItemForKeterangan.Size = new System.Drawing.Size(399, 84);
+            this.ItemForKeterangan.Size = new System.Drawing.Size(399, 108);
             this.ItemForKeterangan.Text = "Keterangan";
             this.ItemForKeterangan.TextSize = new System.Drawing.Size(64, 13);
             // 
@@ -597,35 +612,53 @@ namespace EM4.App.UI
             // ItemForNamaBarang
             // 
             this.ItemForNamaBarang.Control = this.NamaBarangTextEdit;
-            this.ItemForNamaBarang.Location = new System.Drawing.Point(0, 120);
+            this.ItemForNamaBarang.Location = new System.Drawing.Point(0, 72);
             this.ItemForNamaBarang.Name = "ItemForNamaBarang";
             this.ItemForNamaBarang.Size = new System.Drawing.Size(399, 24);
             this.ItemForNamaBarang.Text = "Nama Barang";
             this.ItemForNamaBarang.TextSize = new System.Drawing.Size(64, 13);
             // 
+            // ItemForDocNo
+            // 
+            this.ItemForDocNo.Control = this.DocNoTextEdit;
+            this.ItemForDocNo.Location = new System.Drawing.Point(0, 24);
+            this.ItemForDocNo.Name = "ItemForDocNo";
+            this.ItemForDocNo.Size = new System.Drawing.Size(399, 24);
+            this.ItemForDocNo.Text = "Doc No";
+            this.ItemForDocNo.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForBelt
+            // 
+            this.ItemForBelt.Control = this.BeltTextEdit;
+            this.ItemForBelt.Location = new System.Drawing.Point(0, 144);
+            this.ItemForBelt.Name = "ItemForBelt";
+            this.ItemForBelt.Size = new System.Drawing.Size(199, 24);
+            this.ItemForBelt.Text = "Belt";
+            this.ItemForBelt.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForPIC
+            // 
+            this.ItemForPIC.Control = this.PICTextEdit;
+            this.ItemForPIC.Location = new System.Drawing.Point(199, 144);
+            this.ItemForPIC.Name = "ItemForPIC";
+            this.ItemForPIC.Size = new System.Drawing.Size(200, 24);
+            this.ItemForPIC.Text = "PIC";
+            this.ItemForPIC.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForSaldo
+            // 
+            this.ItemForSaldo.Control = this.SaldoTextEdit;
+            this.ItemForSaldo.Location = new System.Drawing.Point(199, 120);
+            this.ItemForSaldo.Name = "ItemForSaldo";
+            this.ItemForSaldo.Size = new System.Drawing.Size(200, 24);
+            this.ItemForSaldo.Text = "Saldo";
+            this.ItemForSaldo.TextSize = new System.Drawing.Size(64, 13);
+            // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
-            // QtyCalcEdit
-            // 
-            this.QtyCalcEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Qty", true));
-            this.QtyCalcEdit.EnterMoveNextControl = true;
-            this.QtyCalcEdit.Location = new System.Drawing.Point(79, 180);
-            this.QtyCalcEdit.MenuManager = this.barManager1;
-            this.QtyCalcEdit.Name = "QtyCalcEdit";
-            this.QtyCalcEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.QtyCalcEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.QtyCalcEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.QtyCalcEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.QtyCalcEdit.Properties.Mask.EditMask = "n0";
-            this.QtyCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.QtyCalcEdit.Size = new System.Drawing.Size(328, 20);
-            this.QtyCalcEdit.StyleController = this.dataLayoutControl1;
-            this.QtyCalcEdit.TabIndex = 18;
-            // 
-            // frmEntriStokMasuk
+            // frmEntriStokKeluar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -635,20 +668,17 @@ namespace EM4.App.UI
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmEntriStokMasuk";
+            this.Name = "frmEntriStokKeluar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Entri Stok Masuk";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEntriStokMasuk_FOrmClosing);
-            this.Load += new System.EventHandler(this.frmEntriStokMasuk_Load);
+            this.Text = "Entri Stok Keluar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEntriStokKeluar_FOrmClosing);
+            this.Load += new System.EventHandler(this.frmEntriStokKeluar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TanggalDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TanggalDateEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stokMasukBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NoPOTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NoSJTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SupplierTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StokKeluarBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IDInventorSearchLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IDUOMSearchLookUpEdit.Properties)).EndInit();
@@ -663,12 +693,14 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.TglEditDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KeteranganMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NamaBarangTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BeltTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PICTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaldoTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTanggal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNoPO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNoSJ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForSupplier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDInventor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForQty)).EndInit();
@@ -678,8 +710,11 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUserEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNamaBarang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDocNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBelt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPIC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForSaldo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -697,10 +732,7 @@ namespace EM4.App.UI
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.DateEdit TanggalDateEdit;
-        private System.Windows.Forms.BindingSource stokMasukBindingSource;
-        private DevExpress.XtraEditors.TextEdit NoPOTextEdit;
-        private DevExpress.XtraEditors.TextEdit NoSJTextEdit;
-        private DevExpress.XtraEditors.TextEdit SupplierTextEdit;
+        private System.Windows.Forms.BindingSource StokKeluarBindingSource;
         private DevExpress.XtraEditors.SearchLookUpEdit IDInventorSearchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraEditors.SearchLookUpEdit IDUOMSearchLookUpEdit;
@@ -714,9 +746,6 @@ namespace EM4.App.UI
         private DevExpress.XtraEditors.MemoEdit KeteranganMemoEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem ItemForTanggal;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForNoPO;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForNoSJ;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForSupplier;
         private DevExpress.XtraLayout.LayoutControlItem ItemForIDInventor;
         private DevExpress.XtraLayout.LayoutControlItem ItemForIDUOM;
         private DevExpress.XtraLayout.LayoutControlItem ItemForQty;
@@ -731,6 +760,14 @@ namespace EM4.App.UI
         private DevExpress.XtraEditors.TextEdit NamaBarangTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForNamaBarang;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.TextEdit DocNoTextEdit;
+        private DevExpress.XtraEditors.TextEdit BeltTextEdit;
+        private DevExpress.XtraEditors.TextEdit PICTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDocNo;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBelt;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForPIC;
         private DevExpress.XtraEditors.CalcEdit QtyCalcEdit;
+        private DevExpress.XtraEditors.TextEdit SaldoTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForSaldo;
     }
 }

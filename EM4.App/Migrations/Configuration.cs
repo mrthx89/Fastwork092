@@ -54,13 +54,26 @@ namespace EM4.App.Migrations
             {
                 ID = Guid.Parse("6652E843-6C01-4CD0-9F9C-5111565D7844"),
                 Transaksi = "Stok Keluar",
-                NoUrut = 1,
+                NoUrut = 2,
                 IDUserEntri = sysAdmin.ID,
                 TglEntri = DateTime.Now
             };
             if (context.TTypeTransactions.FirstOrDefault(o => o.ID.Equals(typeTransaction2.ID)) == null)
             {
                 context.TTypeTransactions.Add(typeTransaction2);
+            }
+
+            TTypeTransaction typeTransaction3 = new TTypeTransaction
+            {
+                ID = Guid.Parse("B536F89C-FA4E-4F7B-AFDB-5B323546D10E"),
+                Transaksi = "Stok Pengembalian",
+                NoUrut = 3,
+                IDUserEntri = sysAdmin.ID,
+                TglEntri = DateTime.Now
+            };
+            if (context.TTypeTransactions.FirstOrDefault(o => o.ID.Equals(typeTransaction3.ID)) == null)
+            {
+                context.TTypeTransactions.Add(typeTransaction3);
             }
 
             context.SaveChanges();

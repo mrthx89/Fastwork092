@@ -50,6 +50,8 @@ namespace EM4.App.Repository
                     stockCard.IDType = stokInType;
                     stockCard.DocNo = data.NoSJ;
                     stockCard.QtyMasuk = data.Qty;
+                    stockCard.PIC = "";
+                    stockCard.Belt = "";
                     context.TStockCards.Add(stockCard);
 
                     hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(true, data);

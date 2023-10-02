@@ -170,6 +170,7 @@ namespace EM4.App.UI
             this.bbiStokKeluar.Id = 7;
             this.bbiStokKeluar.ImageOptions.LargeImageIndex = 6;
             this.bbiStokKeluar.Name = "bbiStokKeluar";
+            this.bbiStokKeluar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiStokKeluar_ItemClick);
             // 
             // bbiLaporanSaldoStok
             // 

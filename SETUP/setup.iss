@@ -48,7 +48,8 @@ Name: "indonesian"; MessagesFile: "compiler:Languages\Indonesian.isl";
 Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Tasks]
-Name: "mssqllocaldb"; Description: "Install LocalDB 2019"; GroupDescription: "Harus diinstall:"; Flags: checkablealone
+Name: "mssqllocaldbx86"; Description: "Install LocalDB 2019"; GroupDescription: "Harus diinstall:"; Flags: checkablealone; Check: Not IsWin64()
+Name: "mssqllocaldbx64"; Description: "Install LocalDB 2019"; GroupDescription: "Harus diinstall:"; Flags: checkablealone; Check: IsWin64()
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checkablealone
 
 [Files]
@@ -60,7 +61,9 @@ Source: "..\EM4.App\bin\Debug\*.config"; DestDir: "{app}"; Flags: ignoreversion 
 Source: "..\EM4.App\bin\Debug\system\layouts\*"; DestDir: "{app}\System\Layouts"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "uninstall.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "addFirewall.txt"; DestDir: {app}; AfterInstall: OpenFirewall
-Source: "LocalDB_2019\SqlLocalDB.msi"; DestDir: "{tmp}"; Flags: ignoreversion; Tasks: mssqllocaldb; AfterInstall: RunOtherInstaller
+;Source: "LocalDB_2019\SqlLocalDB.msi"; DestDir: "{tmp}"; Flags: ignoreversion; Tasks: mssqllocaldb; AfterInstall: RunOtherInstaller
+Source: "LocalDB_2014\SqlLocalDB_x86.msi"; DestDir: "{tmp}"; Flags: ignoreversion; Tasks: mssqllocaldbx86; AfterInstall: RunOtherInstaller86
+Source: "LocalDB_2014\SqlLocalDB_x64.msi"; DestDir: "{tmp}"; Flags: ignoreversion; Tasks: mssqllocaldbx64; AfterInstall: RunOtherInstaller64
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

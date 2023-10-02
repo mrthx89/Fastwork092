@@ -27,5 +27,6 @@ namespace EM4.App.Model.Entity
         public virtual ICollection<TStockIn> StockIns { get; set; }
         public virtual ICollection<TStockOut> StockOuts { get; set; }
         public virtual ICollection<TStockCard> StockCards { get; set; }
+        public virtual ICollection<TStockPengembalian> StockPengembalians { get; set; }
     }
 }

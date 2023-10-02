@@ -64,9 +64,9 @@
     <Reference Include="DevExpress.XtraBars.v19.2" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core" />
     <Reference Include="DevExpress.XtraEditors.v19.2" />
-    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -114,10 +114,23 @@
     <Compile Include="Migrations\202309301754156_StokMasuk.Designer.cs">
       <DependentUpon>202309301754156_StokMasuk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310011044480_StokPengembalian.cs" />
+    <Compile Include="Migrations\202310011044480_StokPengembalian.Designer.cs">
+      <DependentUpon>202310011044480_StokPengembalian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310012317011_BeltPICStockCard.cs" />
+    <Compile Include="Migrations\202310012317011_BeltPICStockCard.Designer.cs">
+      <DependentUpon>202310012317011_BeltPICStockCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310012349185_BeltPICStockCard2.cs" />
+    <Compile Include="Migrations\202310012349185_BeltPICStockCard2.Designer.cs">
+      <DependentUpon>202310012349185_BeltPICStockCard2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AppSetting.cs" />
     <Compile Include="Model\Entity\BaseTable.cs" />
     <Compile Include="Model\Entity\TInventor.cs" />
+    <Compile Include="Model\Entity\TStockPengembalian.cs" />
     <Compile Include="Model\Entity\TStockOut.cs" />
     <Compile Include="Model\Entity\TStockIn.cs" />
     <Compile Include="Model\Entity\TStockCard.cs" />
@@ -126,8 +139,11 @@
     <Compile Include="Model\Entity\TUser.cs" />
     <Compile Include="Model\ViewModel\ItemLookUp.cs" />
     <Compile Include="Model\ViewModel\ItemMaster.cs" />
+    <Compile Include="Model\ViewModel\StokPengembalian.cs" />
+    <Compile Include="Model\ViewModel\StokKeluar.cs" />
     <Compile Include="Model\ViewModel\StokMasuk.cs" />
     <Compile Include="Repository\Item.cs" />
+    <Compile Include="Repository\StokKeluar.cs" />
     <Compile Include="Repository\StokMasuk.cs" />
     <Compile Include="Repository\User.cs" />
     <Compile Include="Repository\Utils.cs" />
@@ -148,6 +164,12 @@
     </Compile>
     <Compile Include="UI\frmEntriItem.Designer.cs">
       <DependentUpon>frmEntriItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmEntriStokKeluar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmEntriStokKeluar.Designer.cs">
+      <DependentUpon>frmEntriStokKeluar.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmEntriStokMasuk.cs">
       <SubType>Form</SubType>
@@ -196,6 +218,16 @@
     <EmbeddedResource Include="Migrations\202309301754156_StokMasuk.resx">
       <DependentUpon>202309301754156_StokMasuk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310011044480_StokPengembalian.resx">
+      <DependentUpon>202310011044480_StokPengembalian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310012317011_BeltPICStockCard.resx">
+      <DependentUpon>202310012317011_BeltPICStockCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310012349185_BeltPICStockCard2.resx">
+      <DependentUpon>202310012349185_BeltPICStockCard2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UI\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmEntriItem.resx">
       <DependentUpon>frmEntriItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmEntriStokKeluar.resx">
+      <DependentUpon>frmEntriStokKeluar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmEntriStokMasuk.resx">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>

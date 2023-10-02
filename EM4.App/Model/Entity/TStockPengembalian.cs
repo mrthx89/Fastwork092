@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace EM4.App.Model.Entity
 {
-    [Table("TStockOut")]
-    public partial class TStockOut : BaseTable
+    [Table("TStockPengembalian")]
+    public partial class TStockPengembalian : BaseTable
     {
         [Key]
         public Guid ID { get; set; }
@@ -25,14 +25,8 @@ namespace EM4.App.Model.Entity
         [Required]
         public Guid IDUOM { get; set; }
         [Required]
-        [Range(0, float.MaxValue, ErrorMessage = "Qty yang diinputkan salah")]
+        [Range(0, double.MaxValue, ErrorMessage = "Qty yang diinputkan salah")]
         public float Qty { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string Belt { get; set; }
-        [Required]
-        [StringLength(150)]
-        public string PIC { get; set; }
         [StringLength(255)]
         public string Keterangan { get; set; }
 

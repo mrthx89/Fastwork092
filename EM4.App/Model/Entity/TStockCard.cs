@@ -34,7 +34,10 @@ namespace EM4.App.Model.Entity
         public float QtyMasuk { get; set; }
         [Required]
         public float QtyKeluar { get; set; }
-
+        [StringLength(100)]
+        public string Belt { get; set; }
+        [StringLength(150)]
+        public string PIC { get; set; }
 
         public virtual TInventor Inventor { get; set; }
         public virtual TUOM UOM { get; set; }

@@ -28,9 +28,14 @@ namespace EM4.App.Data
         public DbSet<TStockIn> TStockIns { get; set; }
         public DbSet<TStockOut> TStockOuts { get; set; }
         public DbSet<TStockCard> TStockCards { get; set; }
-        
+        public DbSet<TStockPengembalian> TStockPengembalians { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TTypeTransaction>()
+                .Property(p => p.NoUrut)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_NoUrut") { IsUnique = true }));
+
             modelBuilder.Entity<TTypeTransaction>()
                 .Property(p => p.Transaksi)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Transaksi") { IsUnique = true }));
@@ -57,8 +62,13 @@ namespace EM4.App.Data
 
             modelBuilder.Entity<TStockOut>()
                 .Property(p => p.DocNo)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_DocNo") { IsUnique = true }));
-            
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_DocNo")));
+
+            modelBuilder.Entity<TStockPengembalian>()
+                .Property(p => p.DocNo)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_DocNo")));
+
+
             modelBuilder.Entity<TStockCard>()
                 .HasIndex(p => new { p.IDTransaksiD, p.IDType })
                 .IsUnique();
@@ -93,6 +103,12 @@ namespace EM4.App.Data
                 .HasForeignKey(b => b.IDInventor)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<TStockPengembalian>()
+                .HasRequired(b => b.Inventor)
+                .WithMany(a => a.StockPengembalians)
+                .HasForeignKey(b => b.IDInventor)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<TStockCard>()
                 .HasRequired(b => b.UOM)
                 .WithMany(a => a.StockCards)
@@ -108,6 +124,12 @@ namespace EM4.App.Data
             modelBuilder.Entity<TStockOut>()
                 .HasRequired(b => b.UOM)
                 .WithMany(a => a.StockOuts)
+                .HasForeignKey(b => b.IDUOM)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TStockPengembalian>()
+                .HasRequired(b => b.UOM)
+                .WithMany(a => a.StockPengembalians)
                 .HasForeignKey(b => b.IDUOM)
                 .WillCascadeOnDelete(false);
         }

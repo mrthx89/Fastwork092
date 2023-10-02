@@ -31,6 +31,7 @@ namespace EM4.App.Model.Entity
         [Required]
         public Guid IDUOM { get; set; }
         [Required]
+        [Range(0, float.MaxValue, ErrorMessage = "Qty yang diinputkan salah")]
         public float Qty { get; set; }
         [StringLength(255)]
         public string Keterangan { get; set; }
