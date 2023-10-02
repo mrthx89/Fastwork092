@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 /SETUP/NDP461-KB3102436-x86-x64-AllOS-ENU.exe
 /SETUP/Output/EM4_SETUP.exe
+/SETUP/Output/EM4_Update.exe
