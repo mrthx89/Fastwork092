@@ -19,7 +19,7 @@ namespace EM4.App.UI
 {
     public partial class frmEntriStokMasuk : DevExpress.XtraEditors.XtraForm
     {
-        private Model.ViewModel.StokMasuk data = null;
+        public Model.ViewModel.StokMasuk data { get; set; }
         public frmEntriStokMasuk(Model.ViewModel.StokMasuk data)
         {
             InitializeComponent();
@@ -137,7 +137,7 @@ namespace EM4.App.UI
                     var callItems = Repository.Item.getLookUpInventors(data.Tanggal, null);
                     if (callItems.Item1)
                     {
-                       itemLookUps = callItems.Item2;
+                        itemLookUps = callItems.Item2;
                     }
                     else
                     {

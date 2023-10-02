@@ -45,6 +45,7 @@ namespace EM4.App.UI
             this.bbiListBarangKeluar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiLaporanKartuStok = new DevExpress.XtraBars.BarButtonItem();
             this.bbiManagementUser = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiLaporanMutasiStok = new DevExpress.XtraBars.BarButtonItem();
             this.imageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -56,7 +57,6 @@ namespace EM4.App.UI
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiLaporanMutasiStok = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionSmall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionLarge)).BeginInit();
@@ -187,6 +187,7 @@ namespace EM4.App.UI
             this.bbiListBarangMasuk.Id = 9;
             this.bbiListBarangMasuk.ImageOptions.LargeImageIndex = 8;
             this.bbiListBarangMasuk.Name = "bbiListBarangMasuk";
+            this.bbiListBarangMasuk.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiListBarangMasuk_ItemClick);
             // 
             // bbiListBarangKeluar
             // 
@@ -209,6 +210,14 @@ namespace EM4.App.UI
             this.bbiManagementUser.ImageOptions.LargeImageIndex = 3;
             this.bbiManagementUser.Name = "bbiManagementUser";
             this.bbiManagementUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiManagementUser_ItemClick);
+            // 
+            // bbiLaporanMutasiStok
+            // 
+            this.bbiLaporanMutasiStok.Caption = "Mutasi Saldo Stok";
+            this.bbiLaporanMutasiStok.Id = 13;
+            this.bbiLaporanMutasiStok.ImageOptions.LargeImageIndex = 7;
+            this.bbiLaporanMutasiStok.Name = "bbiLaporanMutasiStok";
+            this.bbiLaporanMutasiStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnMutasiSaldoStok_ItemClick);
             // 
             // imageCollectionLarge
             // 
@@ -305,14 +314,6 @@ namespace EM4.App.UI
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // bbiLaporanMutasiStok
-            // 
-            this.bbiLaporanMutasiStok.Caption = "Mutasi Saldo Stok";
-            this.bbiLaporanMutasiStok.Id = 13;
-            this.bbiLaporanMutasiStok.ImageOptions.LargeImageIndex = 7;
-            this.bbiLaporanMutasiStok.Name = "bbiLaporanMutasiStok";
-            this.bbiLaporanMutasiStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnMutasiSaldoStok_ItemClick);
             // 
             // frmMain
             // 

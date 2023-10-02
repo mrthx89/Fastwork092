@@ -16,6 +16,45 @@ namespace EM4.App.Repository
         private static string Name = "Repository.StokMasuk";
         private static Guid stokInType = Guid.Parse("C889E2DF-D056-4DAD-B935-E47921035811");
 
+        public static Tuple<bool, List<Model.ViewModel.StokMasuk>> getStokMasuks(DateTime tglDari, DateTime tglSampai)
+        {
+            Tuple<bool, List<Model.ViewModel.StokMasuk>> hasil = new Tuple<bool, List<Model.ViewModel.StokMasuk>>(false, new List<Model.ViewModel.StokMasuk>());
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    var datas = from s in context.TStockIns
+                                from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
+                                where s.Tanggal >= tglDari.Date && s.Tanggal <= tglSampai.Date
+                                select new Model.ViewModel.StokMasuk
+                                {
+                                    ID = s.ID,
+                                    IDInventor = s.IDInventor,
+                                    IDUOM = s.IDUOM,
+                                    IDUserEdit = s.IDUserEdit,
+                                    IDUserEntri = s.IDUserEntri,
+                                    IDUserHapus = s.IDUserHapus,
+                                    Keterangan = s.Keterangan,
+                                    NamaBarang = i.Desc,
+                                    NoPO = s.NoPO,
+                                    NoSJ = s.NoSJ,
+                                    Qty = s.Qty,
+                                    Supplier = s.Supplier,
+                                    Tanggal = s.Tanggal,
+                                    TglEdit = s.TglEdit,
+                                    TglEntri = s.TglEntri,
+                                    TglHapus = s.TglHapus
+                                };
+                    hasil = new Tuple<bool, List<Model.ViewModel.StokMasuk>>(true, datas.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.getStokMasuks", ex);
+                }
+            }
+            return hasil;
+        }
+
         public static Tuple<bool, Model.ViewModel.StokMasuk> saveStokMasuk(Model.ViewModel.StokMasuk data)
         {
             Tuple<bool, Model.ViewModel.StokMasuk> hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(false, null);
@@ -60,6 +99,42 @@ namespace EM4.App.Repository
                 catch (Exception ex)
                 {
                     MsgBoxHelper.MsgError($"{Name}.saveStokMasuk", ex);
+                }
+            }
+            return hasil;
+        }
+
+        public static Tuple<bool, Model.ViewModel.StokMasuk> deleteStokMasuk(Model.ViewModel.StokMasuk data)
+        {
+            Tuple<bool, Model.ViewModel.StokMasuk> hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(false, null);
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    var dataExist = context.TStockIns.FirstOrDefault(o => o.ID == data.ID);
+                    if (dataExist != null)
+                    {
+                        //Edit
+                        dataExist.IDUserHapus = Constant.UserLogin.ID;
+                        dataExist.TglHapus = DateTime.Now;
+
+                        //Post Kartu Stok
+                        context.TStockCards.RemoveRange(context.TStockCards.Where(o => o.IDTransaksi == data.ID && o.IDType == stokInType).ToList());
+
+                        context.Entry(dataExist).CurrentValues.SetValues(dataExist);
+
+                        context.TStockIns.Remove(dataExist);
+                        context.SaveChanges();
+                        hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(true, Constant.mapper.Map<TStockIn, Model.ViewModel.StokMasuk>(dataExist));
+                    }
+                    else
+                    {
+                        MsgBoxHelper.MsgWarn($"{Name}.deleteStokMasuk", $"Data dengan No SJ {data.NoSJ} ini tidak ada didatabase!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.deleteStokMasuk", ex);
                 }
             }
             return hasil;
