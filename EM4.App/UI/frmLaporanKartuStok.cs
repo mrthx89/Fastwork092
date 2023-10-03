@@ -16,9 +16,9 @@ using EM4.App.Model.ViewModel;
 
 namespace EM4.App.UI
 {
-    public partial class frmLaporanMutasiStok : DevExpress.XtraEditors.XtraForm
+    public partial class frmLaporanKartuStok : DevExpress.XtraEditors.XtraForm
     {
-        public frmLaporanMutasiStok()
+        public frmLaporanKartuStok()
         {
             InitializeComponent();
         }
@@ -32,14 +32,15 @@ namespace EM4.App.UI
                     dlg.TopMost = false;
                     dlg.Show();
                     dlg.Focus();
-
-                    var dataGet = Repository.Report.getMutasiStoks(dateEdit1.DateTime, dateEdit2.DateTime);
+                    Guid IDInventor;
+                    Guid.TryParse((IDInventorSearchLookUpEdit.EditValue ?? "").ToString(), out IDInventor);
+                    var dataGet = Repository.Report.getKartuStoks(IDInventor, dateEdit1.DateTime, dateEdit2.DateTime);
                     if (dataGet.Item1)
                     {
                         data = dataGet.Item2;
                     }
-                    MutasiStokBindingSource.DataSource = data;
-                    gridControl1.RefreshDataSource();
+                    KartuStokBindingSource.DataSource = data;
+                    gridControl1.RefreshDataSource();                    
                 }
                 catch (Exception ex)
                 {
@@ -48,17 +49,14 @@ namespace EM4.App.UI
             }
         }
 
-        private List<MutasiStok> data = null;
+        private List<KartuStok> data = null;
         private dynamic lookupUser = null;
         private dynamic lookupItem = null;
         private dynamic lookupUOM = null;
         private dynamic lookupBelt = null;
         private dynamic lookupType = null;
-        private void frmLaporanMutasiStok_Load(object sender, EventArgs e)
+        private void refreshLookUp()
         {
-            dateEdit1.DateTime = DateTime.Now.AddDays(-30);
-            dateEdit2.DateTime = dateEdit1.DateTime.AddDays(30);
-
             var lookUp = Repository.User.getLookUp();
             if (lookUp.Item1)
             {
@@ -76,6 +74,9 @@ namespace EM4.App.UI
             repositoryItemInventor.DataSource = lookupItem;
             repositoryItemInventor.ValueMember = "ID";
             repositoryItemInventor.DisplayMember = "PLU";
+            IDInventorSearchLookUpEdit.Properties.DataSource = lookupItem;
+            IDInventorSearchLookUpEdit.Properties.ValueMember = "ID";
+            IDInventorSearchLookUpEdit.Properties.DisplayMember = "Desc";
 
             var lookUpUOM = Repository.Item.getUOMs();
             if (lookUpUOM.Item1)
@@ -103,18 +104,54 @@ namespace EM4.App.UI
             repositoryItemType.DataSource = lookupType;
             repositoryItemType.ValueMember = "ID";
             repositoryItemType.DisplayMember = "Transaksi";
+        }
+        private void frmLaporanKartuStok_Load(object sender, EventArgs e)
+        {
+            dateEdit1.DateTime = DateTime.Now.AddDays(-30);
+            dateEdit2.DateTime = dateEdit1.DateTime.AddDays(30);
 
+            refreshLookUp();
             mnReload.PerformClick();
         }
 
         private void gridView1_DataSourceChange(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
+            
+            gridView1.ClearFindFilter();
+            gridView1.ClearColumnsFilter();
+            gridView1.ClearSorting();
         }
 
-        private void frmLaporanMutasiStok_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmLaporanKartuStok_FormClosing(object sender, FormClosingEventArgs e)
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
+            Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
+        }
+
+        private void IDInventorSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (frmDaftarMasterItem frm = new frmDaftarMasterItem())
+                {
+                    try
+                    {
+                        frm.StartPosition = FormStartPosition.CenterParent;
+                        frm.ShowDialog(this);
+                        refreshLookUp();
+                    }
+                    catch (Exception ex)
+                    {
+                        MsgBoxHelper.MsgError($"{this.Name}.IDInventorSearchLookUpEdit_ButtonClick", ex);
+                    }
+                }
+            }
+        }
+
+        private void gv1_DataSourceChange(object sender, EventArgs e)
+        {
+            Constant.layoutsHelper.RestoreLayouts(this.Name, searchLookUpEdit1View);
         }
     }
 }

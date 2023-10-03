@@ -75,6 +75,19 @@ namespace EM4.App.Migrations
             {
                 context.TTypeTransactions.Add(typeTransaction3);
             }
+            
+            TTypeTransaction typeTransaction4 = new TTypeTransaction
+            {
+                ID = Guid.Parse("D6022513-AFD4-4A67-9F47-594E43D5F220"),
+                Transaksi = "Saldo Awal",
+                NoUrut = -1,
+                IDUserEntri = sysAdmin.ID,
+                TglEntri = DateTime.Now
+            };
+            if (context.TTypeTransactions.FirstOrDefault(o => o.ID.Equals(typeTransaction4.ID)) == null)
+            {
+                context.TTypeTransactions.Add(typeTransaction4);
+            }
 
             context.SaveChanges();
         }

@@ -146,6 +146,7 @@
     <Compile Include="Model\Entity\TUser.cs" />
     <Compile Include="Model\ViewModel\ItemLookUp.cs" />
     <Compile Include="Model\ViewModel\ItemMaster.cs" />
+    <Compile Include="Model\ViewModel\KartuStok.cs" />
     <Compile Include="Model\ViewModel\MutasiStok.cs" />
     <Compile Include="Model\ViewModel\StokPengembalian.cs" />
     <Compile Include="Model\ViewModel\StokKeluar.cs" />
@@ -219,6 +220,12 @@
     </Compile>
     <Compile Include="UI\frmEntriStokMasuk.Designer.cs">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLaporanKartuStok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLaporanKartuStok.Designer.cs">
+      <DependentUpon>frmLaporanKartuStok.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmLaporanSaldoStok.cs">
       <SubType>Form</SubType>
@@ -327,6 +334,9 @@
     <EmbeddedResource Include="UI\frmEntriStokMasuk.resx">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLaporanKartuStok.resx">
+      <DependentUpon>frmLaporanKartuStok.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLaporanSaldoStok.resx">
       <DependentUpon>frmLaporanSaldoStok.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +385,7 @@
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUOM.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUser.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.ItemMaster.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.ViewModel.KartuStok.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.MutasiStok.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.StokMasuk.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.StokPengembalian.datasource" />

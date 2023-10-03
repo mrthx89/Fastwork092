@@ -40,7 +40,7 @@ namespace EM4.App.UI.Dialog
                     if (data.Item1)
                     {
                         Guid IDInventor = Guid.Empty;
-                        Guid.TryParse((IDInventorSearchLookUpEdit.EditValue == null ? "" : IDInventorSearchLookUpEdit.EditValue).ToString(), out IDInventor);
+                        Guid.TryParse((IDInventorSearchLookUpEdit.EditValue ?? "").ToString(), out IDInventor);
                         this.data = (from x in data.Item2.Where(o => o.IDInventor == IDInventor)
                                      group x by new { x.IDInventor, x.NamaBarang, x.IDUOM, Tanggal = x.Tanggal.Date } into grp
                                      select new Model
