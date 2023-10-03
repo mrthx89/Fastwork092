@@ -146,10 +146,12 @@
     <Compile Include="Model\Entity\TUser.cs" />
     <Compile Include="Model\ViewModel\ItemLookUp.cs" />
     <Compile Include="Model\ViewModel\ItemMaster.cs" />
+    <Compile Include="Model\ViewModel\MutasiStok.cs" />
     <Compile Include="Model\ViewModel\StokPengembalian.cs" />
     <Compile Include="Model\ViewModel\StokKeluar.cs" />
     <Compile Include="Model\ViewModel\StokMasuk.cs" />
     <Compile Include="Repository\Item.cs" />
+    <Compile Include="Repository\Report.cs" />
     <Compile Include="Repository\StokPengembalian.cs" />
     <Compile Include="Repository\StokKeluar.cs" />
     <Compile Include="Repository\StokMasuk.cs" />
@@ -217,6 +219,12 @@
     </Compile>
     <Compile Include="UI\frmEntriStokMasuk.Designer.cs">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLaporanMutasiStok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLaporanMutasiStok.Designer.cs">
+      <DependentUpon>frmLaporanMutasiStok.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmLaporanStokKeluar.cs">
       <SubType>Form</SubType>
@@ -313,6 +321,9 @@
     <EmbeddedResource Include="UI\frmEntriStokMasuk.resx">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLaporanMutasiStok.resx">
+      <DependentUpon>frmLaporanMutasiStok.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLaporanStokKeluar.resx">
       <DependentUpon>frmLaporanStokKeluar.cs</DependentUpon>
     </EmbeddedResource>
@@ -355,6 +366,7 @@
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUOM.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.Entity.TUser.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.ItemMaster.datasource" />
+    <None Include="Properties\DataSources\EM4.App.Model.ViewModel.MutasiStok.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.StokMasuk.datasource" />
     <None Include="Properties\DataSources\EM4.App.Model.ViewModel.StokPengembalian.datasource" />
     <None Include="Properties\Settings.settings">

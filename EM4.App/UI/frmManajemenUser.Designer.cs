@@ -42,9 +42,11 @@ namespace EM4.App.UI
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.tUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPassword = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemPassword = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.colIsAdmin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUserEntri = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemUser = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -53,14 +55,12 @@ namespace EM4.App.UI
             this.colTglEdit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUserHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemPassword = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tUserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -183,6 +183,7 @@ namespace EM4.App.UI
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsMenu.ShowFooterItem = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
@@ -192,6 +193,13 @@ namespace EM4.App.UI
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gricView1_FocusRowChanged);
             this.gridView1.FocusedColumnChanged += new DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventHandler(this.gricView1_FocusColumnChanged);
             this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_DataSourceChange);
+            // 
+            // colID
+            // 
+            this.colID.Caption = "ID";
+            this.colID.FieldName = "ID";
+            this.colID.Name = "colID";
+            this.colID.OptionsColumn.AllowEdit = false;
             // 
             // colUserID
             // 
@@ -219,6 +227,16 @@ namespace EM4.App.UI
             this.colPassword.Visible = true;
             this.colPassword.VisibleIndex = 2;
             this.colPassword.Width = 137;
+            // 
+            // repositoryItemPassword
+            // 
+            this.repositoryItemPassword.AutoHeight = false;
+            this.repositoryItemPassword.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemPassword.Name = "repositoryItemPassword";
+            this.repositoryItemPassword.PasswordChar = '*';
+            this.repositoryItemPassword.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryItemPassword.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemPassword_ButtonClick);
             // 
             // colIsAdmin
             // 
@@ -302,23 +320,6 @@ namespace EM4.App.UI
             this.colTglHapus.OptionsColumn.AllowEdit = false;
             this.colTglHapus.OptionsColumn.AllowFocus = false;
             // 
-            // colID
-            // 
-            this.colID.Caption = "ID";
-            this.colID.FieldName = "ID";
-            this.colID.Name = "colID";
-            this.colID.OptionsColumn.AllowEdit = false;
-            // 
-            // repositoryItemPassword
-            // 
-            this.repositoryItemPassword.AutoHeight = false;
-            this.repositoryItemPassword.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemPassword.Name = "repositoryItemPassword";
-            this.repositoryItemPassword.PasswordChar = '*';
-            this.repositoryItemPassword.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.repositoryItemPassword.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemPassword_ButtonClick);
-            // 
             // frmManajemenUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,8 +338,8 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tUserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
