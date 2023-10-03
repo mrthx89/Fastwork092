@@ -71,9 +71,16 @@ namespace EM4.App.Repository
                 try
                 {
                     var dataSaldo = from k in context.TStockCards
+                                    from i in context.TInventors.Where(o => o.ID == k.IDInventor).DefaultIfEmpty()
                                     where k.IDInventor == IDInventor && DbFunctions.TruncateTime(k.Tanggal) < tglDari.Date
-                                    group k by new { k.IDInventor } into grp
-                                    select new { grp.Key.IDInventor, SaldoAwal = grp.Sum(o => o.QtyMasuk - o.QtyKeluar) };
+                                    group k by new { k.IDInventor, i.IDUOM, i.Desc } into grp
+                                    select new
+                                    {
+                                        grp.Key.IDInventor,
+                                        grp.Key.IDUOM,
+                                        grp.Key.Desc,
+                                        SaldoAwal = grp.Sum(o => o.QtyMasuk - o.QtyKeluar)
+                                    };
 
                     List<Model.ViewModel.KartuStok> dataKartu = (from k in context.TStockCards
                                                                  from i in context.TInventors.Where(o => o.ID == k.IDInventor).DefaultIfEmpty()
@@ -105,16 +112,45 @@ namespace EM4.App.Repository
                                                                      NoUrut = t.NoUrut
                                                                  }).ToList();
 
-                    if (dataSaldo != null)
+                    if (dataSaldo != null && dataSaldo.Count() >= 1)
                     {
-                        dataKartu.AddRange(from s in dataSaldo
-                                           from i in context.TInventors.Where(o => o.ID == s.IDInventor).DefaultIfEmpty()
+                        var saldos = from s in dataSaldo.ToList()
+                                     group s by new { s.IDInventor, s.IDUOM, s.Desc } into grp
+                                     select new Model.ViewModel.KartuStok
+                                     {
+                                         ID = Guid.NewGuid(),
+                                         DocNo = "Saldo Awal",
+                                         IDBelt = Guid.Empty,
+                                         IDInventor = grp.Key.IDInventor,
+                                         IDTransaksi = Guid.Empty,
+                                         IDTransaksiD = Guid.Empty,
+                                         IDType = Guid.Parse("D6022513-AFD4-4A67-9F47-594E43D5F220"),
+                                         IDUOM = grp.Key.IDUOM,
+                                         IDUserEdit = Guid.Empty,
+                                         IDUserEntri = Guid.Empty,
+                                         IDUserHapus = Guid.Empty,
+                                         NamaBarang = grp.Key.Desc,
+                                         PIC = "",
+                                         QtyKeluar = 0f,
+                                         QtyMasuk = 0f,
+                                         SaldoAwal = grp.Sum(s => s.SaldoAwal),
+                                         Tanggal = tglDari.Date.AddDays(-1),
+                                         TglEdit = DateTime.Parse("1900-01-01"),
+                                         TglEntri = DateTime.Parse("1900-01-01"),
+                                         TglHapus = DateTime.Parse("1900-01-01"),
+                                         NoUrut = -1
+                                     };
+                        dataKartu.AddRange(saldos.ToList());
+                    }
+                    else
+                    {
+                        dataKartu.AddRange(from i in context.TInventors.Where(i => i.ID == IDInventor).ToList()
                                            select new Model.ViewModel.KartuStok
                                            {
                                                ID = Guid.NewGuid(),
                                                DocNo = "Saldo Awal",
                                                IDBelt = Guid.Empty,
-                                               IDInventor = s.IDInventor,
+                                               IDInventor = i.ID,
                                                IDTransaksi = Guid.Empty,
                                                IDTransaksiD = Guid.Empty,
                                                IDType = Guid.Parse("D6022513-AFD4-4A67-9F47-594E43D5F220"),
@@ -126,13 +162,23 @@ namespace EM4.App.Repository
                                                PIC = "",
                                                QtyKeluar = 0f,
                                                QtyMasuk = 0f,
-                                               SaldoAwal = s.SaldoAwal,
+                                               SaldoAwal = 0f,
                                                Tanggal = tglDari.Date.AddDays(-1),
                                                TglEdit = DateTime.Parse("1900-01-01"),
                                                TglEntri = DateTime.Parse("1900-01-01"),
                                                TglHapus = DateTime.Parse("1900-01-01"),
                                                NoUrut = -1
                                            });
+                    }
+
+                    float Saldo = 0f;
+                    foreach (var item in dataKartu.OrderBy(o => o.Tanggal).ThenBy(o => o.NoUrut).ToList())
+                    {
+                        if (item.NoUrut != -1)
+                        {
+                            item.SaldoAwal = Saldo;
+                        }
+                        Saldo = item.SaldoAkhir;
                     }
 
                     hasil = new Tuple<bool, List<Model.ViewModel.KartuStok>>(true, dataKartu.OrderBy(o => o.Tanggal).ThenBy(o => o.NoUrut).ToList());

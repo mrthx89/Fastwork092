@@ -45,6 +45,7 @@ namespace EM4.App.UI
             this.colTanggal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDocNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDInventor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemInventor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colIDUOM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemUOM = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colIDTransaksi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,35 +67,41 @@ namespace EM4.App.UI
             this.colTglEdit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUserHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemInventor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.IDInventorSearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPLU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSatuan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lbSaldoAwal = new DevExpress.XtraEditors.LabelControl();
+            this.lbQtyMasuk = new DevExpress.XtraEditors.LabelControl();
+            this.lbQtyKeluar = new DevExpress.XtraEditors.LabelControl();
+            this.lbSaldoAkhir = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KartuStokBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBelt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IDInventorSearchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IDInventorSearchLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -182,7 +189,7 @@ namespace EM4.App.UI
             this.repositoryItemInventor,
             this.repositoryItemBelt,
             this.repositoryItemType});
-            this.gridControl1.Size = new System.Drawing.Size(1094, 527);
+            this.gridControl1.Size = new System.Drawing.Size(1094, 485);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -255,11 +262,19 @@ namespace EM4.App.UI
             // colIDInventor
             // 
             this.colIDInventor.Caption = "Kode Barang";
+            this.colIDInventor.ColumnEdit = this.repositoryItemInventor;
             this.colIDInventor.FieldName = "IDInventor";
             this.colIDInventor.Name = "colIDInventor";
             this.colIDInventor.Visible = true;
             this.colIDInventor.VisibleIndex = 3;
             this.colIDInventor.Width = 84;
+            // 
+            // repositoryItemInventor
+            // 
+            this.repositoryItemInventor.AutoHeight = false;
+            this.repositoryItemInventor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemInventor.Name = "repositoryItemInventor";
             // 
             // colIDUOM
             // 
@@ -311,6 +326,7 @@ namespace EM4.App.UI
             this.colQtyMasuk.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colQtyMasuk.AppearanceHeader.Options.UseTextOptions = true;
             this.colQtyMasuk.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMasuk.Caption = "Stok Masuk";
             this.colQtyMasuk.DisplayFormat.FormatString = "n0";
             this.colQtyMasuk.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQtyMasuk.FieldName = "QtyMasuk";
@@ -326,6 +342,7 @@ namespace EM4.App.UI
             this.colQtyKeluar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colQtyKeluar.AppearanceHeader.Options.UseTextOptions = true;
             this.colQtyKeluar.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyKeluar.Caption = "Stok Keluar";
             this.colQtyKeluar.DisplayFormat.FormatString = "n0";
             this.colQtyKeluar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQtyKeluar.FieldName = "QtyKeluar";
@@ -372,6 +389,7 @@ namespace EM4.App.UI
             this.colSaldoAwal.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSaldoAwal.AppearanceHeader.Options.UseTextOptions = true;
             this.colSaldoAwal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colSaldoAwal.Caption = "Stok Awal";
             this.colSaldoAwal.DisplayFormat.FormatString = "n0";
             this.colSaldoAwal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSaldoAwal.FieldName = "SaldoAwal";
@@ -385,6 +403,7 @@ namespace EM4.App.UI
             this.colSaldoAkhir.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSaldoAkhir.AppearanceHeader.Options.UseTextOptions = true;
             this.colSaldoAkhir.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colSaldoAkhir.Caption = "Stok Akhir";
             this.colSaldoAkhir.DisplayFormat.FormatString = "n0";
             this.colSaldoAkhir.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSaldoAkhir.FieldName = "SaldoAkhir";
@@ -454,13 +473,6 @@ namespace EM4.App.UI
             this.colTglHapus.FieldName = "TglHapus";
             this.colTglHapus.Name = "colTglHapus";
             // 
-            // repositoryItemInventor
-            // 
-            this.repositoryItemInventor.AutoHeight = false;
-            this.repositoryItemInventor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemInventor.Name = "repositoryItemInventor";
-            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -474,56 +486,6 @@ namespace EM4.App.UI
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1094, 36);
             this.panelControl1.TabIndex = 0;
-            // 
-            // dateEdit2
-            // 
-            this.dateEdit2.EditValue = new System.DateTime(2023, 10, 2, 10, 27, 44, 361);
-            this.dateEdit2.EnterMoveNextControl = true;
-            this.dateEdit2.Location = new System.Drawing.Point(190, 9);
-            this.dateEdit2.MenuManager = this.barManager1;
-            this.dateEdit2.Name = "dateEdit2";
-            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.Mask.EditMask = "dd-MM-yyyy";
-            this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
-            this.dateEdit2.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateEdit2.Size = new System.Drawing.Size(100, 20);
-            this.dateEdit2.TabIndex = 3;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(169, 12);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(15, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "s/d";
-            // 
-            // dateEdit1
-            // 
-            this.dateEdit1.EditValue = new System.DateTime(2023, 10, 2, 10, 27, 44, 361);
-            this.dateEdit1.EnterMoveNextControl = true;
-            this.dateEdit1.Location = new System.Drawing.Point(63, 9);
-            this.dateEdit1.MenuManager = this.barManager1;
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.Mask.EditMask = "dd-MM-yyyy";
-            this.dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
-            this.dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateEdit1.Size = new System.Drawing.Size(100, 20);
-            this.dateEdit1.TabIndex = 1;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 12);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 13);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Periode";
             // 
             // labelControl3
             // 
@@ -584,12 +546,119 @@ namespace EM4.App.UI
             this.colSatuan.Visible = true;
             this.colSatuan.VisibleIndex = 2;
             // 
+            // dateEdit2
+            // 
+            this.dateEdit2.EditValue = new System.DateTime(2023, 10, 2, 10, 27, 44, 361);
+            this.dateEdit2.EnterMoveNextControl = true;
+            this.dateEdit2.Location = new System.Drawing.Point(190, 9);
+            this.dateEdit2.MenuManager = this.barManager1;
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.Mask.EditMask = "dd-MM-yyyy";
+            this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
+            this.dateEdit2.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdit2.Size = new System.Drawing.Size(100, 20);
+            this.dateEdit2.TabIndex = 3;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(169, 12);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(15, 13);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "s/d";
+            // 
+            // dateEdit1
+            // 
+            this.dateEdit1.EditValue = new System.DateTime(2023, 10, 2, 10, 27, 44, 361);
+            this.dateEdit1.EnterMoveNextControl = true;
+            this.dateEdit1.Location = new System.Drawing.Point(63, 9);
+            this.dateEdit1.MenuManager = this.barManager1;
+            this.dateEdit1.Name = "dateEdit1";
+            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Properties.Mask.EditMask = "dd-MM-yyyy";
+            this.dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
+            this.dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdit1.Size = new System.Drawing.Size(100, 20);
+            this.dateEdit1.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(12, 12);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(36, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Periode";
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.lbSaldoAkhir);
+            this.panelControl2.Controls.Add(this.lbQtyKeluar);
+            this.panelControl2.Controls.Add(this.lbQtyMasuk);
+            this.panelControl2.Controls.Add(this.lbSaldoAwal);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl2.Location = new System.Drawing.Point(0, 541);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(1094, 42);
+            this.panelControl2.TabIndex = 6;
+            // 
+            // lbSaldoAwal
+            // 
+            this.lbSaldoAwal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSaldoAwal.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSaldoAwal.Appearance.Options.UseFont = true;
+            this.lbSaldoAwal.Location = new System.Drawing.Point(364, 13);
+            this.lbSaldoAwal.Name = "lbSaldoAwal";
+            this.lbSaldoAwal.Size = new System.Drawing.Size(98, 16);
+            this.lbSaldoAwal.TabIndex = 2;
+            this.lbSaldoAwal.Text = "Stok Awal : 0.0";
+            // 
+            // lbQtyMasuk
+            // 
+            this.lbQtyMasuk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbQtyMasuk.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQtyMasuk.Appearance.Options.UseFont = true;
+            this.lbQtyMasuk.Location = new System.Drawing.Point(564, 13);
+            this.lbQtyMasuk.Name = "lbQtyMasuk";
+            this.lbQtyMasuk.Size = new System.Drawing.Size(107, 16);
+            this.lbQtyMasuk.TabIndex = 3;
+            this.lbQtyMasuk.Text = "Stok Masuk : 0.0";
+            // 
+            // lbQtyKeluar
+            // 
+            this.lbQtyKeluar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbQtyKeluar.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQtyKeluar.Appearance.Options.UseFont = true;
+            this.lbQtyKeluar.Location = new System.Drawing.Point(773, 13);
+            this.lbQtyKeluar.Name = "lbQtyKeluar";
+            this.lbQtyKeluar.Size = new System.Drawing.Size(107, 16);
+            this.lbQtyKeluar.TabIndex = 4;
+            this.lbQtyKeluar.Text = "Stok Keluar : 0.0";
+            // 
+            // lbSaldoAkhir
+            // 
+            this.lbSaldoAkhir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSaldoAkhir.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSaldoAkhir.Appearance.Options.UseFont = true;
+            this.lbSaldoAkhir.Location = new System.Drawing.Point(982, 13);
+            this.lbSaldoAkhir.Name = "lbSaldoAkhir";
+            this.lbSaldoAkhir.Size = new System.Drawing.Size(100, 16);
+            this.lbSaldoAkhir.TabIndex = 5;
+            this.lbSaldoAkhir.Text = "Stok Akhir : 0.0";
+            // 
             // frmLaporanKartuStok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 583);
             this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -603,20 +672,23 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KartuStokBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBelt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IDInventorSearchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IDInventorSearchLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -672,5 +744,10 @@ namespace EM4.App.UI
         private DevExpress.XtraGrid.Columns.GridColumn colPLU;
         private DevExpress.XtraGrid.Columns.GridColumn colDesc;
         private DevExpress.XtraGrid.Columns.GridColumn colSatuan;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.LabelControl lbSaldoAkhir;
+        private DevExpress.XtraEditors.LabelControl lbQtyKeluar;
+        private DevExpress.XtraEditors.LabelControl lbQtyMasuk;
+        private DevExpress.XtraEditors.LabelControl lbSaldoAwal;
     }
 }

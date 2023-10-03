@@ -237,7 +237,7 @@ namespace EM4.App.UI
             this.colSaldoAwal.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSaldoAwal.AppearanceHeader.Options.UseTextOptions = true;
             this.colSaldoAwal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colSaldoAwal.Caption = "Saldo Awal";
+            this.colSaldoAwal.Caption = "Stok Awal";
             this.colSaldoAwal.DisplayFormat.FormatString = "n0";
             this.colSaldoAwal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSaldoAwal.FieldName = "SaldoAwal";
@@ -254,7 +254,7 @@ namespace EM4.App.UI
             this.colQtyMasuk.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colQtyMasuk.AppearanceHeader.Options.UseTextOptions = true;
             this.colQtyMasuk.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colQtyMasuk.Caption = "Qty Masuk";
+            this.colQtyMasuk.Caption = "Stok Masuk";
             this.colQtyMasuk.DisplayFormat.FormatString = "n0";
             this.colQtyMasuk.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQtyMasuk.FieldName = "QtyMasuk";
@@ -271,7 +271,7 @@ namespace EM4.App.UI
             this.colQtyKeluar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colQtyKeluar.AppearanceHeader.Options.UseTextOptions = true;
             this.colQtyKeluar.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colQtyKeluar.Caption = "Qty Keluar";
+            this.colQtyKeluar.Caption = "Stok Keluar";
             this.colQtyKeluar.DisplayFormat.FormatString = "n0";
             this.colQtyKeluar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQtyKeluar.FieldName = "QtyKeluar";
@@ -288,7 +288,7 @@ namespace EM4.App.UI
             this.colSaldoAkhir.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSaldoAkhir.AppearanceHeader.Options.UseTextOptions = true;
             this.colSaldoAkhir.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colSaldoAkhir.Caption = "Saldo Akhir";
+            this.colSaldoAkhir.Caption = "Stok Akhir";
             this.colSaldoAkhir.DisplayFormat.FormatString = "n0";
             this.colSaldoAkhir.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSaldoAkhir.FieldName = "SaldoAkhir";

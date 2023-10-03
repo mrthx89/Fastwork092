@@ -39,12 +39,23 @@ namespace EM4.App.UI
                     {
                         data = dataGet.Item2;
                     }
+                    else
+                    {
+                        data = new List<KartuStok>();
+                    }
                     KartuStokBindingSource.DataSource = data;
-                    gridControl1.RefreshDataSource();                    
+                    gridControl1.RefreshDataSource();
                 }
                 catch (Exception ex)
                 {
                     MsgBoxHelper.MsgError($"{this.Name}.mnReload_ItemClick", ex);
+                }
+                finally
+                {
+                    lbSaldoAwal.Text = "Stok Awal : " + (data.FirstOrDefault() != null ? data.FirstOrDefault().SaldoAkhir : 0.0).ToString("n0");
+                    lbQtyMasuk.Text = "Stok Masuk : " + data.Sum(o => o.QtyMasuk).ToString("n0");
+                    lbQtyKeluar.Text = "Stok Keluar : " + data.Sum(o => o.QtyKeluar).ToString("n0");
+                    lbSaldoAkhir.Text = "Stok Akhir : " + (data.LastOrDefault() != null ? data.LastOrDefault().SaldoAkhir : 0.0).ToString("n0");
                 }
             }
         }
@@ -117,7 +128,7 @@ namespace EM4.App.UI
         private void gridView1_DataSourceChange(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
-            
+
             gridView1.ClearFindFilter();
             gridView1.ClearColumnsFilter();
             gridView1.ClearSorting();
