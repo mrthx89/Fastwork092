@@ -180,6 +180,7 @@ namespace EM4.App.UI
             this.bbiLaporanSaldoStok.Id = 8;
             this.bbiLaporanSaldoStok.ImageOptions.LargeImageIndex = 12;
             this.bbiLaporanSaldoStok.Name = "bbiLaporanSaldoStok";
+            this.bbiLaporanSaldoStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLaporanSaldoStok_ItemClick);
             // 
             // bbiListBarangMasuk
             // 
@@ -203,6 +204,7 @@ namespace EM4.App.UI
             this.bbiLaporanKartuStok.Id = 11;
             this.bbiLaporanKartuStok.ImageOptions.LargeImageIndex = 13;
             this.bbiLaporanKartuStok.Name = "bbiLaporanKartuStok";
+            this.bbiLaporanKartuStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLaporanKartuStok_ItemClick);
             // 
             // bbiManagementUser
             // 

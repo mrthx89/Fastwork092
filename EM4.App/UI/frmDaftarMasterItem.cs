@@ -127,7 +127,7 @@ namespace EM4.App.UI
                     repositoryItemUser.ValueMember = "ID";
                     repositoryItemUser.DisplayMember = "Nama";
 
-                    var call = Repository.Item.getInventors(null);
+                    var call = Repository.Item.getInventors(null, null);
                     if (call.Item1)
                     {
                         data = call.Item2;

@@ -319,5 +319,32 @@ namespace EM4.App.UI
                 }
             }
         }
+
+        private void bbiLaporanSaldoStok_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (isLogin())
+            {
+                System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmLaporanSaldoStok));
+                if (frmOld != null)
+                {
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+                else
+                {
+                    frmOld = new frmLaporanSaldoStok
+                    {
+                        MdiParent = this
+                    };
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+            }
+        }
+
+        private void bbiLaporanKartuStok_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

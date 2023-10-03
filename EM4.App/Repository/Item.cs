@@ -160,7 +160,7 @@ namespace EM4.App.Repository
             return hasil;
         }
 
-        public static Tuple<bool, List<ItemMaster>> getInventors(Dictionary<string, dynamic> filter)
+        public static Tuple<bool, List<ItemMaster>> getInventors(Dictionary<string, dynamic> filter, DateTime? SaldoPerTanggal)
         {
             Tuple<bool, List<ItemMaster>> hasil = new Tuple<bool, List<ItemMaster>>(false, null);
             using (Data.EM4Context context = new Data.EM4Context())
@@ -186,6 +186,7 @@ namespace EM4.App.Repository
                     }
                     var saldoQuery = from stockCard in context.TStockCards
                                      join item in data on stockCard.IDInventor equals item.ID
+                                     where stockCard.Tanggal <= (SaldoPerTanggal ?? DateTime.MaxValue)
                                      group stockCard by stockCard.IDInventor into grouped
                                      select new
                                      {
