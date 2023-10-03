@@ -56,7 +56,6 @@ namespace EM4.App.UI
             this.KeteranganMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.NamaBarangTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DocNoTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.BeltTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PICTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.QtyCalcEdit = new DevExpress.XtraEditors.CalcEdit();
             this.SaldoTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -73,10 +72,12 @@ namespace EM4.App.UI
             this.ItemForTglEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForNamaBarang = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDocNo = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForBelt = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPIC = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSaldo = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.IDBeltSearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ItemForIDBelt = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -98,7 +99,6 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.KeteranganMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NamaBarangTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BeltTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PICTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaldoTextEdit.Properties)).BeginInit();
@@ -115,10 +115,12 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNamaBarang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDocNo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForBelt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPIC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSaldo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDBeltSearchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIDBelt)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -196,10 +198,10 @@ namespace EM4.App.UI
             this.dataLayoutControl1.Controls.Add(this.KeteranganMemoEdit);
             this.dataLayoutControl1.Controls.Add(this.NamaBarangTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DocNoTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.BeltTextEdit);
             this.dataLayoutControl1.Controls.Add(this.PICTextEdit);
             this.dataLayoutControl1.Controls.Add(this.QtyCalcEdit);
             this.dataLayoutControl1.Controls.Add(this.SaldoTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.IDBeltSearchLookUpEdit);
             this.dataLayoutControl1.DataSource = this.StokKeluarBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
@@ -436,18 +438,6 @@ namespace EM4.App.UI
             this.DocNoTextEdit.StyleController = this.dataLayoutControl1;
             this.DocNoTextEdit.TabIndex = 18;
             // 
-            // BeltTextEdit
-            // 
-            this.BeltTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "Belt", true));
-            this.BeltTextEdit.EnterMoveNextControl = true;
-            this.BeltTextEdit.Location = new System.Drawing.Point(79, 156);
-            this.BeltTextEdit.MenuManager = this.barManager1;
-            this.BeltTextEdit.Name = "BeltTextEdit";
-            this.BeltTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.BeltTextEdit.Size = new System.Drawing.Size(128, 20);
-            this.BeltTextEdit.StyleController = this.dataLayoutControl1;
-            this.BeltTextEdit.TabIndex = 19;
-            // 
             // PICTextEdit
             // 
             this.PICTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "PIC", true));
@@ -521,9 +511,9 @@ namespace EM4.App.UI
             this.ItemForTglEdit,
             this.ItemForNamaBarang,
             this.ItemForDocNo,
-            this.ItemForBelt,
             this.ItemForPIC,
-            this.ItemForSaldo});
+            this.ItemForSaldo,
+            this.ItemForIDBelt});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
             this.layoutControlGroup1.Size = new System.Drawing.Size(399, 324);
@@ -627,15 +617,6 @@ namespace EM4.App.UI
             this.ItemForDocNo.Text = "Doc No";
             this.ItemForDocNo.TextSize = new System.Drawing.Size(64, 13);
             // 
-            // ItemForBelt
-            // 
-            this.ItemForBelt.Control = this.BeltTextEdit;
-            this.ItemForBelt.Location = new System.Drawing.Point(0, 144);
-            this.ItemForBelt.Name = "ItemForBelt";
-            this.ItemForBelt.Size = new System.Drawing.Size(199, 24);
-            this.ItemForBelt.Text = "Belt";
-            this.ItemForBelt.TextSize = new System.Drawing.Size(64, 13);
-            // 
             // ItemForPIC
             // 
             this.ItemForPIC.Control = this.PICTextEdit;
@@ -651,12 +632,46 @@ namespace EM4.App.UI
             this.ItemForSaldo.Location = new System.Drawing.Point(199, 120);
             this.ItemForSaldo.Name = "ItemForSaldo";
             this.ItemForSaldo.Size = new System.Drawing.Size(200, 24);
-            this.ItemForSaldo.Text = "Saldo";
+            this.ItemForSaldo.Text = "Stok";
             this.ItemForSaldo.TextSize = new System.Drawing.Size(64, 13);
             // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // IDBeltSearchLookUpEdit
+            // 
+            this.IDBeltSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.StokKeluarBindingSource, "IDBelt", true));
+            this.IDBeltSearchLookUpEdit.Location = new System.Drawing.Point(79, 156);
+            this.IDBeltSearchLookUpEdit.MenuManager = this.barManager1;
+            this.IDBeltSearchLookUpEdit.Name = "IDBeltSearchLookUpEdit";
+            this.IDBeltSearchLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.IDBeltSearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
+            this.IDBeltSearchLookUpEdit.Properties.NullText = "";
+            this.IDBeltSearchLookUpEdit.Properties.PopupView = this.gridView4;
+            this.IDBeltSearchLookUpEdit.Size = new System.Drawing.Size(128, 20);
+            this.IDBeltSearchLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.IDBeltSearchLookUpEdit.TabIndex = 23;
+            this.IDBeltSearchLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.IDBeltSearchLookUpEdit_ButtonClick);
+            // 
+            // gridView4
+            // 
+            this.gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
+            this.gridView4.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            // 
+            // ItemForIDBelt
+            // 
+            this.ItemForIDBelt.Control = this.IDBeltSearchLookUpEdit;
+            this.ItemForIDBelt.Location = new System.Drawing.Point(0, 144);
+            this.ItemForIDBelt.Name = "ItemForIDBelt";
+            this.ItemForIDBelt.Size = new System.Drawing.Size(199, 24);
+            this.ItemForIDBelt.Text = "Belt";
+            this.ItemForIDBelt.TextSize = new System.Drawing.Size(64, 13);
             // 
             // frmEntriStokKeluar
             // 
@@ -694,7 +709,6 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.KeteranganMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NamaBarangTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BeltTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PICTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaldoTextEdit.Properties)).EndInit();
@@ -711,10 +725,12 @@ namespace EM4.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNamaBarang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDocNo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForBelt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPIC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSaldo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDBeltSearchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIDBelt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -761,13 +777,14 @@ namespace EM4.App.UI
         private DevExpress.XtraLayout.LayoutControlItem ItemForNamaBarang;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.TextEdit DocNoTextEdit;
-        private DevExpress.XtraEditors.TextEdit BeltTextEdit;
         private DevExpress.XtraEditors.TextEdit PICTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDocNo;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForBelt;
         private DevExpress.XtraLayout.LayoutControlItem ItemForPIC;
         private DevExpress.XtraEditors.CalcEdit QtyCalcEdit;
         private DevExpress.XtraEditors.TextEdit SaldoTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForSaldo;
+        private DevExpress.XtraEditors.SearchLookUpEdit IDBeltSearchLookUpEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForIDBelt;
     }
 }

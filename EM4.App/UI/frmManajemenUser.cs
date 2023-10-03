@@ -79,7 +79,7 @@ namespace EM4.App.UI
         {
             try
             {
-                if (gridView1.FocusedRowHandle >= 1)
+                if (gridView1.FocusedRowHandle >= 0)
                 {
                     TUser CurrentUser = (TUser)tUserBindingSource.Current;
                     if (CurrentUser != null && CurrentUser.ID != notDeleted)

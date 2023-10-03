@@ -28,8 +28,7 @@ namespace EM4.App.Model.Entity
         [Range(0, float.MaxValue, ErrorMessage = "Qty yang diinputkan salah")]
         public float Qty { get; set; }
         [Required]
-        [StringLength(100)]
-        public string Belt { get; set; }
+        public Guid IDBelt { get; set; }
         [Required]
         [StringLength(150)]
         public string PIC { get; set; }
@@ -39,5 +38,6 @@ namespace EM4.App.Model.Entity
 
         public virtual TInventor Inventor { get; set; }
         public virtual TUOM UOM { get; set; }
+        public virtual TBelt Belt { get; set; }
     }
 }

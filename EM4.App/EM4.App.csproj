@@ -54,9 +54,6 @@
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.2.0.151\lib\net461\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.BonusSkins.v19.2" />
     <Reference Include="DevExpress.Data.v19.2" />
     <Reference Include="DevExpress.Printing.v19.2.Core" />
@@ -131,9 +128,14 @@
     <Compile Include="Migrations\202310012349185_BeltPICStockCard2.Designer.cs">
       <DependentUpon>202310012349185_BeltPICStockCard2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310030812248_MasterBelt.cs" />
+    <Compile Include="Migrations\202310030812248_MasterBelt.Designer.cs">
+      <DependentUpon>202310030812248_MasterBelt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AppSetting.cs" />
     <Compile Include="Model\Entity\BaseTable.cs" />
+    <Compile Include="Model\Entity\TBelt.cs" />
     <Compile Include="Model\Entity\TInventor.cs" />
     <Compile Include="Model\Entity\TStockPengembalian.cs" />
     <Compile Include="Model\Entity\TStockOut.cs" />
@@ -159,6 +161,20 @@
     <Compile Include="UI\Dialog\dlgOptionStokKeluar.Designer.cs">
       <DependentUpon>dlgOptionStokKeluar.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryBelt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryBelt.Designer.cs">
+      <DependentUpon>dlgSummaryBelt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryItem.Designer.cs">
+      <DependentUpon>dlgSummaryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialog\flyoutSummaryBelt.cs" />
+    <Compile Include="UI\Dialog\flyoutSummaryItem.cs" />
     <Compile Include="UI\Dialog\flyoutOptionStokKeluar.cs" />
     <Compile Include="UI\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -171,6 +187,12 @@
     </Compile>
     <Compile Include="UI\frmDaftarMasterItem.Designer.cs">
       <DependentUpon>frmDaftarMasterItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmDaftarBelt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDaftarBelt.Designer.cs">
+      <DependentUpon>frmDaftarBelt.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmEntriItem.cs">
       <SubType>Form</SubType>
@@ -195,6 +217,12 @@
     </Compile>
     <Compile Include="UI\frmEntriStokMasuk.Designer.cs">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLaporanStokKeluar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLaporanStokKeluar.Designer.cs">
+      <DependentUpon>frmLaporanStokKeluar.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
@@ -252,14 +280,26 @@
     <EmbeddedResource Include="Migrations\202310012349185_BeltPICStockCard2.resx">
       <DependentUpon>202310012349185_BeltPICStockCard2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310030812248_MasterBelt.resx">
+      <DependentUpon>202310030812248_MasterBelt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Dialog\dlgOptionStokKeluar.resx">
       <DependentUpon>dlgOptionStokKeluar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialog\dlgSummaryBelt.resx">
+      <DependentUpon>dlgSummaryBelt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialog\dlgSummaryItem.resx">
+      <DependentUpon>dlgSummaryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmDaftarMasterItem.resx">
       <DependentUpon>frmDaftarMasterItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDaftarBelt.resx">
+      <DependentUpon>frmDaftarBelt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmEntriItem.resx">
       <DependentUpon>frmEntriItem.cs</DependentUpon>
@@ -272,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmEntriStokMasuk.resx">
       <DependentUpon>frmEntriStokMasuk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLaporanStokKeluar.resx">
+      <DependentUpon>frmLaporanStokKeluar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

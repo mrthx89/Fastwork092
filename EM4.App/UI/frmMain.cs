@@ -80,6 +80,24 @@ namespace EM4.App.UI
                 bbiLaporanMutasiStok.Enabled = Constant.UserLogin.IsAdmin;
                 bbiListBarangKeluar.Enabled = Constant.UserLogin.IsAdmin;
                 bbiListBarangMasuk.Enabled = Constant.UserLogin.IsAdmin;
+
+                //Dashboard
+                System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmDaftarMasterItem) && !o.ControlBox);
+                if (frmOld != null)
+                {
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+                else
+                {
+                    frmOld = new frmDaftarMasterItem
+                    {
+                        ControlBox = false,
+                        MdiParent = this
+                    };
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
             }
         }
 
@@ -254,6 +272,28 @@ namespace EM4.App.UI
                 else
                 {
                     frmOld = new frmLaporanStokMasuk
+                    {
+                        MdiParent = this
+                    };
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+            }
+        }
+
+        private void bbiListBarangKeluar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (isLogin())
+            {
+                System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmLaporanStokKeluar));
+                if (frmOld != null)
+                {
+                    frmOld.Show();
+                    frmOld.Focus();
+                }
+                else
+                {
+                    frmOld = new frmLaporanStokKeluar
                     {
                         MdiParent = this
                     };

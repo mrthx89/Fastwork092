@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EM4.App.Model.ViewModel;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace EM4.App.Repository
 {
@@ -21,6 +22,73 @@ namespace EM4.App.Repository
         {
             stokOut = 1,
             stokPengembalian = 2
+        }
+
+        public static Tuple<bool, List<Model.ViewModel.StokKeluar>> getStokKeluars(DateTime tglDari, DateTime tglSampai)
+        {
+            Tuple<bool, List<Model.ViewModel.StokKeluar>> hasil = new Tuple<bool, List<Model.ViewModel.StokKeluar>>(false, new List<Model.ViewModel.StokKeluar>());
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    var datas1 = from s in context.TStockOuts
+                                 from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
+                                 where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                 select new Model.ViewModel.StokKeluar
+                                 {
+                                     ID = s.ID,
+                                     IDInventor = s.IDInventor,
+                                     IDUOM = s.IDUOM,
+                                     IDUserEdit = s.IDUserEdit,
+                                     IDUserEntri = s.IDUserEntri,
+                                     IDUserHapus = s.IDUserHapus,
+                                     Keterangan = s.Keterangan,
+                                     NamaBarang = i.Desc,
+                                     DocNo = s.DocNo,
+                                     IDBelt = s.IDBelt,
+                                     PIC = s.PIC,
+                                     Qty = s.Qty,
+                                     Tanggal = s.Tanggal,
+                                     TglEdit = s.TglEdit,
+                                     TglEntri = s.TglEntri,
+                                     TglHapus = s.TglHapus,
+                                     IDType = stokOutType
+                                 };
+
+                    var datas2 = from s in context.TStockPengembalians
+                                 from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
+                                 where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                 select new Model.ViewModel.StokKeluar
+                                 {
+                                     ID = s.ID,
+                                     IDInventor = s.IDInventor,
+                                     IDUOM = s.IDUOM,
+                                     IDUserEdit = s.IDUserEdit,
+                                     IDUserEntri = s.IDUserEntri,
+                                     IDUserHapus = s.IDUserHapus,
+                                     Keterangan = s.Keterangan,
+                                     NamaBarang = i.Desc,
+                                     DocNo = s.DocNo,
+                                     IDBelt = Guid.Empty,
+                                     PIC = "",
+                                     Qty = s.Qty,
+                                     Tanggal = s.Tanggal,
+                                     TglEdit = s.TglEdit,
+                                     TglEntri = s.TglEntri,
+                                     TglHapus = s.TglHapus,
+                                     IDType = stokPengembalianType
+                                 };
+
+                    var datas = datas1.Union(datas2);
+
+                    hasil = new Tuple<bool, List<Model.ViewModel.StokKeluar>>(true, datas.OrderBy(o => o.Tanggal).ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.getStokKeluars", ex);
+                }
+            }
+            return hasil;
         }
 
         public static Tuple<bool, Model.ViewModel.StokKeluar> saveStokKeluar(Model.ViewModel.StokKeluar data)
@@ -57,6 +125,7 @@ namespace EM4.App.Repository
                     stockCard.IDType = stokOutType;
                     stockCard.DocNo = data.DocNo;
                     stockCard.QtyKeluar = data.Qty;
+                    stockCard.IDBelt = data.IDBelt;
                     context.TStockCards.Add(stockCard);
 
                     hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(true, data);
@@ -99,6 +168,42 @@ namespace EM4.App.Repository
                 catch (Exception ex)
                 {
                     MsgBoxHelper.MsgError($"{Name}.getSaldoStok", ex);
+                }
+            }
+            return hasil;
+        }
+
+        public static Tuple<bool, Model.ViewModel.StokKeluar> deleteStokKeluar(Model.ViewModel.StokKeluar data)
+        {
+            Tuple<bool, Model.ViewModel.StokKeluar> hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(false, null);
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    var dataExist = context.TStockOuts.FirstOrDefault(o => o.ID == data.ID);
+                    if (dataExist != null)
+                    {
+                        //Edit
+                        dataExist.IDUserHapus = Constant.UserLogin.ID;
+                        dataExist.TglHapus = DateTime.Now;
+
+                        //Post Kartu Stok
+                        context.TStockCards.RemoveRange(context.TStockCards.Where(o => o.IDTransaksi == data.ID && o.IDType == stokOutType).ToList());
+
+                        context.Entry(dataExist).CurrentValues.SetValues(dataExist);
+
+                        context.TStockOuts.Remove(dataExist);
+                        context.SaveChanges();
+                        hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(true, Constant.mapper.Map<TStockOut, Model.ViewModel.StokKeluar>(dataExist));
+                    }
+                    else
+                    {
+                        MsgBoxHelper.MsgWarn($"{Name}.deleteStokKeluar", $"Data dengan No Form {data.DocNo} ini tidak ada didatabase!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.deleteStokKeluar", ex);
                 }
             }
             return hasil;

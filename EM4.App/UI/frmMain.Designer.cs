@@ -195,6 +195,7 @@ namespace EM4.App.UI
             this.bbiListBarangKeluar.Id = 10;
             this.bbiListBarangKeluar.ImageOptions.LargeImageIndex = 9;
             this.bbiListBarangKeluar.Name = "bbiListBarangKeluar";
+            this.bbiListBarangKeluar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiListBarangKeluar_ItemClick);
             // 
             // bbiLaporanKartuStok
             // 

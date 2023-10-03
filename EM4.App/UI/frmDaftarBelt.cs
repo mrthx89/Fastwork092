@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace EM4.App.UI
 {
-    public partial class frmDaftarSatuan : DevExpress.XtraEditors.XtraForm
+    public partial class frmDaftarBelt : DevExpress.XtraEditors.XtraForm
     {
-        public frmDaftarSatuan()
+        public frmDaftarBelt()
         {
             InitializeComponent();
         }
@@ -35,12 +35,12 @@ namespace EM4.App.UI
                     dlg.Focus();
 
                     this.Validate();
-                    var save = Repository.Item.saveUOMs(data);
+                    var save = Repository.Item.saveBelts(data);
                     if (save.Item1)
                     {
                         data = save.Item2;
                     }
-                    tUOMBindingSource.DataSource = data;
+                    tBeltBindingSource.DataSource = data;
                     gridControl1.RefreshDataSource();
 
                     if (this.MdiParent == null)
@@ -67,12 +67,12 @@ namespace EM4.App.UI
                     dlg.Show();
                     dlg.Focus();
 
-                    var dataGet = Repository.Item.getUOMs();
+                    var dataGet = Repository.Item.getBelts();
                     if (dataGet.Item1)
                     {
                         data = dataGet.Item2;
                     }
-                    tUOMBindingSource.DataSource = data;
+                    tBeltBindingSource.DataSource = data;
                     gridControl1.RefreshDataSource();
                 }
                 catch (Exception ex)
@@ -88,10 +88,10 @@ namespace EM4.App.UI
             {
                 if (gridView1.FocusedRowHandle >= 1)
                 {
-                    TUOM CurrentUOM = (TUOM)tUOMBindingSource.Current;
-                    if (CurrentUOM != null)
+                    TBelt CurrentBelt = (TBelt)tBeltBindingSource.Current;
+                    if (CurrentBelt != null)
                     {
-                        tUOMBindingSource.RemoveCurrent();
+                        tBeltBindingSource.RemoveCurrent();
                     }
                 }
             }
@@ -101,9 +101,9 @@ namespace EM4.App.UI
             }
         }
 
-        private List<TUOM> data = null;
+        private List<TBelt> data = null;
         private dynamic lookupUser = null;
-        private void frmDaftarSatuan_Load(object sender, EventArgs e)
+        private void frmDaftarBelt_Load(object sender, EventArgs e)
         {
             var lookUp = Repository.User.getLookUp();
             if (lookUp.Item1)
@@ -124,7 +124,7 @@ namespace EM4.App.UI
                 gridView1.SetRowCellValue(e.RowHandle, colID, Guid.NewGuid());
                 gridView1.SetRowCellValue(e.RowHandle, colTglEntri, DateTime.Now);
                 gridView1.SetRowCellValue(e.RowHandle, colIDUserEntri, Constant.UserLogin.ID);
-                gridView1.SetRowCellValue(e.RowHandle, colSatuan, "");
+                gridView1.SetRowCellValue(e.RowHandle, colBelt, "");
             }
             catch (Exception ex)
             {
@@ -137,7 +137,7 @@ namespace EM4.App.UI
             Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
         }
 
-        private void frmDaftarSatuan_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmDaftarBelt_FormClosing(object sender, FormClosingEventArgs e)
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
         }

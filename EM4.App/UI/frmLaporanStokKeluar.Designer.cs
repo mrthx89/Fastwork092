@@ -1,7 +1,7 @@
 ﻿
 namespace EM4.App.UI
 {
-    partial class frmLaporanStokMasuk
+    partial class frmLaporanStokKeluar
     {
         /// <summary>
         /// Required designer variable.
@@ -42,13 +42,15 @@ namespace EM4.App.UI
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.mnSimpan = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.stokMasukBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stokKeluarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPeriode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTanggal = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNoPO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNoSJ = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDocNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIDBelt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemBelt = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colPIC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDInventor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemInventor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colIDUOM = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,19 +65,24 @@ namespace EM4.App.UI
             this.colTglEdit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUserHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.colPeriode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stokMasukBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stokKeluarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBelt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -98,8 +105,10 @@ namespace EM4.App.UI
             this.mnReload,
             this.mnDelete,
             this.mnBaru,
-            this.mnEdit});
-            this.barManager1.MaxItemId = 5;
+            this.mnEdit,
+            this.barButtonItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 7;
             // 
             // bar1
             // 
@@ -111,7 +120,9 @@ namespace EM4.App.UI
             new DevExpress.XtraBars.LinkPersistInfo(this.mnBaru),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.bar1.Text = "Tools";
             // 
             // mnBaru
@@ -187,7 +198,7 @@ namespace EM4.App.UI
             // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.stokMasukBindingSource;
+            this.gridControl1.DataSource = this.stokKeluarBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 56);
             this.gridControl1.MainView = this.gridView1;
@@ -196,15 +207,17 @@ namespace EM4.App.UI
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemUser,
             this.repositoryItemUOM,
-            this.repositoryItemInventor});
+            this.repositoryItemInventor,
+            this.repositoryItemBelt,
+            this.repositoryItemType});
             this.gridControl1.Size = new System.Drawing.Size(1094, 527);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // stokMasukBindingSource
+            // stokKeluarBindingSource
             // 
-            this.stokMasukBindingSource.DataSource = typeof(EM4.App.Model.ViewModel.StokMasuk);
+            this.stokKeluarBindingSource.DataSource = typeof(EM4.App.Model.ViewModel.StokKeluar);
             // 
             // gridView1
             // 
@@ -212,9 +225,9 @@ namespace EM4.App.UI
             this.colID,
             this.colPeriode,
             this.colTanggal,
-            this.colNoPO,
-            this.colNoSJ,
-            this.colSupplier,
+            this.colDocNo,
+            this.colIDBelt,
+            this.colPIC,
             this.colIDInventor,
             this.colIDUOM,
             this.colQty,
@@ -225,7 +238,8 @@ namespace EM4.App.UI
             this.colIDUserEdit,
             this.colTglEdit,
             this.colIDUserHapus,
-            this.colTglHapus});
+            this.colTglHapus,
+            this.colType});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -241,6 +255,15 @@ namespace EM4.App.UI
             this.colID.FieldName = "ID";
             this.colID.Name = "colID";
             // 
+            // colPeriode
+            // 
+            this.colPeriode.Caption = "Periode";
+            this.colPeriode.FieldName = "Periode";
+            this.colPeriode.Name = "colPeriode";
+            this.colPeriode.Visible = true;
+            this.colPeriode.VisibleIndex = 0;
+            this.colPeriode.Width = 92;
+            // 
             // colTanggal
             // 
             this.colTanggal.DisplayFormat.FormatString = "dd-MM-yyyy HH:mm:ss";
@@ -248,28 +271,39 @@ namespace EM4.App.UI
             this.colTanggal.FieldName = "Tanggal";
             this.colTanggal.Name = "colTanggal";
             this.colTanggal.Visible = true;
-            this.colTanggal.VisibleIndex = 0;
+            this.colTanggal.VisibleIndex = 1;
             // 
-            // colNoPO
+            // colDocNo
             // 
-            this.colNoPO.FieldName = "NoPO";
-            this.colNoPO.Name = "colNoPO";
-            this.colNoPO.Visible = true;
-            this.colNoPO.VisibleIndex = 2;
+            this.colDocNo.Caption = "No Form";
+            this.colDocNo.FieldName = "DocNo";
+            this.colDocNo.Name = "colDocNo";
+            this.colDocNo.Visible = true;
+            this.colDocNo.VisibleIndex = 2;
             // 
-            // colNoSJ
+            // colIDBelt
             // 
-            this.colNoSJ.FieldName = "NoSJ";
-            this.colNoSJ.Name = "colNoSJ";
-            this.colNoSJ.Visible = true;
-            this.colNoSJ.VisibleIndex = 3;
+            this.colIDBelt.Caption = "Belt";
+            this.colIDBelt.ColumnEdit = this.repositoryItemBelt;
+            this.colIDBelt.FieldName = "IDBelt";
+            this.colIDBelt.Name = "colIDBelt";
+            this.colIDBelt.Visible = true;
+            this.colIDBelt.VisibleIndex = 8;
             // 
-            // colSupplier
+            // repositoryItemBelt
             // 
-            this.colSupplier.FieldName = "Supplier";
-            this.colSupplier.Name = "colSupplier";
-            this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 4;
+            this.repositoryItemBelt.AutoHeight = false;
+            this.repositoryItemBelt.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemBelt.Name = "repositoryItemBelt";
+            // 
+            // colPIC
+            // 
+            this.colPIC.Caption = "PIC";
+            this.colPIC.FieldName = "PIC";
+            this.colPIC.Name = "colPIC";
+            this.colPIC.Visible = true;
+            this.colPIC.VisibleIndex = 3;
             // 
             // colIDInventor
             // 
@@ -278,7 +312,7 @@ namespace EM4.App.UI
             this.colIDInventor.FieldName = "IDInventor";
             this.colIDInventor.Name = "colIDInventor";
             this.colIDInventor.Visible = true;
-            this.colIDInventor.VisibleIndex = 5;
+            this.colIDInventor.VisibleIndex = 4;
             this.colIDInventor.Width = 79;
             // 
             // repositoryItemInventor
@@ -315,7 +349,7 @@ namespace EM4.App.UI
             this.colQty.FieldName = "Qty";
             this.colQty.Name = "colQty";
             this.colQty.Visible = true;
-            this.colQty.VisibleIndex = 8;
+            this.colQty.VisibleIndex = 6;
             // 
             // colKeterangan
             // 
@@ -330,7 +364,7 @@ namespace EM4.App.UI
             this.colNamaBarang.FieldName = "NamaBarang";
             this.colNamaBarang.Name = "colNamaBarang";
             this.colNamaBarang.Visible = true;
-            this.colNamaBarang.VisibleIndex = 6;
+            this.colNamaBarang.VisibleIndex = 5;
             this.colNamaBarang.Width = 137;
             // 
             // colIDUserEntri
@@ -392,6 +426,21 @@ namespace EM4.App.UI
             this.colTglHapus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colTglHapus.FieldName = "TglHapus";
             this.colTglHapus.Name = "colTglHapus";
+            // 
+            // colType
+            // 
+            this.colType.Caption = "Type";
+            this.colType.ColumnEdit = this.repositoryItemType;
+            this.colType.FieldName = "IDType";
+            this.colType.Name = "colType";
+            this.colType.Width = 169;
+            // 
+            // repositoryItemType
+            // 
+            this.repositoryItemType.AutoHeight = false;
+            this.repositoryItemType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemType.Name = "repositoryItemType";
             // 
             // panelControl1
             // 
@@ -455,16 +504,21 @@ namespace EM4.App.UI
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Periode";
             // 
-            // colPeriode
+            // barButtonItem1
             // 
-            this.colPeriode.Caption = "Periode";
-            this.colPeriode.FieldName = "Periode";
-            this.colPeriode.Name = "colPeriode";
-            this.colPeriode.Visible = true;
-            this.colPeriode.VisibleIndex = 1;
-            this.colPeriode.Width = 92;
+            this.barButtonItem1.Caption = "Summary Item";
+            this.barButtonItem1.Id = 5;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
-            // frmLaporanStokMasuk
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Summary Belt";
+            this.barButtonItem2.Id = 6;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // frmLaporanStokKeluar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -475,17 +529,19 @@ namespace EM4.App.UI
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmLaporanStokMasuk";
-            this.Text = "Laporan Stok Masuk";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLaporanStokMasuk_FormClosing);
-            this.Load += new System.EventHandler(this.frmLaporanStokMasuk_Load);
+            this.Name = "frmLaporanStokKeluar";
+            this.Text = "Laporan Stok Keluar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLaporanStokKeluar_FormClosing);
+            this.Load += new System.EventHandler(this.frmLaporanStokKeluar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stokMasukBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stokKeluarBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBelt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -512,12 +568,12 @@ namespace EM4.App.UI
         private DevExpress.XtraBars.BarButtonItem mnReload;
         private DevExpress.XtraBars.BarButtonItem mnDelete;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemUser;
-        private System.Windows.Forms.BindingSource stokMasukBindingSource;
+        private System.Windows.Forms.BindingSource stokKeluarBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
         private DevExpress.XtraGrid.Columns.GridColumn colTanggal;
-        private DevExpress.XtraGrid.Columns.GridColumn colNoPO;
-        private DevExpress.XtraGrid.Columns.GridColumn colNoSJ;
-        private DevExpress.XtraGrid.Columns.GridColumn colSupplier;
+        private DevExpress.XtraGrid.Columns.GridColumn colDocNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colIDBelt;
+        private DevExpress.XtraGrid.Columns.GridColumn colPIC;
         private DevExpress.XtraGrid.Columns.GridColumn colIDInventor;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemInventor;
         private DevExpress.XtraGrid.Columns.GridColumn colIDUOM;
@@ -539,5 +595,10 @@ namespace EM4.App.UI
         private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn colPeriode;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemBelt;
+        private DevExpress.XtraGrid.Columns.GridColumn colType;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemType;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

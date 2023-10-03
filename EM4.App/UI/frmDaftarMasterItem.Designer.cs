@@ -141,7 +141,7 @@ namespace EM4.App.UI
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 452);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 453);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(874, 0);
             // 
@@ -151,7 +151,7 @@ namespace EM4.App.UI
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 432);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 433);
             // 
             // barDockControlRight
             // 
@@ -159,7 +159,7 @@ namespace EM4.App.UI
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(874, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 432);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 433);
             // 
             // gridControl1
             // 
@@ -172,7 +172,7 @@ namespace EM4.App.UI
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemUser,
             this.repositoryItemUOM});
-            this.gridControl1.Size = new System.Drawing.Size(874, 432);
+            this.gridControl1.Size = new System.Drawing.Size(874, 433);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -337,7 +337,7 @@ namespace EM4.App.UI
             this.colSaldo.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colSaldo.AppearanceHeader.Options.UseTextOptions = true;
             this.colSaldo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colSaldo.Caption = "Saldo";
+            this.colSaldo.Caption = "Stok";
             this.colSaldo.DisplayFormat.FormatString = "n0";
             this.colSaldo.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSaldo.FieldName = "Saldo";
@@ -349,7 +349,7 @@ namespace EM4.App.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 452);
+            this.ClientSize = new System.Drawing.Size(874, 453);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

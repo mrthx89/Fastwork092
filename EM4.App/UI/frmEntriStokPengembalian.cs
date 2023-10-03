@@ -19,7 +19,7 @@ namespace EM4.App.UI
 {
     public partial class frmEntriStokPengembalian : DevExpress.XtraEditors.XtraForm
     {
-        private Model.ViewModel.StokPengembalian data = null;
+        public Model.ViewModel.StokPengembalian data = null;
         public frmEntriStokPengembalian(Model.ViewModel.StokPengembalian data)
         {
             InitializeComponent();
@@ -49,6 +49,10 @@ namespace EM4.App.UI
                     TglEntri = DateTime.Parse("1900-01-01"),
                     TglHapus = DateTime.Parse("1900-01-01"),
                 };
+            }
+            else
+            {
+                data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokPengembalian).Item2;
             }
             refreshLookUp();
             StokPengembalianBindingSource.DataSource = data;
@@ -129,7 +133,7 @@ namespace EM4.App.UI
                     
                     IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
                     NamaBarangTextEdit.EditValue = item.Desc;
-                    SaldoTextEdit.EditValue = item.Saldo;
+                    SaldoTextEdit.EditValue = data.Saldo;
                 }
             }
             catch (Exception ex)

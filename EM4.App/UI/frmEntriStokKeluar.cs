@@ -19,7 +19,7 @@ namespace EM4.App.UI
 {
     public partial class frmEntriStokKeluar : DevExpress.XtraEditors.XtraForm
     {
-        private Model.ViewModel.StokKeluar data = null;
+        public Model.ViewModel.StokKeluar data = null;
         public frmEntriStokKeluar(Model.ViewModel.StokKeluar data)
         {
             InitializeComponent();
@@ -44,13 +44,17 @@ namespace EM4.App.UI
                     NamaBarang = "",
                     DocNo = "",
                     PIC = "",
-                    Belt = "",
+                    IDBelt = Guid.Empty,
                     Qty = 0,
                     Tanggal = DateTime.Now,
                     TglEdit = DateTime.Parse("1900-01-01"),
                     TglEntri = DateTime.Parse("1900-01-01"),
                     TglHapus = DateTime.Parse("1900-01-01"),
                 };
+            }
+            else
+            {
+                data.Saldo = Repository.StokKeluar.getSaldoStok(data.IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokOut).Item2;
             }
             refreshLookUp();
             StokKeluarBindingSource.DataSource = data;
@@ -78,6 +82,11 @@ namespace EM4.App.UI
                         dxErrorProvider1.SetError(IDInventorSearchLookUpEdit, "Kode Barang harus diisi!");
                     }
 
+                    if (data.IDBelt == Guid.Empty || string.IsNullOrEmpty(IDBeltSearchLookUpEdit.Text))
+                    {
+                        dxErrorProvider1.SetError(IDBeltSearchLookUpEdit, "Belt harus diisi!");
+                    }
+
                     if (data.Qty <= 0)
                     {
                         dxErrorProvider1.SetError(QtyCalcEdit, "Qty harus diisi dengan benar!");
@@ -85,8 +94,8 @@ namespace EM4.App.UI
 
                     if (data.Saldo < data.Qty)
                     {
-                        var dialog = MsgBoxHelper.MsgQuestionYesNo($"{this.Name}.mnSimpan_ItemClick", 
-                                                                   $"Saldo item {data.NamaBarang} ini sebanyak {data.Saldo.ToString("n0")} sedangkan pengeluaran sebanyak {data.Qty.ToString("n0")}, hal ini akan menyebabkan saldo item menjadi minus.{Environment.NewLine}Yakin ingin melanjutkan penyimpanan?", 
+                        var dialog = MsgBoxHelper.MsgQuestionYesNo($"{this.Name}.mnSimpan_ItemClick",
+                                                                   $"Saldo item {data.NamaBarang} ini sebanyak {data.Saldo.ToString("n0")} sedangkan pengeluaran sebanyak {data.Qty.ToString("n0")}, hal ini akan menyebabkan saldo item menjadi minus.{Environment.NewLine}Yakin ingin melanjutkan penyimpanan?",
                                                                    MessageBoxDefaultButton.Button2);
                         if (dialog == DialogResult.No)
                         {
@@ -128,10 +137,10 @@ namespace EM4.App.UI
                     data.IDUOM = item.IDUOM;
                     data.NamaBarang = item.Desc;
                     data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Repository.StokKeluar.TypeTransaction.stokOut).Item2;
-                    
+
                     IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
                     NamaBarangTextEdit.EditValue = item.Desc;
-                    SaldoTextEdit.EditValue = item.Saldo;
+                    SaldoTextEdit.EditValue = data.Saldo;
                 }
             }
             catch (Exception ex)
@@ -153,7 +162,7 @@ namespace EM4.App.UI
                     var callItems = Repository.Item.getLookUpInventors(data.Tanggal, null);
                     if (callItems.Item1)
                     {
-                       itemLookUps = callItems.Item2;
+                        itemLookUps = callItems.Item2;
                     }
                     else
                     {
@@ -175,6 +184,19 @@ namespace EM4.App.UI
                     }
                     IDUOMSearchLookUpEdit.Properties.ValueMember = "ID";
                     IDUOMSearchLookUpEdit.Properties.DisplayMember = "Satuan";
+
+                    var callBelt = Repository.Item.getBelts();
+                    if (callBelt.Item1)
+                    {
+                        IDBeltSearchLookUpEdit.Properties.DataSource = (from x in callBelt.Item2
+                                                                        select new { x.ID, x.Belt }).ToList();
+                    }
+                    else
+                    {
+                        IDBeltSearchLookUpEdit.Properties.DataSource = null;
+                    }
+                    IDBeltSearchLookUpEdit.Properties.ValueMember = "ID";
+                    IDBeltSearchLookUpEdit.Properties.DisplayMember = "Belt";
 
                     var callUser = Repository.User.getLookUp();
                     if (callUser.Item1)
@@ -203,11 +225,12 @@ namespace EM4.App.UI
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
             Constant.layoutsHelper.SaveLayouts(this.Name, dataLayoutControl1);
+            Constant.layoutsHelper.SaveLayouts(this.Name, gridView4);
         }
 
         private void gv1_DataSourceChanged(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, searchLookUpEdit1View);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (DevExpress.XtraGrid.Views.Grid.GridView)sender);
         }
 
         private void IDInventorSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -240,6 +263,26 @@ namespace EM4.App.UI
             catch (Exception ex)
             {
                 MsgBoxHelper.MsgError($"{this.Name}.TanggalDateEdit_EditValueChanged", ex);
+            }
+        }
+
+        private void IDBeltSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (frmDaftarBelt frm = new frmDaftarBelt())
+                {
+                    try
+                    {
+                        frm.StartPosition = FormStartPosition.CenterParent;
+                        frm.ShowDialog(this);
+                        refreshLookUp();
+                    }
+                    catch (Exception ex)
+                    {
+                        MsgBoxHelper.MsgError($"{this.Name}.IDBeltSearchLookUpEdit_ButtonClick", ex);
+                    }
+                }
             }
         }
     }

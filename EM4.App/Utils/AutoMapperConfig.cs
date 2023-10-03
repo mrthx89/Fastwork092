@@ -32,6 +32,9 @@ namespace EM4.App.Utils
                 cfg.CreateMap<StokPengembalian, TStockPengembalian>();
                 cfg.CreateMap<TStockCard, StokPengembalian>();
                 cfg.CreateMap<StokPengembalian, TStockCard>();
+
+                cfg.CreateMap<StokKeluar, StokPengembalian>();
+                cfg.CreateMap<StokPengembalian, StokKeluar>();
             });
 
             return config.CreateMapper();

@@ -79,6 +79,87 @@ namespace EM4.App.Repository
             return hasil;
         }
 
+        public static Tuple<bool, List<TBelt>> getBelts()
+        {
+            Tuple<bool, List<TBelt>> hasil = new Tuple<bool, List<TBelt>>(false, null);
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    hasil = new Tuple<bool, List<TBelt>>(true, context.TBelts.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.getBelts", ex);
+                }
+            }
+            return hasil;
+        }
+
+        public static Tuple<bool, List<TTypeTransaction>> getTypes()
+        {
+            Tuple<bool, List<TTypeTransaction>> hasil = new Tuple<bool, List<TTypeTransaction>>(false, null);
+            using (Data.EM4Context context = new Data.EM4Context())
+            {
+                try
+                {
+                    hasil = new Tuple<bool, List<TTypeTransaction>>(true, context.TTypeTransactions.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.getTypes", ex);
+                }
+            }
+            return hasil;
+        }
+
+        public static Tuple<bool, List<TBelt>> saveBelts(List<TBelt> belts)
+        {
+            Tuple<bool, List<TBelt>> hasil = new Tuple<bool, List<TBelt>>(false, null);
+            using (Data.EM4Context dbContext = new Data.EM4Context(Constant.appSetting.KoneksiString))
+            {
+                try
+                {
+                    var userExists = dbContext.TBelts.ToList();
+                    foreach (var item in userExists)
+                    {
+                        if (belts.FirstOrDefault(o => o.ID == item.ID) == null)
+                        {
+                            dbContext.TBelts.Remove(item);
+                        }
+                    }
+
+                    foreach (var item in belts)
+                    {
+                        var existingItem = dbContext.TBelts.FirstOrDefault(i => i.ID == item.ID);
+                        if (existingItem != null)
+                        {
+                            item.IDUserEdit = Constant.UserLogin.ID;
+                            item.TglEdit = DateTime.Now;
+                            dbContext.Entry(existingItem).CurrentValues.SetValues(item);
+                        }
+                        else
+                        {
+                            item.IDUserEntri = Constant.UserLogin.ID;
+                            item.TglEntri = DateTime.Now;
+                            item.IDUserEdit = Guid.Empty;
+                            item.TglEdit = null;
+                            dbContext.TBelts.Add(item);
+                        }
+                    }
+
+                    dbContext.SaveChanges();
+
+                    hasil = new Tuple<bool, List<TBelt>>(true, dbContext.TBelts.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.saveBelts", ex);
+                }
+            }
+            return hasil;
+        }
+
         public static Tuple<bool, List<ItemMaster>> getInventors(Dictionary<string, dynamic> filter)
         {
             Tuple<bool, List<ItemMaster>> hasil = new Tuple<bool, List<ItemMaster>>(false, null);

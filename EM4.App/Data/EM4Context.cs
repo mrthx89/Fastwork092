@@ -24,6 +24,7 @@ namespace EM4.App.Data
         public DbSet<TTypeTransaction> TTypeTransactions { get; set; }
         public DbSet<TUOM> TUOMs { get; set; }
         public DbSet<TUser> TUsers { get; set; }
+        public DbSet<TBelt> TBelts { get; set; }
         public DbSet<TInventor> TInventors { get; set; }
         public DbSet<TStockIn> TStockIns { get; set; }
         public DbSet<TStockOut> TStockOuts { get; set; }
@@ -131,6 +132,12 @@ namespace EM4.App.Data
                 .HasRequired(b => b.UOM)
                 .WithMany(a => a.StockPengembalians)
                 .HasForeignKey(b => b.IDUOM)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TStockOut>()
+                .HasRequired(b => b.Belt)
+                .WithMany(a => a.StockOuts)
+                .HasForeignKey(b => b.IDBelt)
                 .WillCascadeOnDelete(false);
         }
     }

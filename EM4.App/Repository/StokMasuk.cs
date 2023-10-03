@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EM4.App.Model.ViewModel;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace EM4.App.Repository
 {
@@ -25,7 +26,7 @@ namespace EM4.App.Repository
                 {
                     var datas = from s in context.TStockIns
                                 from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
-                                where s.Tanggal >= tglDari.Date && s.Tanggal <= tglSampai.Date
+                                where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
                                 select new Model.ViewModel.StokMasuk
                                 {
                                     ID = s.ID,
@@ -90,7 +91,7 @@ namespace EM4.App.Repository
                     stockCard.DocNo = data.NoSJ;
                     stockCard.QtyMasuk = data.Qty;
                     stockCard.PIC = "";
-                    stockCard.Belt = "";
+                    stockCard.IDBelt = Guid.Empty;
                     context.TStockCards.Add(stockCard);
 
                     hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(true, data);

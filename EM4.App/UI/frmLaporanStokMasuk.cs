@@ -52,7 +52,7 @@ namespace EM4.App.UI
         {
             try
             {
-                if (gridView1.FocusedRowHandle >= 1)
+                if (gridView1.FocusedRowHandle >= 0)
                 {
                     StokMasuk CurrentData = (StokMasuk)stokMasukBindingSource.Current;
                     if (CurrentData != null)

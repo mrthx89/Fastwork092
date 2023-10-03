@@ -30,6 +30,15 @@ namespace EM4.App.Model.ViewModel
         public float Qty { get; set; }
         [StringLength(255)]
         public string Keterangan { get; set; }
+
+        //ViewModel
+        public string Periode
+        {
+            get
+            {
+                return (Tanggal == null ? DateTime.Now : Tanggal).ToString("MMMM");
+            }
+        }
         public string NamaBarang { get; set; }
     }
 }
