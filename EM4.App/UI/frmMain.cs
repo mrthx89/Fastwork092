@@ -3,6 +3,7 @@ using EM4.App.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -111,6 +112,12 @@ namespace EM4.App.UI
                     {
                         Constant.appSetting = frm.AppSetting;
                         sharedData.saveAppConfig(Constant.appSetting);
+
+                        // Simpan perubahan ke konfigurasi
+                        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                        config.ConnectionStrings.ConnectionStrings["EM4"].ConnectionString = Constant.appSetting.KoneksiString;
+                        config.Save(ConfigurationSaveMode.Modified);
+                        ConfigurationManager.RefreshSection("connectionStrings");
                     }
                 }
                 catch (Exception ex)

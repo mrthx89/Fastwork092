@@ -20,7 +20,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<Model.ViewModel.StokMasuk>> getStokMasuks(DateTime tglDari, DateTime tglSampai)
         {
             Tuple<bool, List<Model.ViewModel.StokMasuk>> hasil = new Tuple<bool, List<Model.ViewModel.StokMasuk>>(false, new List<Model.ViewModel.StokMasuk>());
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -59,7 +59,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, Model.ViewModel.StokMasuk> saveStokMasuk(Model.ViewModel.StokMasuk data)
         {
             Tuple<bool, Model.ViewModel.StokMasuk> hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -108,7 +108,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, Model.ViewModel.StokMasuk> deleteStokMasuk(Model.ViewModel.StokMasuk data)
         {
             Tuple<bool, Model.ViewModel.StokMasuk> hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {

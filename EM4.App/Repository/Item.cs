@@ -18,7 +18,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<TUOM>> getUOMs()
         {
             Tuple<bool, List<TUOM>> hasil = new Tuple<bool, List<TUOM>>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -82,7 +82,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<TBelt>> getBelts()
         {
             Tuple<bool, List<TBelt>> hasil = new Tuple<bool, List<TBelt>>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -99,7 +99,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<TTypeTransaction>> getTypes()
         {
             Tuple<bool, List<TTypeTransaction>> hasil = new Tuple<bool, List<TTypeTransaction>>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -163,7 +163,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<ItemMaster>> getInventors(Dictionary<string, dynamic> filter, DateTime? SaldoPerTanggal)
         {
             Tuple<bool, List<ItemMaster>> hasil = new Tuple<bool, List<ItemMaster>>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -222,7 +222,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<ItemLookUp>> getLookUpInventors(DateTime Tanggal, Dictionary<string, dynamic> filter)
         {
             Tuple<bool, List<ItemLookUp>> hasil = new Tuple<bool, List<ItemLookUp>>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -276,7 +276,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, ItemMaster> getInventor(Guid ID)
         {
             Tuple<bool, ItemMaster> hasil = new Tuple<bool, ItemMaster>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -311,7 +311,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<ItemMaster>> getInventor(Dictionary<string, dynamic> filter)
         {
             Tuple<bool, List<ItemMaster>> hasil = new Tuple<bool, List<ItemMaster>>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -369,7 +369,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, ItemMaster> deleteInventor(Guid ID)
         {
             Tuple<bool, ItemMaster> hasil = new Tuple<bool, ItemMaster>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -396,7 +396,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, ItemMaster> saveInventor(ItemMaster data)
         {
             Tuple<bool, ItemMaster> hasil = new Tuple<bool, ItemMaster>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -432,7 +432,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, ItemMaster> checkPLUExistsInventor(ItemMaster data)
         {
             Tuple<bool, ItemMaster> hasil = new Tuple<bool, ItemMaster>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -457,7 +457,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, ItemMaster> checkNamaExistsInventor(ItemMaster data)
         {
             Tuple<bool, ItemMaster> hasil = new Tuple<bool, ItemMaster>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {

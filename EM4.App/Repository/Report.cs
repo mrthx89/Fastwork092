@@ -21,7 +21,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<Model.ViewModel.MutasiStok>> getMutasiStoks(DateTime tglDari, DateTime tglSampai)
         {
             Tuple<bool, List<Model.ViewModel.MutasiStok>> hasil = new Tuple<bool, List<Model.ViewModel.MutasiStok>>(false, new List<Model.ViewModel.MutasiStok>());
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -66,7 +66,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<Model.ViewModel.KartuStok>> getKartuStoks(Guid IDInventor, DateTime tglDari, DateTime tglSampai)
         {
             Tuple<bool, List<Model.ViewModel.KartuStok>> hasil = new Tuple<bool, List<Model.ViewModel.KartuStok>>(false, new List<Model.ViewModel.KartuStok>());
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {

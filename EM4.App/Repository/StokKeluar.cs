@@ -27,7 +27,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<Model.ViewModel.StokKeluar>> getStokKeluars(DateTime tglDari, DateTime tglSampai)
         {
             Tuple<bool, List<Model.ViewModel.StokKeluar>> hasil = new Tuple<bool, List<Model.ViewModel.StokKeluar>>(false, new List<Model.ViewModel.StokKeluar>());
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -94,7 +94,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, Model.ViewModel.StokKeluar> saveStokKeluar(Model.ViewModel.StokKeluar data)
         {
             Tuple<bool, Model.ViewModel.StokKeluar> hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -142,7 +142,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, float> getSaldoStok(Guid IDInventor, DateTime Tanggal, Guid IDTransaksi, TypeTransaction TypeTransaction)
         {
             Tuple<bool, float> hasil = new Tuple<bool, float>(false, 0f);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -176,7 +176,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, Model.ViewModel.StokKeluar> deleteStokKeluar(Model.ViewModel.StokKeluar data)
         {
             Tuple<bool, Model.ViewModel.StokKeluar> hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {

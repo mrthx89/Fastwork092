@@ -20,7 +20,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, List<Model.ViewModel.StokPengembalian>> getStokPengembalians(DateTime tglDari, DateTime tglSampai)
         {
             Tuple<bool, List<Model.ViewModel.StokPengembalian>> hasil = new Tuple<bool, List<Model.ViewModel.StokPengembalian>>(false, new List<Model.ViewModel.StokPengembalian>());
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -57,7 +57,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, Model.ViewModel.StokPengembalian> saveStokPengembalian(Model.ViewModel.StokPengembalian data)
         {
             Tuple<bool, Model.ViewModel.StokPengembalian> hasil = new Tuple<bool, Model.ViewModel.StokPengembalian>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {
@@ -104,7 +104,7 @@ namespace EM4.App.Repository
         public static Tuple<bool, Model.ViewModel.StokPengembalian> deleteStokPengembalian(Model.ViewModel.StokPengembalian data)
         {
             Tuple<bool, Model.ViewModel.StokPengembalian> hasil = new Tuple<bool, Model.ViewModel.StokPengembalian>(false, null);
-            using (Data.EM4Context context = new Data.EM4Context())
+            using (Data.EM4Context context = new Data.EM4Context(Constant.appSetting.KoneksiString))
             {
                 try
                 {

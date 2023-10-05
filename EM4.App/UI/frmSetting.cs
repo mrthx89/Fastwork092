@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -23,12 +24,12 @@ namespace EM4.App.UI
 
         private void mnSimpan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.Validate();
+
             using (Data.EM4Context context = new Data.EM4Context(AppSetting.KoneksiString))
             {
                 try
                 {
-                    this.Validate();
-                    
                     context.Database.Connection.Open();
                     EM4.App.Helper.MsgBoxHelper.MsgInfo($"{this.Name}.mnSimpan_ItemClick", "Koneksi terhubung!");
 
