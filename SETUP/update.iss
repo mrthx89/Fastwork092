@@ -1,11 +1,11 @@
-#define MyAppName "EM4 Storage"
+#define MyAppName "E4 Storage"
 #define MyAppVersion "1.1"
 #define MyAppPublisher "YH Dev"
 #define MyAppCopyright "Copyright @ 2023 YH Dev"
 #define MyAppURL "https://www.linkedin.com/in/yanto-hariyono-64b3a6a3/"
 #define MyAppURLSupport "https://www.linkedin.com/in/yanto-hariyono-64b3a6a3/"
 #define MyAppURLProduct "https://www.linkedin.com/in/yanto-hariyono-64b3a6a3/"
-#define MyAppExeName "EM4.App.exe"
+#define MyAppExeName "E4Storage.App.exe"
 #define MyGroupApp "Inventory System"
 #define MyYearApp "2023"
 #define MyAppId "{0F97CC0E-54E0-4727-B55F-F04648221405}"
@@ -21,9 +21,9 @@ AppSupportURL={#MyAppURLSupport}
 AppUpdatesURL={#MyAppURLProduct}
 AppCopyright={#MyAppCopyright}
 VersionInfoVersion=1.0.0.1
-DefaultDirName={commonpf}\{#MyGroupApp}\EM4
+DefaultDirName={commonpf}\{#MyGroupApp}\E4Storage
 OutputDir=Output
-OutputBaseFilename=EM4_Update
+OutputBaseFilename=E4Storage_Update
 DisableProgramGroupPage=yes
 CreateAppDir=no
 Compression = lzma
@@ -38,10 +38,10 @@ CreateUninstallRegKey=no
 Name: "indonesian"; MessagesFile: "compiler:Languages\Indonesian.isl";
 
 [Files]
-Source: "..\EM4.App\bin\Debug\{#MyAppExeName}"; DestDir: "{code:GetAppPath}"; Flags: ignoreversion
-Source: "..\EM4.App\bin\Debug\*.dll"; DestDir: "{code:GetAppPath}"; Flags: ignoreversion
-Source: "..\EM4.App\bin\Debug\*.config"; DestDir: "{code:GetAppPath}"; Flags: ignoreversion
-Source: "..\EM4.App\bin\Debug\system\layouts\*"; DestDir: "{code:GetAppPath}\System\Layouts"; Flags: ignoreversion
+Source: "..\E4Storage.App\bin\Debug\{#MyAppExeName}"; DestDir: "{code:GetAppPath}"; Flags: ignoreversion
+Source: "..\E4Storage.App\bin\Debug\*.dll"; DestDir: "{code:GetAppPath}"; Flags: ignoreversion
+Source: "..\E4Storage.App\bin\Debug\*.config"; DestDir: "{code:GetAppPath}"; Flags: ignoreversion
+Source: "..\E4Storage.App\bin\Debug\system\layouts\*"; DestDir: "{code:GetAppPath}\System\Layouts"; Flags: ignoreversion
 
 [Code]
 var
@@ -54,7 +54,7 @@ begin
   ShouldContinue := True;
 
   // CEK APLIKASI SEDANG JALAN ATAU TIDAK
-  if FindWindowByWindowName('EM4 Storage') > 0 then
+  if FindWindowByWindowName('E4 Storage') > 0 then
   begin
       MsgBox('Program EM4 Storage sedang dijalankan.'#10'Silakan tutup aplikasi tersebut terlebih dahulu.', mbInformation, MB_OK);
       ShouldContinue := False;
@@ -62,11 +62,11 @@ begin
 
   if ShouldContinue then
   begin
-    RegQueryStringValue(HKEY_CURRENT_USER, 'Software\EM4', 'installDir', installDir);
+    RegQueryStringValue(HKEY_LOCAL_MACHINE, 'Software\E4Storage', 'installDir', installDir);
 
     if installDir = '' then
     begin
-        MsgBox('Lokasi instalasi Program EM4 tidak ditemukan.'#10'Proses update batal.', mbInformation, MB_OK);
+        MsgBox('Lokasi instalasi Program E4 Storage tidak ditemukan.'#10'Proses update batal.', mbInformation, MB_OK);
         ShouldContinue := False;
     end
     else
@@ -80,7 +80,7 @@ end;
 
 function GetAppPath(Param: string): string;
 begin
-  RegQueryStringValue(HKEY_CURRENT_USER, 'Software\EM4', 'installDir', installDir);
+  RegQueryStringValue(HKEY_LOCAL_MACHINE, 'Software\E4Storage', 'installDir', installDir);
 
   Result := installDir;
 end;
