@@ -34,9 +34,15 @@ namespace E4Storage.App.Model.Entity
         public float QtyMasuk { get; set; }
         [Required]
         public float QtyKeluar { get; set; }
-        public Guid IDBelt { get; set; }
+        public Guid? IDBelt { get; set; }
         [StringLength(150)]
         public string PIC { get; set; }
+        public Guid? IDCategory { get; set; }
+        [Range(0, int.MaxValue)]
+        public int? Cabinet { get; set; }
+        [StringLength(255)]
+        public string Row { get; set; }
+
 
         public virtual TInventor Inventor { get; set; }
         public virtual TUOM UOM { get; set; }

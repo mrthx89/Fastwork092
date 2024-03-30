@@ -167,6 +167,8 @@ namespace E4Storage.App.UI.Dialog
             repositoryItemType.DataSource = lookupType;
             repositoryItemType.ValueMember = "ID";
             repositoryItemType.DisplayMember = "Transaksi";
+
+            IDInventorSearchLookUpEdit.Properties.Buttons[1].Visible = Utils.Constant.UserLogin.IsAdmin;
         }
 
         public void saveLayouts()

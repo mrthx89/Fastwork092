@@ -48,7 +48,9 @@ namespace E4Storage.App.Repository
                                     NamaBarang = i.Desc,
                                     SaldoAwal = (s != null ? s.SaldoAwal : 0),
                                     QtyMasuk = (m != null ? m.QtyMasuk : 0),
-                                    QtyKeluar = (m != null ? m.QtyKeluar : 0)
+                                    QtyKeluar = (m != null ? m.QtyKeluar : 0),
+                                    QtyMin = (i.QtyMin.HasValue ? i.QtyMin : 0d),
+                                    QtyMax = (i.QtyMax.HasValue ? i.QtyMax : 0d)
                                 };
 
                     hasil = new Tuple<bool, List<Model.ViewModel.MutasiStok>>(true, datas.OrderBy(o => o.NamaBarang).ToList());

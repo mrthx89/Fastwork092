@@ -116,5 +116,19 @@ namespace E4Storage.App.UI
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
         }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            // Access the underlying data object for the current row
+            MutasiStok rowData = gridView1.GetRow(e.RowHandle) as MutasiStok;
+            // Check the condition based on your requirements
+            if (rowData != null && rowData.QtyMax > 0 && rowData.QtyMin > 0 &&
+                (rowData.SaldoAkhir >= rowData.QtyMax || rowData.SaldoAkhir <= rowData.QtyMin))
+            {
+                // Set the appearance for the current row
+                e.Appearance.BackColor = Color.Red;
+                e.Appearance.ForeColor = Color.White;
+            }
+        }
     }
 }

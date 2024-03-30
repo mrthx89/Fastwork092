@@ -58,6 +58,14 @@ namespace E4Storage.App.UI
             this.KeteranganMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.NamaBarangTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.QtyCalcEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.DocNoTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.IDCategorySearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gvCategory = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.CabinetTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.RowTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.IDBeltSearchLookUpEdit = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gvBelt = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.PICTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForTanggal = new DevExpress.XtraLayout.LayoutControlItem();
@@ -72,9 +80,13 @@ namespace E4Storage.App.UI
             this.ItemForIDUserEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForTglEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForNamaBarang = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.DocNoTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForDocNo = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForPIC = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForIDBelt = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForIDCategory = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForCabinet = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForRow = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -98,6 +110,14 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.KeteranganMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NamaBarangTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDCategorySearchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CabinetTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RowTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDBeltSearchLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBelt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PICTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTanggal)).BeginInit();
@@ -112,9 +132,13 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUserEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNamaBarang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDocNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPIC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIDBelt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIDCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCabinet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -160,7 +184,7 @@ namespace E4Storage.App.UI
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 364);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 423);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(419, 0);
             // 
@@ -170,7 +194,7 @@ namespace E4Storage.App.UI
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 344);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 403);
             // 
             // barDockControlRight
             // 
@@ -178,7 +202,7 @@ namespace E4Storage.App.UI
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(419, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 344);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 403);
             // 
             // dataLayoutControl1
             // 
@@ -195,13 +219,18 @@ namespace E4Storage.App.UI
             this.dataLayoutControl1.Controls.Add(this.NamaBarangTextEdit);
             this.dataLayoutControl1.Controls.Add(this.QtyCalcEdit);
             this.dataLayoutControl1.Controls.Add(this.DocNoTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.IDCategorySearchLookUpEdit);
+            this.dataLayoutControl1.Controls.Add(this.CabinetTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.RowTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.IDBeltSearchLookUpEdit);
+            this.dataLayoutControl1.Controls.Add(this.PICTextEdit);
             this.dataLayoutControl1.DataSource = this.stokMasukBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(467, 103, 650, 400);
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(419, 344);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(419, 403);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -336,7 +365,7 @@ namespace E4Storage.App.UI
             // 
             this.IDUserEntriSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUserEntri", true));
             this.IDUserEntriSearchLookUpEdit.EnterMoveNextControl = true;
-            this.IDUserEntriSearchLookUpEdit.Location = new System.Drawing.Point(79, 288);
+            this.IDUserEntriSearchLookUpEdit.Location = new System.Drawing.Point(79, 347);
             this.IDUserEntriSearchLookUpEdit.MenuManager = this.barManager1;
             this.IDUserEntriSearchLookUpEdit.Name = "IDUserEntriSearchLookUpEdit";
             this.IDUserEntriSearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -360,7 +389,7 @@ namespace E4Storage.App.UI
             this.TglEntriDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "TglEntri", true));
             this.TglEntriDateEdit.EditValue = null;
             this.TglEntriDateEdit.EnterMoveNextControl = true;
-            this.TglEntriDateEdit.Location = new System.Drawing.Point(79, 312);
+            this.TglEntriDateEdit.Location = new System.Drawing.Point(79, 371);
             this.TglEntriDateEdit.MenuManager = this.barManager1;
             this.TglEntriDateEdit.Name = "TglEntriDateEdit";
             this.TglEntriDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -380,7 +409,7 @@ namespace E4Storage.App.UI
             // 
             this.IDUserEditSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUserEdit", true));
             this.IDUserEditSearchLookUpEdit.EnterMoveNextControl = true;
-            this.IDUserEditSearchLookUpEdit.Location = new System.Drawing.Point(278, 288);
+            this.IDUserEditSearchLookUpEdit.Location = new System.Drawing.Point(278, 347);
             this.IDUserEditSearchLookUpEdit.MenuManager = this.barManager1;
             this.IDUserEditSearchLookUpEdit.Name = "IDUserEditSearchLookUpEdit";
             this.IDUserEditSearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -404,7 +433,7 @@ namespace E4Storage.App.UI
             this.TglEditDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "TglEdit", true));
             this.TglEditDateEdit.EditValue = null;
             this.TglEditDateEdit.EnterMoveNextControl = true;
-            this.TglEditDateEdit.Location = new System.Drawing.Point(278, 312);
+            this.TglEditDateEdit.Location = new System.Drawing.Point(278, 371);
             this.TglEditDateEdit.MenuManager = this.barManager1;
             this.TglEditDateEdit.Name = "TglEditDateEdit";
             this.TglEditDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -423,10 +452,10 @@ namespace E4Storage.App.UI
             // KeteranganMemoEdit
             // 
             this.KeteranganMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Keterangan", true));
-            this.KeteranganMemoEdit.Location = new System.Drawing.Point(79, 204);
+            this.KeteranganMemoEdit.Location = new System.Drawing.Point(79, 276);
             this.KeteranganMemoEdit.MenuManager = this.barManager1;
             this.KeteranganMemoEdit.Name = "KeteranganMemoEdit";
-            this.KeteranganMemoEdit.Size = new System.Drawing.Size(328, 80);
+            this.KeteranganMemoEdit.Size = new System.Drawing.Size(328, 67);
             this.KeteranganMemoEdit.StyleController = this.dataLayoutControl1;
             this.KeteranganMemoEdit.TabIndex = 16;
             // 
@@ -460,6 +489,112 @@ namespace E4Storage.App.UI
             this.QtyCalcEdit.StyleController = this.dataLayoutControl1;
             this.QtyCalcEdit.TabIndex = 18;
             // 
+            // DocNoTextEdit
+            // 
+            this.DocNoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "DocNo", true));
+            this.DocNoTextEdit.Location = new System.Drawing.Point(79, 36);
+            this.DocNoTextEdit.MenuManager = this.barManager1;
+            this.DocNoTextEdit.Name = "DocNoTextEdit";
+            this.DocNoTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.DocNoTextEdit.Size = new System.Drawing.Size(328, 20);
+            this.DocNoTextEdit.StyleController = this.dataLayoutControl1;
+            this.DocNoTextEdit.TabIndex = 19;
+            // 
+            // IDCategorySearchLookUpEdit
+            // 
+            this.IDCategorySearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDCategory", true));
+            this.IDCategorySearchLookUpEdit.EnterMoveNextControl = true;
+            this.IDCategorySearchLookUpEdit.Location = new System.Drawing.Point(79, 228);
+            this.IDCategorySearchLookUpEdit.MenuManager = this.barManager1;
+            this.IDCategorySearchLookUpEdit.Name = "IDCategorySearchLookUpEdit";
+            this.IDCategorySearchLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.IDCategorySearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
+            this.IDCategorySearchLookUpEdit.Properties.NullText = "";
+            this.IDCategorySearchLookUpEdit.Properties.PopupView = this.gvCategory;
+            this.IDCategorySearchLookUpEdit.Size = new System.Drawing.Size(328, 20);
+            this.IDCategorySearchLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.IDCategorySearchLookUpEdit.TabIndex = 20;
+            this.IDCategorySearchLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.IDCategorySearchLookUpEdit_ButtonClick);
+            this.IDCategorySearchLookUpEdit.EditValueChanged += new System.EventHandler(this.IDCategorySearchLookUpEdit_EditValueChanged);
+            // 
+            // gvCategory
+            // 
+            this.gvCategory.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gvCategory.Name = "gvCategory";
+            this.gvCategory.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvCategory.OptionsView.ShowGroupPanel = false;
+            this.gvCategory.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            // 
+            // CabinetTextEdit
+            // 
+            this.CabinetTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Cabinet", true));
+            this.CabinetTextEdit.EditValue = ((short)(0));
+            this.CabinetTextEdit.EnterMoveNextControl = true;
+            this.CabinetTextEdit.Location = new System.Drawing.Point(79, 252);
+            this.CabinetTextEdit.MenuManager = this.barManager1;
+            this.CabinetTextEdit.Name = "CabinetTextEdit";
+            this.CabinetTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.CabinetTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.CabinetTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.CabinetTextEdit.Properties.Mask.EditMask = "N0";
+            this.CabinetTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.CabinetTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.CabinetTextEdit.Size = new System.Drawing.Size(128, 20);
+            this.CabinetTextEdit.StyleController = this.dataLayoutControl1;
+            this.CabinetTextEdit.TabIndex = 21;
+            // 
+            // RowTextEdit
+            // 
+            this.RowTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "Row", true));
+            this.RowTextEdit.EnterMoveNextControl = true;
+            this.RowTextEdit.Location = new System.Drawing.Point(278, 252);
+            this.RowTextEdit.MenuManager = this.barManager1;
+            this.RowTextEdit.Name = "RowTextEdit";
+            this.RowTextEdit.Size = new System.Drawing.Size(129, 20);
+            this.RowTextEdit.StyleController = this.dataLayoutControl1;
+            this.RowTextEdit.TabIndex = 22;
+            // 
+            // IDBeltSearchLookUpEdit
+            // 
+            this.IDBeltSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDBelt", true));
+            this.IDBeltSearchLookUpEdit.EnterMoveNextControl = true;
+            this.IDBeltSearchLookUpEdit.Location = new System.Drawing.Point(278, 204);
+            this.IDBeltSearchLookUpEdit.MenuManager = this.barManager1;
+            this.IDBeltSearchLookUpEdit.Name = "IDBeltSearchLookUpEdit";
+            this.IDBeltSearchLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.IDBeltSearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
+            this.IDBeltSearchLookUpEdit.Properties.NullText = "";
+            this.IDBeltSearchLookUpEdit.Properties.PopupView = this.gvBelt;
+            this.IDBeltSearchLookUpEdit.Size = new System.Drawing.Size(129, 20);
+            this.IDBeltSearchLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.IDBeltSearchLookUpEdit.TabIndex = 23;
+            this.IDBeltSearchLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.IDBeltSearchLookUpEdit_ButtonClick);
+            this.IDBeltSearchLookUpEdit.EditValueChanged += new System.EventHandler(this.IDBeltSearchLookUpEdit_EditValueChanged);
+            // 
+            // gvBelt
+            // 
+            this.gvBelt.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gvBelt.Name = "gvBelt";
+            this.gvBelt.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvBelt.OptionsView.ShowGroupPanel = false;
+            this.gvBelt.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            // 
+            // PICTextEdit
+            // 
+            this.PICTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "PIC", true));
+            this.PICTextEdit.EnterMoveNextControl = true;
+            this.PICTextEdit.Location = new System.Drawing.Point(79, 204);
+            this.PICTextEdit.MenuManager = this.barManager1;
+            this.PICTextEdit.Name = "PICTextEdit";
+            this.PICTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.PICTextEdit.Size = new System.Drawing.Size(128, 20);
+            this.PICTextEdit.StyleController = this.dataLayoutControl1;
+            this.PICTextEdit.TabIndex = 24;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -467,7 +602,7 @@ namespace E4Storage.App.UI
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(419, 344);
+            this.Root.Size = new System.Drawing.Size(419, 403);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -487,10 +622,15 @@ namespace E4Storage.App.UI
             this.ItemForIDUserEdit,
             this.ItemForTglEdit,
             this.ItemForNamaBarang,
-            this.ItemForDocNo});
+            this.ItemForDocNo,
+            this.ItemForPIC,
+            this.ItemForIDBelt,
+            this.ItemForIDCategory,
+            this.ItemForCabinet,
+            this.ItemForRow});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(399, 324);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(399, 383);
             // 
             // ItemForTanggal
             // 
@@ -549,16 +689,16 @@ namespace E4Storage.App.UI
             // ItemForKeterangan
             // 
             this.ItemForKeterangan.Control = this.KeteranganMemoEdit;
-            this.ItemForKeterangan.Location = new System.Drawing.Point(0, 192);
+            this.ItemForKeterangan.Location = new System.Drawing.Point(0, 264);
             this.ItemForKeterangan.Name = "ItemForKeterangan";
-            this.ItemForKeterangan.Size = new System.Drawing.Size(399, 84);
+            this.ItemForKeterangan.Size = new System.Drawing.Size(399, 71);
             this.ItemForKeterangan.Text = "Keterangan";
             this.ItemForKeterangan.TextSize = new System.Drawing.Size(64, 13);
             // 
             // ItemForIDUserEntri
             // 
             this.ItemForIDUserEntri.Control = this.IDUserEntriSearchLookUpEdit;
-            this.ItemForIDUserEntri.Location = new System.Drawing.Point(0, 276);
+            this.ItemForIDUserEntri.Location = new System.Drawing.Point(0, 335);
             this.ItemForIDUserEntri.Name = "ItemForIDUserEntri";
             this.ItemForIDUserEntri.Size = new System.Drawing.Size(199, 24);
             this.ItemForIDUserEntri.Text = "User Entri";
@@ -567,7 +707,7 @@ namespace E4Storage.App.UI
             // ItemForTglEntri
             // 
             this.ItemForTglEntri.Control = this.TglEntriDateEdit;
-            this.ItemForTglEntri.Location = new System.Drawing.Point(0, 300);
+            this.ItemForTglEntri.Location = new System.Drawing.Point(0, 359);
             this.ItemForTglEntri.Name = "ItemForTglEntri";
             this.ItemForTglEntri.Size = new System.Drawing.Size(199, 24);
             this.ItemForTglEntri.Text = "Tgl Entri";
@@ -576,7 +716,7 @@ namespace E4Storage.App.UI
             // ItemForIDUserEdit
             // 
             this.ItemForIDUserEdit.Control = this.IDUserEditSearchLookUpEdit;
-            this.ItemForIDUserEdit.Location = new System.Drawing.Point(199, 276);
+            this.ItemForIDUserEdit.Location = new System.Drawing.Point(199, 335);
             this.ItemForIDUserEdit.Name = "ItemForIDUserEdit";
             this.ItemForIDUserEdit.Size = new System.Drawing.Size(200, 24);
             this.ItemForIDUserEdit.Text = "User Edit";
@@ -585,7 +725,7 @@ namespace E4Storage.App.UI
             // ItemForTglEdit
             // 
             this.ItemForTglEdit.Control = this.TglEditDateEdit;
-            this.ItemForTglEdit.Location = new System.Drawing.Point(199, 300);
+            this.ItemForTglEdit.Location = new System.Drawing.Point(199, 359);
             this.ItemForTglEdit.Name = "ItemForTglEdit";
             this.ItemForTglEdit.Size = new System.Drawing.Size(200, 24);
             this.ItemForTglEdit.Text = "Tgl Edit";
@@ -600,21 +740,6 @@ namespace E4Storage.App.UI
             this.ItemForNamaBarang.Text = "Nama Barang";
             this.ItemForNamaBarang.TextSize = new System.Drawing.Size(64, 13);
             // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
-            // 
-            // DocNoTextEdit
-            // 
-            this.DocNoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "DocNo", true));
-            this.DocNoTextEdit.Location = new System.Drawing.Point(79, 36);
-            this.DocNoTextEdit.MenuManager = this.barManager1;
-            this.DocNoTextEdit.Name = "DocNoTextEdit";
-            this.DocNoTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.DocNoTextEdit.Size = new System.Drawing.Size(328, 20);
-            this.DocNoTextEdit.StyleController = this.dataLayoutControl1;
-            this.DocNoTextEdit.TabIndex = 19;
-            // 
             // ItemForDocNo
             // 
             this.ItemForDocNo.Control = this.DocNoTextEdit;
@@ -624,11 +749,60 @@ namespace E4Storage.App.UI
             this.ItemForDocNo.Text = "No PO";
             this.ItemForDocNo.TextSize = new System.Drawing.Size(64, 13);
             // 
+            // ItemForPIC
+            // 
+            this.ItemForPIC.Control = this.PICTextEdit;
+            this.ItemForPIC.Location = new System.Drawing.Point(0, 192);
+            this.ItemForPIC.Name = "ItemForPIC";
+            this.ItemForPIC.Size = new System.Drawing.Size(199, 24);
+            this.ItemForPIC.Text = "PIC";
+            this.ItemForPIC.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForIDBelt
+            // 
+            this.ItemForIDBelt.Control = this.IDBeltSearchLookUpEdit;
+            this.ItemForIDBelt.Location = new System.Drawing.Point(199, 192);
+            this.ItemForIDBelt.Name = "ItemForIDBelt";
+            this.ItemForIDBelt.Size = new System.Drawing.Size(200, 24);
+            this.ItemForIDBelt.Text = "Belt";
+            this.ItemForIDBelt.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForIDCategory
+            // 
+            this.ItemForIDCategory.Control = this.IDCategorySearchLookUpEdit;
+            this.ItemForIDCategory.Location = new System.Drawing.Point(0, 216);
+            this.ItemForIDCategory.Name = "ItemForIDCategory";
+            this.ItemForIDCategory.Size = new System.Drawing.Size(399, 24);
+            this.ItemForIDCategory.Text = "Category";
+            this.ItemForIDCategory.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForCabinet
+            // 
+            this.ItemForCabinet.Control = this.CabinetTextEdit;
+            this.ItemForCabinet.Location = new System.Drawing.Point(0, 240);
+            this.ItemForCabinet.Name = "ItemForCabinet";
+            this.ItemForCabinet.Size = new System.Drawing.Size(199, 24);
+            this.ItemForCabinet.Text = "Cabinet";
+            this.ItemForCabinet.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // ItemForRow
+            // 
+            this.ItemForRow.Control = this.RowTextEdit;
+            this.ItemForRow.Location = new System.Drawing.Point(199, 240);
+            this.ItemForRow.Name = "ItemForRow";
+            this.ItemForRow.Size = new System.Drawing.Size(200, 24);
+            this.ItemForRow.Text = "Row";
+            this.ItemForRow.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
+            // 
             // frmEntriStokMasuk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 364);
+            this.ClientSize = new System.Drawing.Size(419, 423);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -662,6 +836,14 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.KeteranganMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NamaBarangTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyCalcEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDCategorySearchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CabinetTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RowTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDBeltSearchLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBelt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PICTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTanggal)).EndInit();
@@ -676,9 +858,13 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUserEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForNamaBarang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocNoTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDocNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPIC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIDBelt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIDCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCabinet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -731,5 +917,17 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.CalcEdit QtyCalcEdit;
         private DevExpress.XtraEditors.TextEdit DocNoTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDocNo;
+        private DevExpress.XtraEditors.SearchLookUpEdit IDCategorySearchLookUpEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvCategory;
+        private DevExpress.XtraEditors.TextEdit CabinetTextEdit;
+        private DevExpress.XtraEditors.TextEdit RowTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForIDCategory;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCabinet;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForRow;
+        private DevExpress.XtraEditors.SearchLookUpEdit IDBeltSearchLookUpEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvBelt;
+        private DevExpress.XtraEditors.TextEdit PICTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForIDBelt;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForPIC;
     }
 }

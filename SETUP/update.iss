@@ -7,7 +7,7 @@
 #define MyAppURLProduct "https://www.linkedin.com/in/yanto-hariyono-64b3a6a3/"
 #define MyAppExeName "E4Storage.App.exe"
 #define MyGroupApp "Inventory System"
-#define MyYearApp "2023"
+#define MyYearApp "2024"
 #define MyAppId "{0F97CC0E-54E0-4727-B55F-F04648221405}"
 
 [Setup]
@@ -20,7 +20,7 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURLSupport}
 AppUpdatesURL={#MyAppURLProduct}
 AppCopyright={#MyAppCopyright}
-VersionInfoVersion=1.0.0.1
+VersionInfoVersion=1.0.1.1
 DefaultDirName={commonpf}\{#MyGroupApp}\E4Storage
 OutputDir=Output
 OutputBaseFilename=E4Storage_Update

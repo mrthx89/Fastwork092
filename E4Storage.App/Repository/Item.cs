@@ -96,6 +96,23 @@ namespace E4Storage.App.Repository
             return hasil;
         }
 
+        public static Tuple<bool, List<TCategory>> getCategories()
+        {
+            Tuple<bool, List<TCategory>> hasil = new Tuple<bool, List<TCategory>>(false, null);
+            using (Data.E4StorageContext context = new Data.E4StorageContext(Constant.appSetting.KoneksiString))
+            {
+                try
+                {
+                    hasil = new Tuple<bool, List<TCategory>>(true, context.TCategories.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.getCategories", ex);
+                }
+            }
+            return hasil;
+        }
+
         public static Tuple<bool, List<TTypeTransaction>> getTypes()
         {
             Tuple<bool, List<TTypeTransaction>> hasil = new Tuple<bool, List<TTypeTransaction>>(false, null);
@@ -160,6 +177,53 @@ namespace E4Storage.App.Repository
             return hasil;
         }
 
+        public static Tuple<bool, List<TCategory>> saveCategories(List<TCategory> categories)
+        {
+            Tuple<bool, List<TCategory>> hasil = new Tuple<bool, List<TCategory>>(false, null);
+            using (Data.E4StorageContext dbContext = new Data.E4StorageContext(Constant.appSetting.KoneksiString))
+            {
+                try
+                {
+                    var userExists = dbContext.TCategories.ToList();
+                    foreach (var item in userExists)
+                    {
+                        if (categories.FirstOrDefault(o => o.ID == item.ID) == null)
+                        {
+                            dbContext.TCategories.Remove(item);
+                        }
+                    }
+
+                    foreach (var item in categories)
+                    {
+                        var existingItem = dbContext.TCategories.FirstOrDefault(i => i.ID == item.ID);
+                        if (existingItem != null)
+                        {
+                            item.IDUserEdit = Constant.UserLogin.ID;
+                            item.TglEdit = DateTime.Now;
+                            dbContext.Entry(existingItem).CurrentValues.SetValues(item);
+                        }
+                        else
+                        {
+                            item.IDUserEntri = Constant.UserLogin.ID;
+                            item.TglEntri = DateTime.Now;
+                            item.IDUserEdit = Guid.Empty;
+                            item.TglEdit = null;
+                            dbContext.TCategories.Add(item);
+                        }
+                    }
+
+                    dbContext.SaveChanges();
+
+                    hasil = new Tuple<bool, List<TCategory>>(true, dbContext.TCategories.ToList());
+                }
+                catch (Exception ex)
+                {
+                    MsgBoxHelper.MsgError($"{Name}.saveCategories", ex);
+                }
+            }
+            return hasil;
+        }
+
         public static Tuple<bool, List<ItemMaster>> getInventors(Dictionary<string, dynamic> filter, DateTime? SaldoPerTanggal)
         {
             Tuple<bool, List<ItemMaster>> hasil = new Tuple<bool, List<ItemMaster>>(false, null);
@@ -207,7 +271,9 @@ namespace E4Storage.App.Repository
                                      Saldo = (saldo != null ? saldo.Saldo : 0),
                                      TglEdit = item.TglEdit,
                                      TglEntri = item.TglEntri,
-                                     TglHapus = item.TglHapus
+                                     TglHapus = item.TglHapus,
+                                     QtyMax = item.QtyMax,
+                                     QtyMin = item.QtyMin
                                  }).ToList();
                     hasil = new Tuple<bool, List<ItemMaster>>(true, items);
                 }
@@ -354,7 +420,9 @@ namespace E4Storage.App.Repository
                                      Saldo = (saldo != null ? saldo.Saldo : 0),
                                      TglEdit = item.TglEdit,
                                      TglEntri = item.TglEntri,
-                                     TglHapus = item.TglHapus
+                                     TglHapus = item.TglHapus,
+                                     QtyMin = item.QtyMin,
+                                     QtyMax = item.QtyMax
                                  }).ToList();
                     hasil = new Tuple<bool, List<ItemMaster>>(true, items);
                 }

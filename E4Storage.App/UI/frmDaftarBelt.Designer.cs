@@ -263,7 +263,7 @@ namespace E4Storage.App.UI
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmDaftarBelt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Daftar Belt";
+            this.Text = "Daftar Category";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDaftarBelt_FormClosing);
             this.Load += new System.EventHandler(this.frmDaftarBelt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

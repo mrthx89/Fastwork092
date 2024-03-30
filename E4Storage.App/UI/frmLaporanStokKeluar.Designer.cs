@@ -69,6 +69,10 @@ namespace E4Storage.App.UI
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colIDCategory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCategory = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colCabinet = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRow = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -83,6 +87,7 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -159,14 +164,14 @@ namespace E4Storage.App.UI
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Summary Item";
+            this.barButtonItem1.Caption = "Summary &Item";
             this.barButtonItem1.Id = 5;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "Summary Belt";
+            this.barButtonItem2.Caption = "Summary &Belt";
             this.barButtonItem2.Id = 6;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
@@ -223,7 +228,8 @@ namespace E4Storage.App.UI
             this.repositoryItemUOM,
             this.repositoryItemInventor,
             this.repositoryItemBelt,
-            this.repositoryItemType});
+            this.repositoryItemType,
+            this.repositoryItemCategory});
             this.gridControl1.Size = new System.Drawing.Size(1094, 527);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -253,7 +259,10 @@ namespace E4Storage.App.UI
             this.colTglEdit,
             this.colIDUserHapus,
             this.colTglHapus,
-            this.colType});
+            this.colType,
+            this.colIDCategory,
+            this.colCabinet,
+            this.colRow});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -457,6 +466,42 @@ namespace E4Storage.App.UI
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemType.Name = "repositoryItemType";
             // 
+            // colIDCategory
+            // 
+            this.colIDCategory.Caption = "Category";
+            this.colIDCategory.ColumnEdit = this.repositoryItemCategory;
+            this.colIDCategory.FieldName = "IDCategory";
+            this.colIDCategory.Name = "colIDCategory";
+            this.colIDCategory.Visible = true;
+            this.colIDCategory.VisibleIndex = 14;
+            // 
+            // repositoryItemCategory
+            // 
+            this.repositoryItemCategory.AutoHeight = false;
+            this.repositoryItemCategory.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCategory.Name = "repositoryItemCategory";
+            // 
+            // colCabinet
+            // 
+            this.colCabinet.AppearanceCell.Options.UseTextOptions = true;
+            this.colCabinet.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colCabinet.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCabinet.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colCabinet.Caption = "Cabinet";
+            this.colCabinet.FieldName = "Cabinet";
+            this.colCabinet.Name = "colCabinet";
+            this.colCabinet.Visible = true;
+            this.colCabinet.VisibleIndex = 15;
+            // 
+            // colRow
+            // 
+            this.colRow.Caption = "Row";
+            this.colRow.FieldName = "Row";
+            this.colRow.Name = "colRow";
+            this.colRow.Visible = true;
+            this.colRow.VisibleIndex = 16;
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.dateEdit2);
@@ -543,6 +588,7 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -601,5 +647,9 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemType;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn colIDCategory;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemCategory;
+        private DevExpress.XtraGrid.Columns.GridColumn colCabinet;
+        private DevExpress.XtraGrid.Columns.GridColumn colRow;
     }
 }

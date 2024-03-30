@@ -57,13 +57,20 @@ namespace E4Storage.App.UI
                     StokMasuk CurrentData = (StokMasuk)stokMasukBindingSource.Current;
                     if (CurrentData != null)
                     {
-                        if (MsgBoxHelper.MsgQuestionYesNo($"{this.Name}.mnDelete_ItemClick", $"Yakin ingin menghapus stok masuk item {CurrentData.NamaBarang} di nomor nota ini {CurrentData.NoSJ}?") == DialogResult.Yes)
+                        if (Utils.Constant.UserLogin.IsAdmin)
                         {
-                            var delete = Repository.StokMasuk.deleteStokMasuk(CurrentData);
-                            if (delete.Item1)
+                            if (MsgBoxHelper.MsgQuestionYesNo($"{this.Name}.mnDelete_ItemClick", $"Yakin ingin menghapus stok masuk item {CurrentData.NamaBarang} di nomor nota ini {CurrentData.NoSJ}?") == DialogResult.Yes)
                             {
-                                mnReload.PerformClick();
+                                var delete = Repository.StokMasuk.deleteStokMasuk(CurrentData);
+                                if (delete.Item1)
+                                {
+                                    mnReload.PerformClick();
+                                }
                             }
+                        }
+                        else
+                        {
+                            MsgBoxHelper.MsgInfo($"{this.Name}.mnDelete_ItemClick", "Untuk menghapus data harap menghubungi Admin!");
                         }
                     }
                 }
@@ -78,6 +85,8 @@ namespace E4Storage.App.UI
         private dynamic lookupUser = null;
         private dynamic lookupItem = null;
         private dynamic lookupUOM = null;
+        private dynamic lookupBelt = null;
+        private dynamic lookupCategories = null;
         private void frmLaporanStokMasuk_Load(object sender, EventArgs e)
         {
             dateEdit1.DateTime = DateTime.Now.AddDays(-30);
@@ -109,6 +118,24 @@ namespace E4Storage.App.UI
             repositoryItemUOM.DataSource = lookupUOM;
             repositoryItemUOM.ValueMember = "ID";
             repositoryItemUOM.DisplayMember = "Satuan";
+
+            var lookUpCategories = Repository.Item.getCategories();
+            if (lookUpCategories.Item1)
+            {
+                lookupCategories = lookUpCategories.Item2;
+            }
+            repositoryItemCategory.DataSource = lookupCategories;
+            repositoryItemCategory.ValueMember = "ID";
+            repositoryItemCategory.DisplayMember = "Category";
+
+            var lookUpBelt = Repository.Item.getBelts();
+            if (lookUpBelt.Item1)
+            {
+                lookupBelt = lookUpBelt.Item2;
+            }
+            repositoryItemBelt.DataSource = lookupBelt;
+            repositoryItemBelt.ValueMember = "ID";
+            repositoryItemBelt.DisplayMember = "Belt";
 
             mnReload.PerformClick();
         }
@@ -201,71 +228,78 @@ namespace E4Storage.App.UI
                 var data = (StokMasuk)stokMasukBindingSource.Current;
                 if (data != null)
                 {
-                    if (data.IDType == Constant.stokInType)
+                    if (Utils.Constant.UserLogin.IsAdmin)
                     {
-                        using (frmEntriStokMasuk frm = new frmEntriStokMasuk(data))
+                        if (data.IDType == Constant.stokInType)
                         {
-                            try
+                            using (frmEntriStokMasuk frm = new frmEntriStokMasuk(data))
                             {
-                                frm.StartPosition = FormStartPosition.CenterParent;
-                                if (frm.ShowDialog(this) == DialogResult.OK)
+                                try
                                 {
-                                    mnReload.PerformClick();
+                                    frm.StartPosition = FormStartPosition.CenterParent;
+                                    if (frm.ShowDialog(this) == DialogResult.OK)
+                                    {
+                                        mnReload.PerformClick();
 
-                                    gridView1.ClearSelection();
-                                    gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
-                                    gridView1.SelectRow(gridView1.FocusedRowHandle);
+                                        gridView1.ClearSelection();
+                                        gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
+                                        gridView1.SelectRow(gridView1.FocusedRowHandle);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
                                 }
                             }
-                            catch (Exception ex)
+                        }
+                        else if (data.IDType == Constant.stokPengembalianType)
+                        {
+                            using (frmEntriStokPengembalian frm = new frmEntriStokPengembalian(Constant.mapper.Map<Model.ViewModel.StokMasuk, Model.ViewModel.StokPengembalian>(data)))
                             {
-                                MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
+                                try
+                                {
+                                    frm.StartPosition = FormStartPosition.CenterParent;
+                                    if (frm.ShowDialog(this) == DialogResult.OK)
+                                    {
+                                        mnReload.PerformClick();
+
+                                        gridView1.ClearSelection();
+                                        gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
+                                        gridView1.SelectRow(gridView1.FocusedRowHandle);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
+                                }
+                            }
+                        }
+                        else if (data.IDType == Constant.stokMasterDataType)
+                        {
+                            using (frmEntriStokMasterData frm = new frmEntriStokMasterData(Constant.mapper.Map<Model.ViewModel.StokMasuk, Model.ViewModel.StokMasterData>(data)))
+                            {
+                                try
+                                {
+                                    frm.StartPosition = FormStartPosition.CenterParent;
+                                    if (frm.ShowDialog(this) == DialogResult.OK)
+                                    {
+                                        mnReload.PerformClick();
+
+                                        gridView1.ClearSelection();
+                                        gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
+                                        gridView1.SelectRow(gridView1.FocusedRowHandle);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
+                                }
                             }
                         }
                     }
-                    else if (data.IDType == Constant.stokPengembalianType)
+                    else
                     {
-                        using (frmEntriStokPengembalian frm = new frmEntriStokPengembalian(Constant.mapper.Map<Model.ViewModel.StokMasuk, Model.ViewModel.StokPengembalian>(data)))
-                        {
-                            try
-                            {
-                                frm.StartPosition = FormStartPosition.CenterParent;
-                                if (frm.ShowDialog(this) == DialogResult.OK)
-                                {
-                                    mnReload.PerformClick();
-
-                                    gridView1.ClearSelection();
-                                    gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
-                                    gridView1.SelectRow(gridView1.FocusedRowHandle);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
-                            }
-                        }
-                    }
-                    else if (data.IDType == Constant.stokMasterDataType)
-                    {
-                        using (frmEntriStokMasterData frm = new frmEntriStokMasterData(Constant.mapper.Map<Model.ViewModel.StokMasuk, Model.ViewModel.StokMasterData>(data)))
-                        {
-                            try
-                            {
-                                frm.StartPosition = FormStartPosition.CenterParent;
-                                if (frm.ShowDialog(this) == DialogResult.OK)
-                                {
-                                    mnReload.PerformClick();
-
-                                    gridView1.ClearSelection();
-                                    gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, frm.data.ID.ToString());
-                                    gridView1.SelectRow(gridView1.FocusedRowHandle);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
-                            }
-                        }
+                        MsgBoxHelper.MsgInfo($"{this.Name}.mnEdit_ItemClick", "Untuk mengedit data harap menghubungi Admin!");
                     }
                 }
             }
@@ -273,6 +307,18 @@ namespace E4Storage.App.UI
             {
                 MsgBoxHelper.MsgError($"{this.Name}.mnEdit_ItemClick", ex);
             }
+        }
+
+        private void mnSummaryItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Dialog.flyoutSummaryItemMasuk(this, new Dialog.dlgSummaryItemMasuk(dateEdit1.DateTime.Date, dateEdit2.DateTime.Date))
+                .ShowFormPopup();
+        }
+
+        private void mnSummaryBelt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Dialog.flyoutSummaryBeltMasuk(this, new Dialog.dlgSummaryBeltMasuk(dateEdit1.DateTime.Date, dateEdit2.DateTime.Date))
+                .ShowFormPopup();
         }
     }
 }

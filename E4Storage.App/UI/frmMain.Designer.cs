@@ -176,7 +176,7 @@ namespace E4Storage.App.UI
             // 
             // bbiLaporanSaldoStok
             // 
-            this.bbiLaporanSaldoStok.Caption = "Laporan Saldo Stok";
+            this.bbiLaporanSaldoStok.Caption = "Laporan Stok";
             this.bbiLaporanSaldoStok.Id = 8;
             this.bbiLaporanSaldoStok.ImageOptions.LargeImageIndex = 12;
             this.bbiLaporanSaldoStok.Name = "bbiLaporanSaldoStok";
@@ -216,7 +216,7 @@ namespace E4Storage.App.UI
             // 
             // bbiLaporanMutasiStok
             // 
-            this.bbiLaporanMutasiStok.Caption = "Mutasi Saldo Stok";
+            this.bbiLaporanMutasiStok.Caption = "Mutasi Stok";
             this.bbiLaporanMutasiStok.Id = 13;
             this.bbiLaporanMutasiStok.ImageOptions.LargeImageIndex = 7;
             this.bbiLaporanMutasiStok.Name = "bbiLaporanMutasiStok";

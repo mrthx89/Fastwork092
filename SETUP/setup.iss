@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "E4 Storage"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "YH Dev"
 #define MyAppCopyright "Copyright @ 2023 YH Dev"
 #define MyAppURL "https://www.linkedin.com/in/yanto-hariyono-64b3a6a3/"
@@ -10,7 +10,7 @@
 #define MyAppURLProduct "https://www.linkedin.com/in/yanto-hariyono-64b3a6a3/"
 #define MyAppExeName "E4Storage.App.exe"
 #define MyGroupApp "Inventory System"
-#define MyYearApp "2023"
+#define MyYearApp "2024"
 #define MyAppId "{0F97CC0E-54E0-4727-B55F-F04648221405}"
 
 [Setup]

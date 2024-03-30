@@ -36,6 +36,8 @@ namespace E4Storage.App.UI
             this.mnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.mnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.mnReload = new DevExpress.XtraBars.BarButtonItem();
+            this.mnSummaryItem = new DevExpress.XtraBars.BarButtonItem();
+            this.mnSummaryBelt = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -64,6 +66,15 @@ namespace E4Storage.App.UI
             this.colTglEdit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUserHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPIC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRow = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCabinet = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIDBelt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemBelt = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIDCategory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCategory = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -76,6 +87,10 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBelt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -98,8 +113,10 @@ namespace E4Storage.App.UI
             this.mnReload,
             this.mnDelete,
             this.mnBaru,
-            this.mnEdit});
-            this.barManager1.MaxItemId = 5;
+            this.mnEdit,
+            this.mnSummaryItem,
+            this.mnSummaryBelt});
+            this.barManager1.MaxItemId = 7;
             // 
             // bar1
             // 
@@ -111,7 +128,9 @@ namespace E4Storage.App.UI
             new DevExpress.XtraBars.LinkPersistInfo(this.mnBaru),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnSummaryItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnSummaryBelt)});
             this.bar1.Text = "Tools";
             // 
             // mnBaru
@@ -145,6 +164,20 @@ namespace E4Storage.App.UI
             this.mnReload.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.mnReload.Name = "mnReload";
             this.mnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnReload_ItemClick);
+            // 
+            // mnSummaryItem
+            // 
+            this.mnSummaryItem.Caption = "Summary &Item";
+            this.mnSummaryItem.Id = 5;
+            this.mnSummaryItem.Name = "mnSummaryItem";
+            this.mnSummaryItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnSummaryItem_ItemClick);
+            // 
+            // mnSummaryBelt
+            // 
+            this.mnSummaryBelt.Caption = "Summary &Belt";
+            this.mnSummaryBelt.Id = 6;
+            this.mnSummaryBelt.Name = "mnSummaryBelt";
+            this.mnSummaryBelt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnSummaryBelt_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -196,7 +229,9 @@ namespace E4Storage.App.UI
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemUser,
             this.repositoryItemUOM,
-            this.repositoryItemInventor});
+            this.repositoryItemInventor,
+            this.repositoryItemBelt,
+            this.repositoryItemCategory});
             this.gridControl1.Size = new System.Drawing.Size(1094, 527);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -225,7 +260,12 @@ namespace E4Storage.App.UI
             this.colIDUserEdit,
             this.colTglEdit,
             this.colIDUserHapus,
-            this.colTglHapus});
+            this.colTglHapus,
+            this.colPIC,
+            this.colRow,
+            this.colCabinet,
+            this.colIDBelt,
+            this.colIDCategory});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -404,6 +444,84 @@ namespace E4Storage.App.UI
             this.colTglHapus.FieldName = "TglHapus";
             this.colTglHapus.Name = "colTglHapus";
             // 
+            // colPIC
+            // 
+            this.colPIC.Caption = "PIC";
+            this.colPIC.FieldName = "PIC";
+            this.colPIC.Name = "colPIC";
+            this.colPIC.Visible = true;
+            this.colPIC.VisibleIndex = 14;
+            // 
+            // colRow
+            // 
+            this.colRow.Caption = "Row";
+            this.colRow.FieldName = "Row";
+            this.colRow.Name = "colRow";
+            this.colRow.Visible = true;
+            this.colRow.VisibleIndex = 15;
+            // 
+            // colCabinet
+            // 
+            this.colCabinet.AppearanceCell.Options.UseTextOptions = true;
+            this.colCabinet.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colCabinet.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCabinet.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colCabinet.Caption = "Cabinet";
+            this.colCabinet.DisplayFormat.FormatString = "n0";
+            this.colCabinet.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colCabinet.FieldName = "Cabinet";
+            this.colCabinet.Name = "colCabinet";
+            this.colCabinet.Visible = true;
+            this.colCabinet.VisibleIndex = 16;
+            // 
+            // colIDBelt
+            // 
+            this.colIDBelt.Caption = "Belt";
+            this.colIDBelt.ColumnEdit = this.repositoryItemBelt;
+            this.colIDBelt.FieldName = "IDBelt";
+            this.colIDBelt.Name = "colIDBelt";
+            this.colIDBelt.Visible = true;
+            this.colIDBelt.VisibleIndex = 17;
+            // 
+            // repositoryItemBelt
+            // 
+            this.repositoryItemBelt.AutoHeight = false;
+            this.repositoryItemBelt.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemBelt.Name = "repositoryItemBelt";
+            this.repositoryItemBelt.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colIDCategory
+            // 
+            this.colIDCategory.Caption = "Category";
+            this.colIDCategory.ColumnEdit = this.repositoryItemCategory;
+            this.colIDCategory.FieldName = "IDCategory";
+            this.colIDCategory.Name = "colIDCategory";
+            this.colIDCategory.Visible = true;
+            this.colIDCategory.VisibleIndex = 18;
+            // 
+            // repositoryItemCategory
+            // 
+            this.repositoryItemCategory.AutoHeight = false;
+            this.repositoryItemCategory.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCategory.Name = "repositoryItemCategory";
+            this.repositoryItemCategory.PopupView = this.repositoryItemSearchLookUpEdit2View;
+            // 
+            // repositoryItemSearchLookUpEdit2View
+            // 
+            this.repositoryItemSearchLookUpEdit2View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit2View.Name = "repositoryItemSearchLookUpEdit2View";
+            this.repositoryItemSearchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.dateEdit2);
@@ -488,6 +606,10 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemInventor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBelt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -541,5 +663,16 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn colPeriode;
+        private DevExpress.XtraGrid.Columns.GridColumn colPIC;
+        private DevExpress.XtraGrid.Columns.GridColumn colRow;
+        private DevExpress.XtraGrid.Columns.GridColumn colCabinet;
+        private DevExpress.XtraGrid.Columns.GridColumn colIDBelt;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemBelt;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn colIDCategory;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemCategory;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
+        private DevExpress.XtraBars.BarButtonItem mnSummaryItem;
+        private DevExpress.XtraBars.BarButtonItem mnSummaryBelt;
     }
 }

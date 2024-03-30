@@ -41,7 +41,12 @@ namespace E4Storage.App.Repository
                                     Tanggal = s.Tanggal,
                                     TglEdit = s.TglEdit,
                                     TglEntri = s.TglEntri,
-                                    TglHapus = s.TglHapus
+                                    TglHapus = s.TglHapus,
+                                    Cabinet = s.Cabinet,
+                                    IDBelt = s.IDBelt,
+                                    IDCategory = s.IDCategory,
+                                    PIC = s.PIC,
+                                    Row = s.Row
                                 };
                     hasil = new Tuple<bool, List<Model.ViewModel.StokPengembalian>>(true, datas.ToList());
                 }
@@ -85,8 +90,13 @@ namespace E4Storage.App.Repository
                     stockCard.IDTransaksi = data.ID;
                     stockCard.IDTransaksiD = data.ID;
                     stockCard.IDType = Constant.stokPengembalianType;
-                    stockCard.DocNo = data.DocNo;
+                    stockCard.DocNo = (string.IsNullOrEmpty(data.DocNo) || string.IsNullOrWhiteSpace(data.DocNo) ? "SR-" + stockCard.Tanggal.ToString("yyMMddHHmmss") : data.DocNo);
                     stockCard.QtyMasuk = data.Qty;
+                    stockCard.PIC = data.PIC;
+                    stockCard.IDBelt = data.IDBelt;
+                    stockCard.IDCategory = data.IDCategory;
+                    stockCard.Cabinet = data.Cabinet;
+                    stockCard.Row = data.Row;
                     context.TStockCards.Add(stockCard);
 
                     hasil = new Tuple<bool, Model.ViewModel.StokPengembalian>(true, data);

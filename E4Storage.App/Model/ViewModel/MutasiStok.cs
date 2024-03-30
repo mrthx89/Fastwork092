@@ -16,5 +16,7 @@ namespace E4Storage.App.Model.ViewModel
         public float QtyMasuk { get; set; }
         public float QtyKeluar { get; set; }
         public float SaldoAkhir { get { return SaldoAwal + QtyMasuk - QtyKeluar; } }
+        public double? QtyMin { get; set; }
+        public double? QtyMax { get; set; }
     }
 }

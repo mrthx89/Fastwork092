@@ -50,6 +50,9 @@ namespace E4Storage.App.UI
                     TglEdit = DateTime.Parse("1900-01-01"),
                     TglEntri = DateTime.Parse("1900-01-01"),
                     TglHapus = DateTime.Parse("1900-01-01"),
+                    Cabinet = 0,
+                    IDCategory = Guid.Empty,
+                    Row = ""
                 };
             }
             else
@@ -85,6 +88,11 @@ namespace E4Storage.App.UI
                     if (data.IDBelt == Guid.Empty || string.IsNullOrEmpty(IDBeltSearchLookUpEdit.Text))
                     {
                         dxErrorProvider1.SetError(IDBeltSearchLookUpEdit, "Belt harus diisi!");
+                    }
+
+                    if (data.IDCategory == Guid.Empty || string.IsNullOrEmpty(IDCategorySearchLookUpEdit.Text))
+                    {
+                        dxErrorProvider1.SetError(IDCategorySearchLookUpEdit, "Category harus diisi!");
                     }
 
                     if (data.Qty <= 0)
@@ -198,6 +206,19 @@ namespace E4Storage.App.UI
                     IDBeltSearchLookUpEdit.Properties.ValueMember = "ID";
                     IDBeltSearchLookUpEdit.Properties.DisplayMember = "Belt";
 
+                    var callCategories = Repository.Item.getCategories();
+                    if (callCategories.Item1)
+                    {
+                        IDCategorySearchLookUpEdit.Properties.DataSource = (from x in callCategories.Item2
+                                                                            select new { x.ID, x.Category }).ToList();
+                    }
+                    else
+                    {
+                        IDCategorySearchLookUpEdit.Properties.DataSource = null;
+                    }
+                    IDCategorySearchLookUpEdit.Properties.ValueMember = "ID";
+                    IDCategorySearchLookUpEdit.Properties.DisplayMember = "Category";
+
                     var callUser = Repository.User.getLookUp();
                     if (callUser.Item1)
                     {
@@ -213,6 +234,10 @@ namespace E4Storage.App.UI
                     IDUserEntriSearchLookUpEdit.Properties.DisplayMember = "Nama";
                     IDUserEditSearchLookUpEdit.Properties.ValueMember = "ID";
                     IDUserEditSearchLookUpEdit.Properties.DisplayMember = "Nama";
+
+                    IDInventorSearchLookUpEdit.Properties.Buttons[1].Visible = Utils.Constant.UserLogin.IsAdmin;
+                    IDBeltSearchLookUpEdit.Properties.Buttons[1].Visible = Utils.Constant.UserLogin.IsAdmin;
+                    IDCategorySearchLookUpEdit.Properties.Buttons[1].Visible = Utils.Constant.UserLogin.IsAdmin;
                 }
                 catch (Exception ex)
                 {
@@ -226,6 +251,7 @@ namespace E4Storage.App.UI
             Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
             Constant.layoutsHelper.SaveLayouts(this.Name, dataLayoutControl1);
             Constant.layoutsHelper.SaveLayouts(this.Name, gridView4);
+            Constant.layoutsHelper.SaveLayouts(this.Name, gvIDCategory);
         }
 
         private void gv1_DataSourceChanged(object sender, EventArgs e)
@@ -281,6 +307,26 @@ namespace E4Storage.App.UI
                     catch (Exception ex)
                     {
                         MsgBoxHelper.MsgError($"{this.Name}.IDBeltSearchLookUpEdit_ButtonClick", ex);
+                    }
+                }
+            }
+        }
+
+        private void IDCategorySearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (frmDaftarCategory frm = new frmDaftarCategory())
+                {
+                    try
+                    {
+                        frm.StartPosition = FormStartPosition.CenterParent;
+                        frm.ShowDialog(this);
+                        refreshLookUp();
+                    }
+                    catch (Exception ex)
+                    {
+                        MsgBoxHelper.MsgError($"{this.Name}.IDCategorySearchLookUpEdit_ButtonClick", ex);
                     }
                 }
             }

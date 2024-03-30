@@ -27,7 +27,7 @@ namespace E4Storage.App.UI.Dialog
 
         private void dlgOptionStokMasuk_Load(object sender, EventArgs e)
         {
-
+            btnMasterData.Enabled = Utils.Constant.UserLogin.IsAdmin;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -44,7 +44,10 @@ namespace E4Storage.App.Repository
                                      TglEdit = s.TglEdit,
                                      TglEntri = s.TglEntri,
                                      TglHapus = s.TglHapus,
-                                     IDType = Constant.stokOutType
+                                     IDType = Constant.stokOutType,
+                                     IDCategory = s.IDCategory,
+                                     Cabinet = s.Cabinet,
+                                     Row = s.Row
                                  };
 
                     //var datas2 = from s in context.TStockPengembalians
@@ -116,13 +119,16 @@ namespace E4Storage.App.Repository
                     stockCard.IDTransaksi = data.ID;
                     stockCard.IDTransaksiD = data.ID;
                     stockCard.IDType = Constant.stokOutType;
-                    stockCard.DocNo = data.DocNo;
+                    stockCard.DocNo = (string.IsNullOrEmpty(data.DocNo) || string.IsNullOrWhiteSpace(data.DocNo) ? "SO-" + stockCard.Tanggal.ToString("yyMMddHHmmss") : data.DocNo);
                     stockCard.QtyKeluar = data.Qty;
                     stockCard.IDBelt = data.IDBelt;
+                    stockCard.IDCategory = data.IDCategory;
+                    stockCard.Cabinet = data.Cabinet;
+                    stockCard.Row = data.Row;
                     context.TStockCards.Add(stockCard);
 
-                    hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(true, data);
                     context.SaveChanges();
+                    hasil = new Tuple<bool, Model.ViewModel.StokKeluar>(true, data);
                 }
                 catch (Exception ex)
                 {

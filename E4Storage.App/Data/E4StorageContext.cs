@@ -25,6 +25,7 @@ namespace E4Storage.App.Data
         public DbSet<TUOM> TUOMs { get; set; }
         public DbSet<TUser> TUsers { get; set; }
         public DbSet<TBelt> TBelts { get; set; }
+        public DbSet<TCategory> TCategories { get; set; }
         public DbSet<TInventor> TInventors { get; set; }
         public DbSet<TStockIn> TStockIns { get; set; }
         public DbSet<TStockOut> TStockOuts { get; set; }
@@ -53,6 +54,14 @@ namespace E4Storage.App.Data
             modelBuilder.Entity<TInventor>()
                 .Property(p => p.PLU)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_PLU") { IsUnique = true }));
+
+            modelBuilder.Entity<TBelt>()
+                .Property(p => p.Belt)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Belt") { IsUnique = true }));
+
+            modelBuilder.Entity<TCategory>()
+                .Property(p => p.Category)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Category") { IsUnique = true }));
 
             modelBuilder.Entity<TStockIn>()
                 .Property(p => p.NoPO)
@@ -143,12 +152,6 @@ namespace E4Storage.App.Data
                 .HasRequired(b => b.UOM)
                 .WithMany(a => a.StockPengembalians)
                 .HasForeignKey(b => b.IDUOM)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<TStockOut>()
-                .HasRequired(b => b.Belt)
-                .WithMany(a => a.StockOuts)
-                .HasForeignKey(b => b.IDBelt)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TStockMasterData>()

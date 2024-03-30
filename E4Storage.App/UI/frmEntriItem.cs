@@ -45,7 +45,9 @@ namespace E4Storage.App.UI
                     Saldo = 0.0,
                     TglEdit = DateTime.Parse("1900-01-01"),
                     TglEntri = DateTime.Now,
-                    TglHapus = DateTime.Parse("1900-01-01")
+                    TglHapus = DateTime.Parse("1900-01-01"),
+                    QtyMin = 0.0,
+                    QtyMax = 0.0
                 };
             }
             itemMasterBindingSource.DataSource = data;
@@ -76,6 +78,11 @@ namespace E4Storage.App.UI
                         dxErrorProvider1.SetError(DescTextEdit, "Nama Barang ini sudah dipakai!");
                     }
 
+                    if (this.data.QtyMax < this.data.QtyMin)
+                    {
+                        dxErrorProvider1.SetError(DescTextEdit, "Qty maksimum harus diatas qty minimum!");
+                    }
+
                     if (!dxErrorProvider1.HasErrors)
                     {
                         var save = Repository.Item.saveInventor(data);
@@ -102,12 +109,16 @@ namespace E4Storage.App.UI
         private void frmEntriItem_FormClosing(object sender, FormClosingEventArgs e)
         {
             Constant.layoutsHelper.SaveLayouts(this.Name, dataLayoutControl1);
-            Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
+            if (searchLookUpEdit1View.Tag != null && searchLookUpEdit1View.Tag.ToString() == "true")
+            {
+                Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
+            }
         }
 
         private void gv1_DataSourceChanged(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, searchLookUpEdit1View);
+            searchLookUpEdit1View.Tag = "true";
         }
 
         private void IDUOMSearchLookUpEdit_EditValueChanged(object sender, EventArgs e)
@@ -152,7 +163,7 @@ namespace E4Storage.App.UI
                     if (call.Item1)
                     {
                         IDUOMSearchLookUpEdit.Properties.DataSource = (from x in call.Item2
-                                                                      select new { x.ID, x.Satuan }).ToList();
+                                                                       select new { x.ID, x.Satuan }).ToList();
                     }
                     else
                     {

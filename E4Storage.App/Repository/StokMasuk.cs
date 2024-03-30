@@ -44,7 +44,12 @@ namespace E4Storage.App.Repository
                                      TglEdit = s.TglEdit,
                                      TglEntri = s.TglEntri,
                                      TglHapus = s.TglHapus,
-                                     IDType = Constant.stokInType
+                                     IDType = Constant.stokInType,
+                                     Cabinet = s.Cabinet,
+                                     IDBelt = s.IDBelt,
+                                     IDCategory = s.IDCategory,
+                                     PIC = s.PIC,
+                                     Row = s.Row
                                  };
 
                     var datas2 = from s in context.TStockPengembalians
@@ -67,7 +72,12 @@ namespace E4Storage.App.Repository
                                      TglEdit = s.TglEdit,
                                      TglEntri = s.TglEntri,
                                      TglHapus = s.TglHapus,
-                                     IDType = Constant.stokPengembalianType
+                                     IDType = Constant.stokPengembalianType,
+                                     Cabinet = s.Cabinet,
+                                     IDBelt = s.IDBelt,
+                                     IDCategory = s.IDCategory,
+                                     PIC = s.PIC,
+                                     Row = s.Row
                                  };
 
                     var datas3 = from s in context.TStockMasterDatas
@@ -90,7 +100,12 @@ namespace E4Storage.App.Repository
                                      TglEdit = s.TglEdit,
                                      TglEntri = s.TglEntri,
                                      TglHapus = s.TglHapus,
-                                     IDType = Constant.stokMasterDataType
+                                     IDType = Constant.stokMasterDataType,
+                                     Cabinet = s.Cabinet,
+                                     IDBelt = s.IDBelt,
+                                     IDCategory = s.IDCategory,
+                                     PIC = s.PIC,
+                                     Row = s.Row
                                  };
 
                     List<Model.ViewModel.StokMasuk> datas = datas1.ToList();
@@ -144,14 +159,17 @@ namespace E4Storage.App.Repository
                     stockCard.IDTransaksi = data.ID;
                     stockCard.IDTransaksiD = data.ID;
                     stockCard.IDType = Constant.stokInType;
-                    stockCard.DocNo = data.NoSJ;
+                    stockCard.DocNo = (string.IsNullOrEmpty(data.NoSJ) || string.IsNullOrWhiteSpace(data.NoSJ) ? "SI-" + stockCard.Tanggal.ToString("yyMMddHHmmss") : data.NoSJ);
                     stockCard.QtyMasuk = data.Qty;
-                    stockCard.PIC = "";
-                    stockCard.IDBelt = Guid.Empty;
+                    stockCard.PIC = data.PIC;
+                    stockCard.IDBelt = data.IDBelt;
+                    stockCard.IDCategory = data.IDCategory;
+                    stockCard.Cabinet = data.Cabinet;
+                    stockCard.Row = data.Row;
                     context.TStockCards.Add(stockCard);
 
-                    hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(true, data);
                     context.SaveChanges();
+                    hasil = new Tuple<bool, Model.ViewModel.StokMasuk>(true, data);
                 }
                 catch (Exception ex)
                 {

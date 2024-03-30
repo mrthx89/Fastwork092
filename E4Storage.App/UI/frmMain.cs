@@ -73,7 +73,7 @@ namespace E4Storage.App.UI
                 bbiLoginOut.LargeImageIndex = 2;
                 bbiManagementUser.Enabled = Constant.UserLogin.IsAdmin;
 
-                bbiMasterItem.Enabled = true;
+                bbiMasterItem.Enabled = Constant.UserLogin.IsAdmin;
                 bbiStokKeluar.Enabled = true;
                 bbiStokMasuk.Enabled = true;
                 bbiLaporanSaldoStok.Enabled = Constant.UserLogin.IsAdmin;
@@ -83,21 +83,24 @@ namespace E4Storage.App.UI
                 bbiListBarangMasuk.Enabled = Constant.UserLogin.IsAdmin;
 
                 //Dashboard
-                System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmDaftarMasterItem) && !o.ControlBox);
-                if (frmOld != null)
+                if (Utils.Constant.UserLogin.IsAdmin)
                 {
-                    frmOld.Show();
-                    frmOld.Focus();
-                }
-                else
-                {
-                    frmOld = new frmDaftarMasterItem
+                    System.Windows.Forms.Form frmOld = this.MdiChildren.ToList().FirstOrDefault(o => o.GetType() == typeof(frmDaftarMasterItem) && !o.ControlBox);
+                    if (frmOld != null)
                     {
-                        ControlBox = false,
-                        MdiParent = this
-                    };
-                    frmOld.Show();
-                    frmOld.Focus();
+                        frmOld.Show();
+                        frmOld.Focus();
+                    }
+                    else
+                    {
+                        frmOld = new frmDaftarMasterItem
+                        {
+                            ControlBox = false,
+                            MdiParent = this
+                        };
+                        frmOld.Show();
+                        frmOld.Focus();
+                    }
                 }
             }
         }

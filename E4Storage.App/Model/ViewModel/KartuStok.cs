@@ -20,7 +20,7 @@ namespace E4Storage.App.Model.ViewModel
         public Guid IDType { get; set; }
         public float QtyMasuk { get; set; }
         public float QtyKeluar { get; set; }
-        public Guid IDBelt { get; set; }
+        public Guid? IDBelt { get; set; }
         public string PIC { get; set; }
         public string NamaBarang { get; set; }
 

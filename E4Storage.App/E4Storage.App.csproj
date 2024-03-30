@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -27,6 +28,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,10 +69,10 @@
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -137,9 +140,34 @@
     <Compile Include="Migrations\202310061035103_MasterData.Designer.cs">
       <DependentUpon>202310061035103_MasterData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401131040572_CategoryCabinetRow.cs" />
+    <Compile Include="Migrations\202401131040572_CategoryCabinetRow.designer.cs">
+      <DependentUpon>202401131040572_CategoryCabinetRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401131047444_CategoryCabinetRow2.cs" />
+    <Compile Include="Migrations\202401131047444_CategoryCabinetRow2.designer.cs">
+      <DependentUpon>202401131047444_CategoryCabinetRow2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401131101535_QtyMinMax.cs" />
+    <Compile Include="Migrations\202401131101535_QtyMinMax.designer.cs">
+      <DependentUpon>202401131101535_QtyMinMax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401140227014_StockIn.cs" />
+    <Compile Include="Migrations\202401140227014_StockIn.designer.cs">
+      <DependentUpon>202401140227014_StockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401140316320_StockPengembalian.cs" />
+    <Compile Include="Migrations\202401140316320_StockPengembalian.designer.cs">
+      <DependentUpon>202401140316320_StockPengembalian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401140339127_StockIn2.cs" />
+    <Compile Include="Migrations\202401140339127_StockIn2.designer.cs">
+      <DependentUpon>202401140339127_StockIn2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AppSetting.cs" />
     <Compile Include="Model\Entity\BaseTable.cs" />
+    <Compile Include="Model\Entity\TCategory.cs" />
     <Compile Include="Model\Entity\TBelt.cs" />
     <Compile Include="Model\Entity\TInventor.cs" />
     <Compile Include="Model\Entity\TStockMasterData.cs" />
@@ -184,6 +212,18 @@
     <Compile Include="UI\Dialog\dlgSummaryBelt.Designer.cs">
       <DependentUpon>dlgSummaryBelt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryBeltMasuk.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryBeltMasuk.Designer.cs">
+      <DependentUpon>dlgSummaryBeltMasuk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryItemMasuk.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialog\dlgSummaryItemMasuk.Designer.cs">
+      <DependentUpon>dlgSummaryItemMasuk.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialog\dlgSummaryItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,7 +231,9 @@
       <DependentUpon>dlgSummaryItem.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Dialog\flyoutOptionStokMasuk.cs" />
+    <Compile Include="UI\Dialog\flyoutSummaryBeltMasuk.cs" />
     <Compile Include="UI\Dialog\flyoutSummaryBelt.cs" />
+    <Compile Include="UI\Dialog\flyoutSummaryItemMasuk.cs" />
     <Compile Include="UI\Dialog\flyoutSummaryItem.cs" />
     <Compile Include="UI\Dialog\flyoutOptionStokKeluar.cs" />
     <Compile Include="UI\frmChangePassword.cs">
@@ -199,6 +241,12 @@
     </Compile>
     <Compile Include="UI\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmDaftarCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDaftarCategory.Designer.cs">
+      <DependentUpon>frmDaftarCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmDaftarMasterItem.cs">
       <SubType>Form</SubType>
@@ -328,6 +376,24 @@
     <EmbeddedResource Include="Migrations\202310061035103_MasterData.resx">
       <DependentUpon>202310061035103_MasterData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401131040572_CategoryCabinetRow.resx">
+      <DependentUpon>202401131040572_CategoryCabinetRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401131047444_CategoryCabinetRow2.resx">
+      <DependentUpon>202401131047444_CategoryCabinetRow2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401131101535_QtyMinMax.resx">
+      <DependentUpon>202401131101535_QtyMinMax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401140227014_StockIn.resx">
+      <DependentUpon>202401140227014_StockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401140316320_StockPengembalian.resx">
+      <DependentUpon>202401140316320_StockPengembalian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401140339127_StockIn2.resx">
+      <DependentUpon>202401140339127_StockIn2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Dialog\dlgOptionStokMasuk.resx">
       <DependentUpon>dlgOptionStokMasuk.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,11 +403,20 @@
     <EmbeddedResource Include="UI\Dialog\dlgSummaryBelt.resx">
       <DependentUpon>dlgSummaryBelt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialog\dlgSummaryBeltMasuk.resx">
+      <DependentUpon>dlgSummaryBeltMasuk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialog\dlgSummaryItemMasuk.resx">
+      <DependentUpon>dlgSummaryItemMasuk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Dialog\dlgSummaryItem.resx">
       <DependentUpon>dlgSummaryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDaftarCategory.resx">
+      <DependentUpon>frmDaftarCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmDaftarMasterItem.resx">
       <DependentUpon>frmDaftarMasterItem.cs</DependentUpon>
@@ -527,6 +602,14 @@
     <None Include="Resources\inventory.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

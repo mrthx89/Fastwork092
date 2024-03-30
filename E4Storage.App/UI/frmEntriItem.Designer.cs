@@ -59,6 +59,10 @@ namespace E4Storage.App.UI
             this.ItemForIDUserEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForTglEdit = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.QtyMinTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForQtyMin = new DevExpress.XtraLayout.LayoutControlItem();
+            this.QtyMaxTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForQtyMax = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -85,6 +89,10 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUserEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyMinTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForQtyMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyMaxTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForQtyMax)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -130,7 +138,7 @@ namespace E4Storage.App.UI
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 235);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 238);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(325, 0);
             // 
@@ -140,7 +148,7 @@ namespace E4Storage.App.UI
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 215);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 218);
             // 
             // barDockControlRight
             // 
@@ -148,7 +156,7 @@ namespace E4Storage.App.UI
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(325, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 215);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 218);
             // 
             // dataLayoutControl1
             // 
@@ -159,12 +167,14 @@ namespace E4Storage.App.UI
             this.dataLayoutControl1.Controls.Add(this.IDUOMSearchLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.IDUserEntriSearchLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.IDUserEditSearchLookUpEdit);
+            this.dataLayoutControl1.Controls.Add(this.QtyMinTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.QtyMaxTextEdit);
             this.dataLayoutControl1.DataSource = this.itemMasterBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(325, 215);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(325, 218);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -320,7 +330,7 @@ namespace E4Storage.App.UI
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(325, 215);
+            this.Root.Size = new System.Drawing.Size(325, 218);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -334,10 +344,12 @@ namespace E4Storage.App.UI
             this.ItemForIDUserEntri,
             this.ItemForTglEntri,
             this.ItemForIDUserEdit,
-            this.ItemForTglEdit});
+            this.ItemForTglEdit,
+            this.ItemForQtyMin,
+            this.ItemForQtyMax});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(305, 195);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(305, 198);
             // 
             // ItemForPLU
             // 
@@ -398,7 +410,7 @@ namespace E4Storage.App.UI
             this.ItemForTglEdit.Control = this.TglEditDateEdit;
             this.ItemForTglEdit.Location = new System.Drawing.Point(0, 144);
             this.ItemForTglEdit.Name = "ItemForTglEdit";
-            this.ItemForTglEdit.Size = new System.Drawing.Size(305, 51);
+            this.ItemForTglEdit.Size = new System.Drawing.Size(305, 24);
             this.ItemForTglEdit.Text = "Tgl Edit";
             this.ItemForTglEdit.TextSize = new System.Drawing.Size(61, 13);
             // 
@@ -406,11 +418,65 @@ namespace E4Storage.App.UI
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // QtyMinTextEdit
+            // 
+            this.QtyMinTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemMasterBindingSource, "QtyMin", true));
+            this.QtyMinTextEdit.EditValue = 0D;
+            this.QtyMinTextEdit.EnterMoveNextControl = true;
+            this.QtyMinTextEdit.Location = new System.Drawing.Point(76, 180);
+            this.QtyMinTextEdit.MenuManager = this.barManager1;
+            this.QtyMinTextEdit.Name = "QtyMinTextEdit";
+            this.QtyMinTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.QtyMinTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.QtyMinTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.QtyMinTextEdit.Properties.Mask.EditMask = "n0";
+            this.QtyMinTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.QtyMinTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.QtyMinTextEdit.Size = new System.Drawing.Size(84, 20);
+            this.QtyMinTextEdit.StyleController = this.dataLayoutControl1;
+            this.QtyMinTextEdit.TabIndex = 14;
+            // 
+            // ItemForQtyMin
+            // 
+            this.ItemForQtyMin.Control = this.QtyMinTextEdit;
+            this.ItemForQtyMin.Location = new System.Drawing.Point(0, 168);
+            this.ItemForQtyMin.Name = "ItemForQtyMin";
+            this.ItemForQtyMin.Size = new System.Drawing.Size(152, 30);
+            this.ItemForQtyMin.Text = "Qty Min";
+            this.ItemForQtyMin.TextSize = new System.Drawing.Size(61, 13);
+            // 
+            // QtyMaxTextEdit
+            // 
+            this.QtyMaxTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemMasterBindingSource, "QtyMax", true));
+            this.QtyMaxTextEdit.EditValue = 0D;
+            this.QtyMaxTextEdit.EnterMoveNextControl = true;
+            this.QtyMaxTextEdit.Location = new System.Drawing.Point(228, 180);
+            this.QtyMaxTextEdit.MenuManager = this.barManager1;
+            this.QtyMaxTextEdit.Name = "QtyMaxTextEdit";
+            this.QtyMaxTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.QtyMaxTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.QtyMaxTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.QtyMaxTextEdit.Properties.Mask.EditMask = "n0";
+            this.QtyMaxTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.QtyMaxTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.QtyMaxTextEdit.Size = new System.Drawing.Size(85, 20);
+            this.QtyMaxTextEdit.StyleController = this.dataLayoutControl1;
+            this.QtyMaxTextEdit.TabIndex = 15;
+            // 
+            // ItemForQtyMax
+            // 
+            this.ItemForQtyMax.Control = this.QtyMaxTextEdit;
+            this.ItemForQtyMax.Location = new System.Drawing.Point(152, 168);
+            this.ItemForQtyMax.Name = "ItemForQtyMax";
+            this.ItemForQtyMax.Size = new System.Drawing.Size(153, 30);
+            this.ItemForQtyMax.Text = "Qty Max";
+            this.ItemForQtyMax.TextSize = new System.Drawing.Size(61, 13);
+            // 
             // frmEntriItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 235);
+            this.ClientSize = new System.Drawing.Size(325, 238);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -447,6 +513,10 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIDUserEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTglEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyMinTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForQtyMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyMaxTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForQtyMax)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,5 +553,9 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.SearchLookUpEdit IDUserEditSearchLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.TextEdit QtyMinTextEdit;
+        private DevExpress.XtraEditors.TextEdit QtyMaxTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForQtyMin;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForQtyMax;
     }
 }

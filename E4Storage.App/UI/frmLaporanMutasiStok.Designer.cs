@@ -58,6 +58,8 @@ namespace E4Storage.App.UI
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.colQtyMin = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQtyMax = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MutasiStokBindingSource)).BeginInit();
@@ -178,7 +180,9 @@ namespace E4Storage.App.UI
             this.colSaldoAwal,
             this.colQtyMasuk,
             this.colQtyKeluar,
-            this.colSaldoAkhir});
+            this.colSaldoAkhir,
+            this.colQtyMin,
+            this.colQtyMax});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -189,6 +193,7 @@ namespace E4Storage.App.UI
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_DataSourceChange);
+            this.gridView1.RowStyle += this.gridView1_RowStyle;
             // 
             // colIDInventor
             // 
@@ -382,6 +387,30 @@ namespace E4Storage.App.UI
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Periode";
             // 
+            // colQtyMin
+            // 
+            this.colQtyMin.AppearanceCell.Options.UseTextOptions = true;
+            this.colQtyMin.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMin.AppearanceHeader.Options.UseTextOptions = true;
+            this.colQtyMin.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMin.Caption = "Qty Min";
+            this.colQtyMin.DisplayFormat.FormatString = "n0";
+            this.colQtyMin.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyMin.FieldName = "QtyMin";
+            this.colQtyMin.Name = "colQtyMin";
+            // 
+            // colQtyMax
+            // 
+            this.colQtyMax.AppearanceCell.Options.UseTextOptions = true;
+            this.colQtyMax.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMax.AppearanceHeader.Options.UseTextOptions = true;
+            this.colQtyMax.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMax.Caption = "Qty Max";
+            this.colQtyMax.DisplayFormat.FormatString = "n0";
+            this.colQtyMax.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyMax.FieldName = "QtyMax";
+            this.colQtyMax.Name = "colQtyMax";
+            // 
             // frmLaporanMutasiStok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,5 +477,7 @@ namespace E4Storage.App.UI
         private DevExpress.XtraGrid.Columns.GridColumn colQtyMasuk;
         private DevExpress.XtraGrid.Columns.GridColumn colQtyKeluar;
         private DevExpress.XtraGrid.Columns.GridColumn colSaldoAkhir;
+        private DevExpress.XtraGrid.Columns.GridColumn colQtyMin;
+        private DevExpress.XtraGrid.Columns.GridColumn colQtyMax;
     }
 }

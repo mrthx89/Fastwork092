@@ -22,6 +22,11 @@ namespace E4Storage.App.Model.Entity
         public string Desc { get; set; }
         [Required]
         public Guid IDUOM { get; set; }
+        [Range(0d, Double.MaxValue, ErrorMessage ="{0} harus diisi antara {1} dan {2}!")]
+        public double? QtyMin { get; set; }
+        [Range(0d, Double.MaxValue, ErrorMessage = "{0} harus diisi antara {1} dan {2}!")]
+        public double? QtyMax { get; set; }
+
 
         public virtual TUOM UOM { get; set; }
         public virtual ICollection<TStockIn> StockIns { get; set; }

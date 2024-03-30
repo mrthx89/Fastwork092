@@ -61,6 +61,8 @@ namespace E4Storage.App.UI
             this.colIDUserHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSaldo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQtyMin = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQtyMax = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -177,7 +179,7 @@ namespace E4Storage.App.UI
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(45, 13);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Saldo Per";
+            this.labelControl1.Text = "Stok Per";
             // 
             // tInventorBindingSource
             // 
@@ -216,7 +218,9 @@ namespace E4Storage.App.UI
             this.colTglEdit,
             this.colIDUserHapus,
             this.colTglHapus,
-            this.colSaldo});
+            this.colSaldo,
+            this.colQtyMin,
+            this.colQtyMax});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -225,6 +229,7 @@ namespace E4Storage.App.UI
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_DataSourceChange);
+            this.gridView1.RowStyle += this.gridView1_RowStyle;
             // 
             // colID
             // 
@@ -365,6 +370,34 @@ namespace E4Storage.App.UI
             this.colSaldo.Visible = true;
             this.colSaldo.VisibleIndex = 9;
             // 
+            // colQtyMin
+            // 
+            this.colQtyMin.AppearanceCell.Options.UseTextOptions = true;
+            this.colQtyMin.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMin.AppearanceHeader.Options.UseTextOptions = true;
+            this.colQtyMin.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMin.Caption = "Qty Min";
+            this.colQtyMin.DisplayFormat.FormatString = "n0";
+            this.colQtyMin.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyMin.FieldName = "QtyMin";
+            this.colQtyMin.Name = "colQtyMin";
+            this.colQtyMin.Visible = true;
+            this.colQtyMin.VisibleIndex = 10;
+            // 
+            // colQtyMax
+            // 
+            this.colQtyMax.AppearanceCell.Options.UseTextOptions = true;
+            this.colQtyMax.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMax.AppearanceHeader.Options.UseTextOptions = true;
+            this.colQtyMax.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMax.Caption = "Qty Max";
+            this.colQtyMax.DisplayFormat.FormatString = "n0";
+            this.colQtyMax.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyMax.FieldName = "QtyMax";
+            this.colQtyMax.Name = "colQtyMax";
+            this.colQtyMax.Visible = true;
+            this.colQtyMax.VisibleIndex = 11;
+            // 
             // frmLaporanSaldoStok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,7 +410,7 @@ namespace E4Storage.App.UI
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmLaporanSaldoStok";
-            this.Text = "Laporan Saldo Stok";
+            this.Text = "Laporan Stok";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLaporanSaldoStok_FormClosing);
             this.Load += new System.EventHandler(this.frmLaporanSaldoStok_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -429,5 +462,7 @@ namespace E4Storage.App.UI
         private DevExpress.XtraGrid.Columns.GridColumn colIDUserHapus;
         private DevExpress.XtraGrid.Columns.GridColumn colTglHapus;
         private DevExpress.XtraGrid.Columns.GridColumn colSaldo;
+        private DevExpress.XtraGrid.Columns.GridColumn colQtyMin;
+        private DevExpress.XtraGrid.Columns.GridColumn colQtyMax;
     }
 }

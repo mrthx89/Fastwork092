@@ -42,6 +42,7 @@ namespace E4Storage.App.UI.Dialog
                         Guid IDBelt = Guid.Empty;
                         Guid.TryParse((IDBeltSearchLookUpEdit.EditValue == null ? "" : IDBeltSearchLookUpEdit.EditValue).ToString(), out IDBelt);
                         this.data = (from x in data.Item2.Where(o => o.IDBelt == IDBelt)
+                                     where x.IDBelt != Guid.Empty
                                      group x by new { x.IDInventor, x.NamaBarang, x.IDUOM, Tanggal = x.Tanggal.Date, x.IDBelt } into grp
                                      select new Model
                                      {
@@ -49,7 +50,7 @@ namespace E4Storage.App.UI.Dialog
                                          IDInventor = grp.Key.IDInventor,
                                          IDUOM = grp.Key.IDUOM,
                                          Tanggal = grp.Key.Tanggal,
-                                         IDBelt = grp.Key.IDBelt,
+                                         IDBelt = grp.Key.IDBelt.GetValueOrDefault(),
                                          Qty = grp.Sum(o => o.Qty)
                                      }).ToList();
                     }
@@ -169,6 +170,8 @@ namespace E4Storage.App.UI.Dialog
             repositoryItemType.DataSource = lookupType;
             repositoryItemType.ValueMember = "ID";
             repositoryItemType.DisplayMember = "Transaksi";
+
+            IDBeltSearchLookUpEdit.Properties.Buttons[1].Visible = Utils.Constant.UserLogin.IsAdmin;
         }
 
         public void saveLayouts()
