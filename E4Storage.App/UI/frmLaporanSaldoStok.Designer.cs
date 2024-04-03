@@ -63,6 +63,7 @@ namespace E4Storage.App.UI
             this.colSaldo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQtyMin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQtyMax = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnReload = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -98,6 +99,7 @@ namespace E4Storage.App.UI
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnReload
             // 
@@ -148,6 +150,7 @@ namespace E4Storage.App.UI
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnReload);
             this.panelControl1.Controls.Add(this.dateEdit1);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -177,7 +180,7 @@ namespace E4Storage.App.UI
             // 
             this.labelControl1.Location = new System.Drawing.Point(12, 12);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(45, 13);
+            this.labelControl1.Size = new System.Drawing.Size(40, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Stok Per";
             // 
@@ -229,7 +232,6 @@ namespace E4Storage.App.UI
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_DataSourceChange);
-            this.gridView1.RowStyle += this.gridView1_RowStyle;
             // 
             // colID
             // 
@@ -398,6 +400,17 @@ namespace E4Storage.App.UI
             this.colQtyMax.Visible = true;
             this.colQtyMax.VisibleIndex = 11;
             // 
+            // btnReload
+            // 
+            this.btnReload.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Appearance.Options.UseFont = true;
+            this.btnReload.Location = new System.Drawing.Point(169, 8);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(98, 22);
+            this.btnReload.TabIndex = 23;
+            this.btnReload.Text = "&Reload [F5]";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // frmLaporanSaldoStok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,5 +477,6 @@ namespace E4Storage.App.UI
         private DevExpress.XtraGrid.Columns.GridColumn colSaldo;
         private DevExpress.XtraGrid.Columns.GridColumn colQtyMin;
         private DevExpress.XtraGrid.Columns.GridColumn colQtyMax;
+        private DevExpress.XtraEditors.SimpleButton btnReload;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using E4Storage.App.Model.ViewModel;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace E4Storage.App.Repository
 {
@@ -250,7 +251,7 @@ namespace E4Storage.App.Repository
                     }
                     var saldoQuery = from stockCard in context.TStockCards
                                      join item in data on stockCard.IDInventor equals item.ID
-                                     where stockCard.Tanggal <= (SaldoPerTanggal ?? DateTime.MaxValue)
+                                     where DbFunctions.TruncateTime(stockCard.Tanggal) <= DbFunctions.TruncateTime((SaldoPerTanggal ?? DateTime.MaxValue))
                                      group stockCard by stockCard.IDInventor into grouped
                                      select new
                                      {

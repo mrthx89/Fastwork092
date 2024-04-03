@@ -64,5 +64,15 @@ namespace E4Storage.App.UI
         {
 
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            barButtonItem2.PerformClick();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            barButtonItem1.PerformClick();
+        }
     }
 }

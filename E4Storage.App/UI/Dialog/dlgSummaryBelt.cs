@@ -41,8 +41,7 @@ namespace E4Storage.App.UI.Dialog
                     {
                         Guid IDBelt = Guid.Empty;
                         Guid.TryParse((IDBeltSearchLookUpEdit.EditValue == null ? "" : IDBeltSearchLookUpEdit.EditValue).ToString(), out IDBelt);
-                        this.data = (from x in data.Item2.Where(o => o.IDBelt == IDBelt)
-                                     where x.IDBelt != Guid.Empty
+                        this.data = (from x in data.Item2.Where(o => o.IDBelt == IDBelt || IDBelt == Guid.Empty)
                                      group x by new { x.IDInventor, x.NamaBarang, x.IDUOM, Tanggal = x.Tanggal.Date, x.IDBelt } into grp
                                      select new Model
                                      {
@@ -106,6 +105,7 @@ namespace E4Storage.App.UI.Dialog
         private void gv1_DatasourceChanged(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
         }
 
         private void dlgSummaryBelt_Load(object sender, EventArgs e)
@@ -176,8 +176,14 @@ namespace E4Storage.App.UI.Dialog
 
         public void saveLayouts()
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
-            Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
+            saveLayouts(gridView1);
+            saveLayouts(searchLookUpEdit1View);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
     }
 }

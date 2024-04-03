@@ -25,7 +25,7 @@ namespace E4Storage.App.Repository
                 {
                     var datas1 = from s in context.TStockIns
                                  from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
-                                 where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                 where DbFunctions.TruncateTime(s.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(s.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                  select new Model.ViewModel.StokMasuk
                                  {
                                      ID = s.ID,
@@ -54,7 +54,7 @@ namespace E4Storage.App.Repository
 
                     var datas2 = from s in context.TStockPengembalians
                                  from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
-                                 where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                 where DbFunctions.TruncateTime(s.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(s.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                  select new Model.ViewModel.StokMasuk
                                  {
                                      ID = s.ID,
@@ -82,7 +82,7 @@ namespace E4Storage.App.Repository
 
                     var datas3 = from s in context.TStockMasterDatas
                                  from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
-                                 where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                 where DbFunctions.TruncateTime(s.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(s.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                  select new Model.ViewModel.StokMasuk
                                  {
                                      ID = s.ID,

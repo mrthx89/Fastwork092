@@ -25,7 +25,7 @@ namespace E4Storage.App.Repository
                 {
                     var datas1 = from s in context.TStockOuts
                                  from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
-                                 where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                 where DbFunctions.TruncateTime(s.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(s.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                  select new Model.ViewModel.StokKeluar
                                  {
                                      ID = s.ID,
@@ -150,7 +150,7 @@ namespace E4Storage.App.Repository
                     {
                         Guid type = (TypeTransaction == Constant.TypeTransaction.stokOut ? Constant.stokOutType : Constant.stokPengembalianType);
                         var saldo = from stok in context.TStockCards
-                                    where stok.IDInventor == IDInventor && stok.Tanggal <= Tanggal && !(stok.IDTransaksiD == IDTransaksi && stok.IDType == type)
+                                    where stok.IDInventor == IDInventor && DbFunctions.TruncateTime(stok.Tanggal) <= DbFunctions.TruncateTime(Tanggal) && !(stok.IDTransaksiD == IDTransaksi && stok.IDType == type)
                                     group stok by IDInventor into grp
                                     select new
                                     {

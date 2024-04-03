@@ -14,6 +14,7 @@ using E4Storage.App.Utils;
 using E4Storage.App.Repository;
 using E4Storage.App.Model.ViewModel;
 using E4Storage.App.Model.Entity;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace E4Storage.App.UI
 {
@@ -25,6 +26,12 @@ namespace E4Storage.App.UI
             InitializeComponent();
 
             this.data = data;
+
+            this.gridView1.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gridView2.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gridView3.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gridView4.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gvIDCategory.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
         }
 
         private void frmEntriStokKeluar_Load(object sender, EventArgs e)
@@ -248,15 +255,30 @@ namespace E4Storage.App.UI
 
         private void frmEntriStokKeluar_FOrmClosing(object sender, FormClosingEventArgs e)
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
             Constant.layoutsHelper.SaveLayouts(this.Name, dataLayoutControl1);
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView4);
-            Constant.layoutsHelper.SaveLayouts(this.Name, gvIDCategory);
+
+            saveLayouts(gridView1);
+            saveLayouts(gridView2);
+            saveLayouts(gridView3);
+            saveLayouts(gridView4);
+            saveLayouts(searchLookUpEdit1View);
+            saveLayouts(gvIDCategory);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
 
         private void gv1_DataSourceChanged(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, (DevExpress.XtraGrid.Views.Grid.GridView)sender);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
+            if (((GridView)sender).Columns["ID"] != null)
+            {
+                ((GridView)sender).Columns["ID"].Visible = false;
+            }
         }
 
         private void IDInventorSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -330,6 +352,22 @@ namespace E4Storage.App.UI
                     }
                 }
             }
+        }
+
+        private void mnBatal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            mnSimpan.PerformClick();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            mnBatal.PerformClick();
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using E4Storage.App.Model.ViewModel;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace E4Storage.App.UI
 {
@@ -127,7 +128,8 @@ namespace E4Storage.App.UI
 
         private void gridView1_DataSourceChange(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
 
             gridView1.ClearFindFilter();
             gridView1.ClearColumnsFilter();
@@ -136,8 +138,14 @@ namespace E4Storage.App.UI
 
         private void frmLaporanKartuStok_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
-            Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
+            saveLayouts(gridView1);
+            saveLayouts(searchLookUpEdit1View);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
 
         private void IDInventorSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -162,7 +170,13 @@ namespace E4Storage.App.UI
 
         private void gv1_DataSourceChange(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, searchLookUpEdit1View);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            mnReload.PerformClick();
         }
     }
 }

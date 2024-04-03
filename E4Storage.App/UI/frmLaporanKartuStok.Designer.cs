@@ -79,10 +79,11 @@ namespace E4Storage.App.UI
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.lbSaldoAwal = new DevExpress.XtraEditors.LabelControl();
-            this.lbQtyMasuk = new DevExpress.XtraEditors.LabelControl();
-            this.lbQtyKeluar = new DevExpress.XtraEditors.LabelControl();
             this.lbSaldoAkhir = new DevExpress.XtraEditors.LabelControl();
+            this.lbQtyKeluar = new DevExpress.XtraEditors.LabelControl();
+            this.lbQtyMasuk = new DevExpress.XtraEditors.LabelControl();
+            this.lbSaldoAwal = new DevExpress.XtraEditors.LabelControl();
+            this.btnReload = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KartuStokBindingSource)).BeginInit();
@@ -127,6 +128,7 @@ namespace E4Storage.App.UI
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnReload
             // 
@@ -255,8 +257,6 @@ namespace E4Storage.App.UI
             this.colDocNo.Caption = "No Form";
             this.colDocNo.FieldName = "DocNo";
             this.colDocNo.Name = "colDocNo";
-            this.colDocNo.Visible = true;
-            this.colDocNo.VisibleIndex = 2;
             this.colDocNo.Width = 118;
             // 
             // colIDInventor
@@ -266,7 +266,7 @@ namespace E4Storage.App.UI
             this.colIDInventor.FieldName = "IDInventor";
             this.colIDInventor.Name = "colIDInventor";
             this.colIDInventor.Visible = true;
-            this.colIDInventor.VisibleIndex = 3;
+            this.colIDInventor.VisibleIndex = 2;
             this.colIDInventor.Width = 84;
             // 
             // repositoryItemInventor
@@ -283,7 +283,7 @@ namespace E4Storage.App.UI
             this.colIDUOM.FieldName = "IDUOM";
             this.colIDUOM.Name = "colIDUOM";
             this.colIDUOM.Visible = true;
-            this.colIDUOM.VisibleIndex = 5;
+            this.colIDUOM.VisibleIndex = 4;
             this.colIDUOM.Width = 66;
             // 
             // repositoryItemUOM
@@ -334,7 +334,7 @@ namespace E4Storage.App.UI
             this.colQtyMasuk.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QtyMasuk", "{0:n0}")});
             this.colQtyMasuk.Visible = true;
-            this.colQtyMasuk.VisibleIndex = 9;
+            this.colQtyMasuk.VisibleIndex = 8;
             // 
             // colQtyKeluar
             // 
@@ -350,7 +350,7 @@ namespace E4Storage.App.UI
             this.colQtyKeluar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QtyKeluar", "{0:n0}")});
             this.colQtyKeluar.Visible = true;
-            this.colQtyKeluar.VisibleIndex = 10;
+            this.colQtyKeluar.VisibleIndex = 9;
             // 
             // colIDBelt
             // 
@@ -359,7 +359,7 @@ namespace E4Storage.App.UI
             this.colIDBelt.FieldName = "IDBelt";
             this.colIDBelt.Name = "colIDBelt";
             this.colIDBelt.Visible = true;
-            this.colIDBelt.VisibleIndex = 6;
+            this.colIDBelt.VisibleIndex = 5;
             // 
             // repositoryItemBelt
             // 
@@ -373,14 +373,14 @@ namespace E4Storage.App.UI
             this.colPIC.FieldName = "PIC";
             this.colPIC.Name = "colPIC";
             this.colPIC.Visible = true;
-            this.colPIC.VisibleIndex = 7;
+            this.colPIC.VisibleIndex = 6;
             // 
             // colNamaBarang
             // 
             this.colNamaBarang.FieldName = "NamaBarang";
             this.colNamaBarang.Name = "colNamaBarang";
             this.colNamaBarang.Visible = true;
-            this.colNamaBarang.VisibleIndex = 4;
+            this.colNamaBarang.VisibleIndex = 3;
             this.colNamaBarang.Width = 204;
             // 
             // colSaldoAwal
@@ -395,7 +395,7 @@ namespace E4Storage.App.UI
             this.colSaldoAwal.FieldName = "SaldoAwal";
             this.colSaldoAwal.Name = "colSaldoAwal";
             this.colSaldoAwal.Visible = true;
-            this.colSaldoAwal.VisibleIndex = 8;
+            this.colSaldoAwal.VisibleIndex = 7;
             // 
             // colSaldoAkhir
             // 
@@ -410,7 +410,7 @@ namespace E4Storage.App.UI
             this.colSaldoAkhir.Name = "colSaldoAkhir";
             this.colSaldoAkhir.OptionsColumn.ReadOnly = true;
             this.colSaldoAkhir.Visible = true;
-            this.colSaldoAkhir.VisibleIndex = 11;
+            this.colSaldoAkhir.VisibleIndex = 10;
             this.colSaldoAkhir.Width = 76;
             // 
             // colIDUserEntri
@@ -420,7 +420,7 @@ namespace E4Storage.App.UI
             this.colIDUserEntri.FieldName = "IDUserEntri";
             this.colIDUserEntri.Name = "colIDUserEntri";
             this.colIDUserEntri.Visible = true;
-            this.colIDUserEntri.VisibleIndex = 12;
+            this.colIDUserEntri.VisibleIndex = 11;
             // 
             // repositoryItemUser
             // 
@@ -436,7 +436,7 @@ namespace E4Storage.App.UI
             this.colTglEntri.FieldName = "TglEntri";
             this.colTglEntri.Name = "colTglEntri";
             this.colTglEntri.Visible = true;
-            this.colTglEntri.VisibleIndex = 13;
+            this.colTglEntri.VisibleIndex = 12;
             this.colTglEntri.Width = 90;
             // 
             // colIDUserEdit
@@ -446,7 +446,7 @@ namespace E4Storage.App.UI
             this.colIDUserEdit.FieldName = "IDUserEdit";
             this.colIDUserEdit.Name = "colIDUserEdit";
             this.colIDUserEdit.Visible = true;
-            this.colIDUserEdit.VisibleIndex = 14;
+            this.colIDUserEdit.VisibleIndex = 13;
             this.colIDUserEdit.Width = 76;
             // 
             // colTglEdit
@@ -456,7 +456,7 @@ namespace E4Storage.App.UI
             this.colTglEdit.FieldName = "TglEdit";
             this.colTglEdit.Name = "colTglEdit";
             this.colTglEdit.Visible = true;
-            this.colTglEdit.VisibleIndex = 15;
+            this.colTglEdit.VisibleIndex = 14;
             this.colTglEdit.Width = 94;
             // 
             // colIDUserHapus
@@ -475,6 +475,7 @@ namespace E4Storage.App.UI
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnReload);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.IDInventorSearchLookUpEdit);
             this.panelControl1.Controls.Add(this.dateEdit2);
@@ -608,27 +609,16 @@ namespace E4Storage.App.UI
             this.panelControl2.Size = new System.Drawing.Size(1094, 42);
             this.panelControl2.TabIndex = 6;
             // 
-            // lbSaldoAwal
+            // lbSaldoAkhir
             // 
-            this.lbSaldoAwal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSaldoAwal.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSaldoAwal.Appearance.Options.UseFont = true;
-            this.lbSaldoAwal.Location = new System.Drawing.Point(364, 13);
-            this.lbSaldoAwal.Name = "lbSaldoAwal";
-            this.lbSaldoAwal.Size = new System.Drawing.Size(98, 16);
-            this.lbSaldoAwal.TabIndex = 2;
-            this.lbSaldoAwal.Text = "Stok Awal : 0.0";
-            // 
-            // lbQtyMasuk
-            // 
-            this.lbQtyMasuk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbQtyMasuk.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbQtyMasuk.Appearance.Options.UseFont = true;
-            this.lbQtyMasuk.Location = new System.Drawing.Point(564, 13);
-            this.lbQtyMasuk.Name = "lbQtyMasuk";
-            this.lbQtyMasuk.Size = new System.Drawing.Size(107, 16);
-            this.lbQtyMasuk.TabIndex = 3;
-            this.lbQtyMasuk.Text = "Stok Masuk : 0.0";
+            this.lbSaldoAkhir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSaldoAkhir.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSaldoAkhir.Appearance.Options.UseFont = true;
+            this.lbSaldoAkhir.Location = new System.Drawing.Point(982, 13);
+            this.lbSaldoAkhir.Name = "lbSaldoAkhir";
+            this.lbSaldoAkhir.Size = new System.Drawing.Size(100, 16);
+            this.lbSaldoAkhir.TabIndex = 5;
+            this.lbSaldoAkhir.Text = "Stok Akhir : 0.0";
             // 
             // lbQtyKeluar
             // 
@@ -641,16 +631,38 @@ namespace E4Storage.App.UI
             this.lbQtyKeluar.TabIndex = 4;
             this.lbQtyKeluar.Text = "Stok Keluar : 0.0";
             // 
-            // lbSaldoAkhir
+            // lbQtyMasuk
             // 
-            this.lbSaldoAkhir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSaldoAkhir.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSaldoAkhir.Appearance.Options.UseFont = true;
-            this.lbSaldoAkhir.Location = new System.Drawing.Point(982, 13);
-            this.lbSaldoAkhir.Name = "lbSaldoAkhir";
-            this.lbSaldoAkhir.Size = new System.Drawing.Size(100, 16);
-            this.lbSaldoAkhir.TabIndex = 5;
-            this.lbSaldoAkhir.Text = "Stok Akhir : 0.0";
+            this.lbQtyMasuk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbQtyMasuk.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQtyMasuk.Appearance.Options.UseFont = true;
+            this.lbQtyMasuk.Location = new System.Drawing.Point(564, 13);
+            this.lbQtyMasuk.Name = "lbQtyMasuk";
+            this.lbQtyMasuk.Size = new System.Drawing.Size(107, 16);
+            this.lbQtyMasuk.TabIndex = 3;
+            this.lbQtyMasuk.Text = "Stok Masuk : 0.0";
+            // 
+            // lbSaldoAwal
+            // 
+            this.lbSaldoAwal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSaldoAwal.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSaldoAwal.Appearance.Options.UseFont = true;
+            this.lbSaldoAwal.Location = new System.Drawing.Point(364, 13);
+            this.lbSaldoAwal.Name = "lbSaldoAwal";
+            this.lbSaldoAwal.Size = new System.Drawing.Size(98, 16);
+            this.lbSaldoAwal.TabIndex = 2;
+            this.lbSaldoAwal.Text = "Stok Awal : 0.0";
+            // 
+            // btnReload
+            // 
+            this.btnReload.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Appearance.Options.UseFont = true;
+            this.btnReload.Location = new System.Drawing.Point(630, 8);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(98, 22);
+            this.btnReload.TabIndex = 22;
+            this.btnReload.Text = "&Reload [F5]";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // frmLaporanKartuStok
             // 
@@ -749,5 +761,6 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.LabelControl lbQtyKeluar;
         private DevExpress.XtraEditors.LabelControl lbQtyMasuk;
         private DevExpress.XtraEditors.LabelControl lbSaldoAwal;
+        private DevExpress.XtraEditors.SimpleButton btnReload;
     }
 }

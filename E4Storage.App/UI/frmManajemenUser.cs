@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace E4Storage.App.UI
 {
@@ -127,12 +128,19 @@ namespace E4Storage.App.UI
 
         private void gridView1_DataSourceChange(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
         }
 
         private void frmManajemenUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
+            saveLayouts(gridView1);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
 
         private void repositoryItemPassword_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -210,6 +218,32 @@ namespace E4Storage.App.UI
             {
                 MsgBoxHelper.MsgError($"{this.Name}.gricView1_FocusColumnChanged", ex);
             }
+        }
+
+        private void mnBatal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            mnBatal.PerformClick();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            mnDelete.PerformClick();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            mnSimpan.PerformClick();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            mnReload.PerformClick();
         }
     }
 }

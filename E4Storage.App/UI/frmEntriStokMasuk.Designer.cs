@@ -87,6 +87,11 @@ namespace E4Storage.App.UI
             this.ItemForCabinet = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForRow = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.mnBatal = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -139,6 +144,8 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCabinet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -151,8 +158,9 @@ namespace E4Storage.App.UI
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.mnSimpan});
-            this.barManager1.MaxItemId = 1;
+            this.mnSimpan,
+            this.mnBatal});
+            this.barManager1.MaxItemId = 2;
             // 
             // bar1
             // 
@@ -161,8 +169,10 @@ namespace E4Storage.App.UI
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.mnSimpan)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnSimpan),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnBatal)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnSimpan
             // 
@@ -184,7 +194,7 @@ namespace E4Storage.App.UI
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 423);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 443);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(419, 0);
             // 
@@ -194,7 +204,7 @@ namespace E4Storage.App.UI
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 403);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 423);
             // 
             // barDockControlRight
             // 
@@ -202,10 +212,12 @@ namespace E4Storage.App.UI
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(419, 20);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 403);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 423);
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.btnCancel);
+            this.dataLayoutControl1.Controls.Add(this.btnSave);
             this.dataLayoutControl1.Controls.Add(this.TanggalDateEdit);
             this.dataLayoutControl1.Controls.Add(this.NoSJTextEdit);
             this.dataLayoutControl1.Controls.Add(this.SupplierTextEdit);
@@ -226,11 +238,13 @@ namespace E4Storage.App.UI
             this.dataLayoutControl1.Controls.Add(this.PICTextEdit);
             this.dataLayoutControl1.DataSource = this.stokMasukBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataLayoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForIDBelt});
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 20);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
-            this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(467, 103, 650, 400);
+            this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(812, 143, 650, 400);
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(419, 403);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(419, 423);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -311,7 +325,6 @@ namespace E4Storage.App.UI
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            this.searchLookUpEdit1View.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
             // 
             // colPLU
             // 
@@ -365,7 +378,7 @@ namespace E4Storage.App.UI
             // 
             this.IDUserEntriSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUserEntri", true));
             this.IDUserEntriSearchLookUpEdit.EnterMoveNextControl = true;
-            this.IDUserEntriSearchLookUpEdit.Location = new System.Drawing.Point(79, 347);
+            this.IDUserEntriSearchLookUpEdit.Location = new System.Drawing.Point(79, 341);
             this.IDUserEntriSearchLookUpEdit.MenuManager = this.barManager1;
             this.IDUserEntriSearchLookUpEdit.Name = "IDUserEntriSearchLookUpEdit";
             this.IDUserEntriSearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -389,7 +402,7 @@ namespace E4Storage.App.UI
             this.TglEntriDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "TglEntri", true));
             this.TglEntriDateEdit.EditValue = null;
             this.TglEntriDateEdit.EnterMoveNextControl = true;
-            this.TglEntriDateEdit.Location = new System.Drawing.Point(79, 371);
+            this.TglEntriDateEdit.Location = new System.Drawing.Point(79, 365);
             this.TglEntriDateEdit.MenuManager = this.barManager1;
             this.TglEntriDateEdit.Name = "TglEntriDateEdit";
             this.TglEntriDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -409,7 +422,7 @@ namespace E4Storage.App.UI
             // 
             this.IDUserEditSearchLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "IDUserEdit", true));
             this.IDUserEditSearchLookUpEdit.EnterMoveNextControl = true;
-            this.IDUserEditSearchLookUpEdit.Location = new System.Drawing.Point(278, 347);
+            this.IDUserEditSearchLookUpEdit.Location = new System.Drawing.Point(278, 341);
             this.IDUserEditSearchLookUpEdit.MenuManager = this.barManager1;
             this.IDUserEditSearchLookUpEdit.Name = "IDUserEditSearchLookUpEdit";
             this.IDUserEditSearchLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -433,7 +446,7 @@ namespace E4Storage.App.UI
             this.TglEditDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.stokMasukBindingSource, "TglEdit", true));
             this.TglEditDateEdit.EditValue = null;
             this.TglEditDateEdit.EnterMoveNextControl = true;
-            this.TglEditDateEdit.Location = new System.Drawing.Point(278, 371);
+            this.TglEditDateEdit.Location = new System.Drawing.Point(278, 365);
             this.TglEditDateEdit.MenuManager = this.barManager1;
             this.TglEditDateEdit.Name = "TglEditDateEdit";
             this.TglEditDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -455,7 +468,7 @@ namespace E4Storage.App.UI
             this.KeteranganMemoEdit.Location = new System.Drawing.Point(79, 276);
             this.KeteranganMemoEdit.MenuManager = this.barManager1;
             this.KeteranganMemoEdit.Name = "KeteranganMemoEdit";
-            this.KeteranganMemoEdit.Size = new System.Drawing.Size(328, 67);
+            this.KeteranganMemoEdit.Size = new System.Drawing.Size(328, 61);
             this.KeteranganMemoEdit.StyleController = this.dataLayoutControl1;
             this.KeteranganMemoEdit.TabIndex = 16;
             // 
@@ -525,7 +538,6 @@ namespace E4Storage.App.UI
             this.gvCategory.Name = "gvCategory";
             this.gvCategory.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvCategory.OptionsView.ShowGroupPanel = false;
-            this.gvCategory.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
             // 
             // CabinetTextEdit
             // 
@@ -581,7 +593,6 @@ namespace E4Storage.App.UI
             this.gvBelt.Name = "gvBelt";
             this.gvBelt.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvBelt.OptionsView.ShowGroupPanel = false;
-            this.gvBelt.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
             // 
             // PICTextEdit
             // 
@@ -591,7 +602,7 @@ namespace E4Storage.App.UI
             this.PICTextEdit.MenuManager = this.barManager1;
             this.PICTextEdit.Name = "PICTextEdit";
             this.PICTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.PICTextEdit.Size = new System.Drawing.Size(128, 20);
+            this.PICTextEdit.Size = new System.Drawing.Size(328, 20);
             this.PICTextEdit.StyleController = this.dataLayoutControl1;
             this.PICTextEdit.TabIndex = 24;
             // 
@@ -602,7 +613,7 @@ namespace E4Storage.App.UI
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(419, 403);
+            this.Root.Size = new System.Drawing.Size(419, 423);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -624,13 +635,14 @@ namespace E4Storage.App.UI
             this.ItemForNamaBarang,
             this.ItemForDocNo,
             this.ItemForPIC,
-            this.ItemForIDBelt,
             this.ItemForIDCategory,
             this.ItemForCabinet,
-            this.ItemForRow});
+            this.ItemForRow,
+            this.layoutControlItem2,
+            this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(399, 383);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(399, 403);
             // 
             // ItemForTanggal
             // 
@@ -691,14 +703,14 @@ namespace E4Storage.App.UI
             this.ItemForKeterangan.Control = this.KeteranganMemoEdit;
             this.ItemForKeterangan.Location = new System.Drawing.Point(0, 264);
             this.ItemForKeterangan.Name = "ItemForKeterangan";
-            this.ItemForKeterangan.Size = new System.Drawing.Size(399, 71);
+            this.ItemForKeterangan.Size = new System.Drawing.Size(399, 65);
             this.ItemForKeterangan.Text = "Keterangan";
             this.ItemForKeterangan.TextSize = new System.Drawing.Size(64, 13);
             // 
             // ItemForIDUserEntri
             // 
             this.ItemForIDUserEntri.Control = this.IDUserEntriSearchLookUpEdit;
-            this.ItemForIDUserEntri.Location = new System.Drawing.Point(0, 335);
+            this.ItemForIDUserEntri.Location = new System.Drawing.Point(0, 329);
             this.ItemForIDUserEntri.Name = "ItemForIDUserEntri";
             this.ItemForIDUserEntri.Size = new System.Drawing.Size(199, 24);
             this.ItemForIDUserEntri.Text = "User Entri";
@@ -707,7 +719,7 @@ namespace E4Storage.App.UI
             // ItemForTglEntri
             // 
             this.ItemForTglEntri.Control = this.TglEntriDateEdit;
-            this.ItemForTglEntri.Location = new System.Drawing.Point(0, 359);
+            this.ItemForTglEntri.Location = new System.Drawing.Point(0, 353);
             this.ItemForTglEntri.Name = "ItemForTglEntri";
             this.ItemForTglEntri.Size = new System.Drawing.Size(199, 24);
             this.ItemForTglEntri.Text = "Tgl Entri";
@@ -716,7 +728,7 @@ namespace E4Storage.App.UI
             // ItemForIDUserEdit
             // 
             this.ItemForIDUserEdit.Control = this.IDUserEditSearchLookUpEdit;
-            this.ItemForIDUserEdit.Location = new System.Drawing.Point(199, 335);
+            this.ItemForIDUserEdit.Location = new System.Drawing.Point(199, 329);
             this.ItemForIDUserEdit.Name = "ItemForIDUserEdit";
             this.ItemForIDUserEdit.Size = new System.Drawing.Size(200, 24);
             this.ItemForIDUserEdit.Text = "User Edit";
@@ -725,7 +737,7 @@ namespace E4Storage.App.UI
             // ItemForTglEdit
             // 
             this.ItemForTglEdit.Control = this.TglEditDateEdit;
-            this.ItemForTglEdit.Location = new System.Drawing.Point(199, 359);
+            this.ItemForTglEdit.Location = new System.Drawing.Point(199, 353);
             this.ItemForTglEdit.Name = "ItemForTglEdit";
             this.ItemForTglEdit.Size = new System.Drawing.Size(200, 24);
             this.ItemForTglEdit.Text = "Tgl Edit";
@@ -754,7 +766,7 @@ namespace E4Storage.App.UI
             this.ItemForPIC.Control = this.PICTextEdit;
             this.ItemForPIC.Location = new System.Drawing.Point(0, 192);
             this.ItemForPIC.Name = "ItemForPIC";
-            this.ItemForPIC.Size = new System.Drawing.Size(199, 24);
+            this.ItemForPIC.Size = new System.Drawing.Size(399, 24);
             this.ItemForPIC.Text = "PIC";
             this.ItemForPIC.TextSize = new System.Drawing.Size(64, 13);
             // 
@@ -798,11 +810,67 @@ namespace E4Storage.App.UI
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // mnBatal
+            // 
+            this.mnBatal.Caption = "&Batal [F3]";
+            this.mnBatal.Id = 1;
+            this.mnBatal.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F3);
+            this.mnBatal.Name = "mnBatal";
+            this.mnBatal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnBatal_ItemClick);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Warning;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(211, 389);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(196, 22);
+            this.btnCancel.StyleController = this.dataLayoutControl1;
+            this.btnCancel.TabIndex = 32;
+            this.btnCancel.Text = "&Batal [F3]";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
+            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Appearance.Options.UseBackColor = true;
+            this.btnSave.Appearance.Options.UseFont = true;
+            this.btnSave.Location = new System.Drawing.Point(12, 389);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(195, 22);
+            this.btnSave.StyleController = this.dataLayoutControl1;
+            this.btnSave.TabIndex = 31;
+            this.btnSave.Text = "&Simpan [F6]";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.btnCancel;
+            this.layoutControlItem1.Location = new System.Drawing.Point(199, 377);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(200, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.btnSave;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 377);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(199, 26);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
             // frmEntriStokMasuk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 423);
+            this.ClientSize = new System.Drawing.Size(419, 443);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -865,6 +933,8 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCabinet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForRow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -929,5 +999,10 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.TextEdit PICTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForIDBelt;
         private DevExpress.XtraLayout.LayoutControlItem ItemForPIC;
+        private DevExpress.XtraBars.BarButtonItem mnBatal;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

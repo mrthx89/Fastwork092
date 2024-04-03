@@ -55,12 +55,20 @@ namespace E4Storage.App.UI
             this.colTglEdit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDUserHapus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTglHapus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnHapus = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.mnBatal = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tUserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -75,8 +83,9 @@ namespace E4Storage.App.UI
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.mnSimpan,
             this.mnReload,
-            this.mnDelete});
-            this.barManager1.MaxItemId = 3;
+            this.mnDelete,
+            this.mnBatal});
+            this.barManager1.MaxItemId = 4;
             // 
             // bar1
             // 
@@ -87,8 +96,10 @@ namespace E4Storage.App.UI
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.mnDelete),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mnSimpan, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnSimpan, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnBatal)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnDelete
             // 
@@ -157,7 +168,7 @@ namespace E4Storage.App.UI
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemUser,
             this.repositoryItemPassword});
-            this.gridControl1.Size = new System.Drawing.Size(837, 571);
+            this.gridControl1.Size = new System.Drawing.Size(837, 535);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -320,12 +331,87 @@ namespace E4Storage.App.UI
             this.colTglHapus.OptionsColumn.AllowEdit = false;
             this.colTglHapus.OptionsColumn.AllowFocus = false;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.btnRefresh);
+            this.panelControl1.Controls.Add(this.btnSave);
+            this.panelControl1.Controls.Add(this.btnHapus);
+            this.panelControl1.Controls.Add(this.btnCancel);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 555);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(837, 36);
+            this.panelControl1.TabIndex = 9;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Appearance.Options.UseFont = true;
+            this.btnRefresh.Location = new System.Drawing.Point(727, 9);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(98, 22);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "&Reload [F5]";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
+            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Appearance.Options.UseBackColor = true;
+            this.btnSave.Appearance.Options.UseFont = true;
+            this.btnSave.Location = new System.Drawing.Point(623, 9);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(98, 22);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "&Simpan [F6]";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHapus.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
+            this.btnHapus.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHapus.Appearance.Options.UseBackColor = true;
+            this.btnHapus.Appearance.Options.UseFont = true;
+            this.btnHapus.Location = new System.Drawing.Point(519, 9);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(98, 22);
+            this.btnHapus.TabIndex = 1;
+            this.btnHapus.Text = "&Hapus [F4]";
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Warning;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(415, 9);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(98, 22);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "&Batal [F3]";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // mnBatal
+            // 
+            this.mnBatal.Caption = "&Batal [F3]";
+            this.mnBatal.Id = 3;
+            this.mnBatal.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F3);
+            this.mnBatal.Name = "mnBatal";
+            this.mnBatal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnBatal_ItemClick);
+            // 
             // frmManajemenUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 591);
             this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -340,6 +426,8 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,5 +460,11 @@ namespace E4Storage.App.UI
         private DevExpress.XtraGrid.Columns.GridColumn colTglHapus;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemPassword;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraEditors.SimpleButton btnHapus;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraBars.BarButtonItem mnBatal;
     }
 }

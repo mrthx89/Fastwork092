@@ -110,6 +110,8 @@ namespace E4Storage.App.UI
             this.ItemForQtyMax = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.btnReload = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tInventorBindingSource)).BeginInit();
@@ -161,6 +163,7 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForQtyMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -195,6 +198,7 @@ namespace E4Storage.App.UI
             new DevExpress.XtraBars.LinkPersistInfo(this.mnHapus),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnRefresh, true)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnBaru
             // 
@@ -493,6 +497,7 @@ namespace E4Storage.App.UI
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.btnReload);
             this.dataLayoutControl1.Controls.Add(this.btnCancel);
             this.dataLayoutControl1.Controls.Add(this.btnHapus);
             this.dataLayoutControl1.Controls.Add(this.btnSave);
@@ -535,7 +540,7 @@ namespace E4Storage.App.UI
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(742, 108);
+            this.btnCancel.Location = new System.Drawing.Point(640, 108);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 22);
             this.btnCancel.StyleController = this.dataLayoutControl1;
@@ -549,7 +554,7 @@ namespace E4Storage.App.UI
             this.btnHapus.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHapus.Appearance.Options.UseBackColor = true;
             this.btnHapus.Appearance.Options.UseFont = true;
-            this.btnHapus.Location = new System.Drawing.Point(946, 108);
+            this.btnHapus.Location = new System.Drawing.Point(844, 108);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(98, 22);
             this.btnHapus.StyleController = this.dataLayoutControl1;
@@ -563,7 +568,7 @@ namespace E4Storage.App.UI
             this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
-            this.btnSave.Location = new System.Drawing.Point(844, 108);
+            this.btnSave.Location = new System.Drawing.Point(742, 108);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 22);
             this.btnSave.StyleController = this.dataLayoutControl1;
@@ -575,7 +580,7 @@ namespace E4Storage.App.UI
             // 
             this.btnNew.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Appearance.Options.UseFont = true;
-            this.btnNew.Location = new System.Drawing.Point(640, 108);
+            this.btnNew.Location = new System.Drawing.Point(538, 108);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(98, 22);
             this.btnNew.StyleController = this.dataLayoutControl1;
@@ -585,7 +590,7 @@ namespace E4Storage.App.UI
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(478, 12);
+            this.labelControl1.Location = new System.Drawing.Point(409, 12);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(193, 13);
             this.labelControl1.StyleController = this.dataLayoutControl1;
@@ -599,7 +604,7 @@ namespace E4Storage.App.UI
             this.PLUTextEdit.MenuManager = this.barManager1;
             this.PLUTextEdit.Name = "PLUTextEdit";
             this.PLUTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.PLUTextEdit.Size = new System.Drawing.Size(398, 20);
+            this.PLUTextEdit.Size = new System.Drawing.Size(329, 20);
             this.PLUTextEdit.StyleController = this.dataLayoutControl1;
             this.PLUTextEdit.TabIndex = 4;
             this.PLUTextEdit.EditValueChanged += new System.EventHandler(this.PLUTextEdit_EditValueChanged);
@@ -634,7 +639,7 @@ namespace E4Storage.App.UI
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
             this.IDUOMSearchLookUpEdit.Properties.NullText = "";
             this.IDUOMSearchLookUpEdit.Properties.PopupView = this.searchLookUpEdit1View;
-            this.IDUOMSearchLookUpEdit.Size = new System.Drawing.Size(450, 20);
+            this.IDUOMSearchLookUpEdit.Size = new System.Drawing.Size(373, 20);
             this.IDUOMSearchLookUpEdit.StyleController = this.dataLayoutControl1;
             this.IDUOMSearchLookUpEdit.TabIndex = 6;
             this.IDUOMSearchLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.IDUOMSearchLookUpEdit_ButtonClick);
@@ -651,7 +656,7 @@ namespace E4Storage.App.UI
             // 
             this.SaldoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tInventorCurrentBindingSource, "Saldo", true));
             this.SaldoTextEdit.EnterMoveNextControl = true;
-            this.SaldoTextEdit.Location = new System.Drawing.Point(594, 60);
+            this.SaldoTextEdit.Location = new System.Drawing.Point(517, 60);
             this.SaldoTextEdit.MenuManager = this.barManager1;
             this.SaldoTextEdit.Name = "SaldoTextEdit";
             this.SaldoTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -660,7 +665,7 @@ namespace E4Storage.App.UI
             this.SaldoTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.SaldoTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SaldoTextEdit.Properties.ReadOnly = true;
-            this.SaldoTextEdit.Size = new System.Drawing.Size(450, 20);
+            this.SaldoTextEdit.Size = new System.Drawing.Size(527, 20);
             this.SaldoTextEdit.StyleController = this.dataLayoutControl1;
             this.SaldoTextEdit.TabIndex = 7;
             // 
@@ -677,7 +682,7 @@ namespace E4Storage.App.UI
             this.QtyMinTextEdit.Properties.Mask.EditMask = "n0";
             this.QtyMinTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.QtyMinTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.QtyMinTextEdit.Size = new System.Drawing.Size(450, 20);
+            this.QtyMinTextEdit.Size = new System.Drawing.Size(373, 20);
             this.QtyMinTextEdit.StyleController = this.dataLayoutControl1;
             this.QtyMinTextEdit.TabIndex = 8;
             // 
@@ -685,7 +690,7 @@ namespace E4Storage.App.UI
             // 
             this.QtyMaxTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tInventorCurrentBindingSource, "QtyMax", true));
             this.QtyMaxTextEdit.EnterMoveNextControl = true;
-            this.QtyMaxTextEdit.Location = new System.Drawing.Point(594, 84);
+            this.QtyMaxTextEdit.Location = new System.Drawing.Point(517, 84);
             this.QtyMaxTextEdit.MenuManager = this.barManager1;
             this.QtyMaxTextEdit.Name = "QtyMaxTextEdit";
             this.QtyMaxTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -694,7 +699,7 @@ namespace E4Storage.App.UI
             this.QtyMaxTextEdit.Properties.Mask.EditMask = "n0";
             this.QtyMaxTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.QtyMaxTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.QtyMaxTextEdit.Size = new System.Drawing.Size(450, 20);
+            this.QtyMaxTextEdit.Size = new System.Drawing.Size(527, 20);
             this.QtyMaxTextEdit.StyleController = this.dataLayoutControl1;
             this.QtyMaxTextEdit.TabIndex = 9;
             // 
@@ -915,7 +920,8 @@ namespace E4Storage.App.UI
             this.layoutControlItem5,
             this.ItemForSaldo,
             this.ItemForQtyMax,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem7});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1036, 590);
@@ -925,7 +931,7 @@ namespace E4Storage.App.UI
             this.ItemForPLU.Control = this.PLUTextEdit;
             this.ItemForPLU.Location = new System.Drawing.Point(0, 0);
             this.ItemForPLU.Name = "ItemForPLU";
-            this.ItemForPLU.Size = new System.Drawing.Size(466, 24);
+            this.ItemForPLU.Size = new System.Drawing.Size(397, 24);
             this.ItemForPLU.Text = "Kode Barang";
             this.ItemForPLU.TextSize = new System.Drawing.Size(61, 13);
             // 
@@ -943,7 +949,7 @@ namespace E4Storage.App.UI
             this.ItemForIDUOM.Control = this.IDUOMSearchLookUpEdit;
             this.ItemForIDUOM.Location = new System.Drawing.Point(0, 48);
             this.ItemForIDUOM.Name = "ItemForIDUOM";
-            this.ItemForIDUOM.Size = new System.Drawing.Size(518, 24);
+            this.ItemForIDUOM.Size = new System.Drawing.Size(441, 24);
             this.ItemForIDUOM.Text = "Satuan";
             this.ItemForIDUOM.TextSize = new System.Drawing.Size(61, 13);
             // 
@@ -952,14 +958,14 @@ namespace E4Storage.App.UI
             this.ItemForQtyMin.Control = this.QtyMinTextEdit;
             this.ItemForQtyMin.Location = new System.Drawing.Point(0, 72);
             this.ItemForQtyMin.Name = "ItemForQtyMin";
-            this.ItemForQtyMin.Size = new System.Drawing.Size(518, 24);
+            this.ItemForQtyMin.Size = new System.Drawing.Size(441, 24);
             this.ItemForQtyMin.Text = "Qty Min";
             this.ItemForQtyMin.TextSize = new System.Drawing.Size(61, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.labelControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(466, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(397, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(197, 24);
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
@@ -969,9 +975,9 @@ namespace E4Storage.App.UI
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(663, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(594, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(373, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(442, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
@@ -988,13 +994,13 @@ namespace E4Storage.App.UI
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 96);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(628, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(526, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnNew;
-            this.layoutControlItem3.Location = new System.Drawing.Point(628, 96);
+            this.layoutControlItem3.Location = new System.Drawing.Point(526, 96);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -1006,7 +1012,7 @@ namespace E4Storage.App.UI
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.btnSave;
-            this.layoutControlItem4.Location = new System.Drawing.Point(832, 96);
+            this.layoutControlItem4.Location = new System.Drawing.Point(730, 96);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -1018,7 +1024,7 @@ namespace E4Storage.App.UI
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnHapus;
-            this.layoutControlItem5.Location = new System.Drawing.Point(934, 96);
+            this.layoutControlItem5.Location = new System.Drawing.Point(832, 96);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -1030,25 +1036,25 @@ namespace E4Storage.App.UI
             // ItemForSaldo
             // 
             this.ItemForSaldo.Control = this.SaldoTextEdit;
-            this.ItemForSaldo.Location = new System.Drawing.Point(518, 48);
+            this.ItemForSaldo.Location = new System.Drawing.Point(441, 48);
             this.ItemForSaldo.Name = "ItemForSaldo";
-            this.ItemForSaldo.Size = new System.Drawing.Size(518, 24);
+            this.ItemForSaldo.Size = new System.Drawing.Size(595, 24);
             this.ItemForSaldo.Text = "Stok";
             this.ItemForSaldo.TextSize = new System.Drawing.Size(61, 13);
             // 
             // ItemForQtyMax
             // 
             this.ItemForQtyMax.Control = this.QtyMaxTextEdit;
-            this.ItemForQtyMax.Location = new System.Drawing.Point(518, 72);
+            this.ItemForQtyMax.Location = new System.Drawing.Point(441, 72);
             this.ItemForQtyMax.Name = "ItemForQtyMax";
-            this.ItemForQtyMax.Size = new System.Drawing.Size(518, 24);
+            this.ItemForQtyMax.Size = new System.Drawing.Size(595, 24);
             this.ItemForQtyMax.Text = "Qty Max";
             this.ItemForQtyMax.TextSize = new System.Drawing.Size(61, 13);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.btnCancel;
-            this.layoutControlItem6.Location = new System.Drawing.Point(730, 96);
+            this.layoutControlItem6.Location = new System.Drawing.Point(628, 96);
             this.layoutControlItem6.MaxSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
@@ -1060,6 +1066,30 @@ namespace E4Storage.App.UI
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // btnReload
+            // 
+            this.btnReload.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Appearance.Options.UseFont = true;
+            this.btnReload.Location = new System.Drawing.Point(946, 108);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(98, 22);
+            this.btnReload.StyleController = this.dataLayoutControl1;
+            this.btnReload.TabIndex = 21;
+            this.btnReload.Text = "&Reload [F5]";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.btnReload;
+            this.layoutControlItem7.Location = new System.Drawing.Point(934, 96);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(102, 26);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(102, 26);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(102, 26);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
             // 
             // frmDaftarMasterItem
             // 
@@ -1126,6 +1156,7 @@ namespace E4Storage.App.UI
             ((System.ComponentModel.ISupportInitialize)(this.ItemForQtyMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1213,5 +1244,7 @@ namespace E4Storage.App.UI
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private System.Windows.Forms.BindingSource tInventorCurrentBindingSource;
+        private DevExpress.XtraEditors.SimpleButton btnReload;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }

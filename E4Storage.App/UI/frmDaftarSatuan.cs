@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace E4Storage.App.UI
 {
@@ -134,12 +135,24 @@ namespace E4Storage.App.UI
 
         private void gridView1_DataSourceChange(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
         }
 
         private void frmDaftarSatuan_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
+            saveLayouts();
+        }
+
+        public void saveLayouts()
+        {
+            saveLayouts(gridView1);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
 
         private void gricView1_FocusRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -150,6 +163,32 @@ namespace E4Storage.App.UI
         private void gricView1_FocusColumnChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventArgs e)
         {
             
+        }
+
+        private void mnBatal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            mnBatal.PerformClick();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            mnBatal.PerformClick();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            mnSimpan.PerformClick();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            mnReload.PerformClick();
         }
     }
 }

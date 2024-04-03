@@ -288,52 +288,61 @@ namespace E4Storage.App.UI
                     this.Validate();
 
                     dxErrorProvider1.ClearErrors();
-                    if (string.IsNullOrEmpty(currentData.PLU) || string.IsNullOrWhiteSpace(currentData.PLU))
+                    if (currentData == null)
                     {
-                        dxErrorProvider1.SetError(PLUTextEdit, "Kode Barang harus diisi!");
-                    }
-                    var check1 = Repository.Item.checkPLUExistsInventor(currentData);
-                    if (!check1.Item1)
-                    {
-                        dxErrorProvider1.SetError(PLUTextEdit, "Kode Barang ini sudah dipakai!");
-                    }
-                    if (string.IsNullOrEmpty(currentData.Desc) || string.IsNullOrWhiteSpace(currentData.Desc))
-                    {
-                        dxErrorProvider1.SetError(DescTextEdit, "Nama Barang harus diisi!");
-                    }
-                    check1 = Repository.Item.checkNamaExistsInventor(currentData);
-                    if (!check1.Item1)
-                    {
-                        dxErrorProvider1.SetError(DescTextEdit, "Nama Barang ini sudah dipakai!");
-                    }
-                    if (currentData.IDUOM == Guid.Empty)
-                    {
-                        dxErrorProvider1.SetError(IDUOMSearchLookUpEdit, "Satuan harus diisi!");
-                    }
-
-                    if (currentData.QtyMax < currentData.QtyMin)
-                    {
-                        dxErrorProvider1.SetError(DescTextEdit, "Qty maksimum harus diatas qty minimum!");
-                    }
-
-                    if (!dxErrorProvider1.HasErrors)
-                    {
-                        var save = Repository.Item.saveInventor(currentData);
-                        if (save.Item1)
-                        {
-                            currentData = save.Item2;
-
-                            refreshData();
-                            gridView1.ClearSelection();
-                            gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, currentData.ID.ToString());
-                            gridView1.MakeRowVisible(gridView1.FocusedRowHandle);
-                            gridView1.SelectRow(gridView1.FocusedRowHandle);
-                        }
+                        dxErrorProvider1.SetError(PLUTextEdit, "Clik Baru dahulu untuk menambahkan item baru!");
+                        MsgBoxHelper.MsgWarn($"{this.Name}.mnSimpan_ItemClick", string.Join(", ", (from x in dxErrorProvider1.GetControlsWithError()
+                                                                                                   select new { errMsg = dxErrorProvider1.GetError(x) }).Select(o => o.errMsg).ToList()));
                     }
                     else
                     {
-                        MsgBoxHelper.MsgWarn($"{this.Name}.mnSimpan_ItemClick", string.Join(", ", (from x in dxErrorProvider1.GetControlsWithError()
-                                                                                                   select new { errMsg = dxErrorProvider1.GetError(x) }).Select(o => o.errMsg).ToList()));
+                        if (string.IsNullOrEmpty(currentData.PLU) || string.IsNullOrWhiteSpace(currentData.PLU))
+                        {
+                            dxErrorProvider1.SetError(PLUTextEdit, "Kode Barang harus diisi!");
+                        }
+                        var check1 = Repository.Item.checkPLUExistsInventor(currentData);
+                        if (!check1.Item1)
+                        {
+                            dxErrorProvider1.SetError(PLUTextEdit, "Kode Barang ini sudah dipakai!");
+                        }
+                        if (string.IsNullOrEmpty(currentData.Desc) || string.IsNullOrWhiteSpace(currentData.Desc))
+                        {
+                            dxErrorProvider1.SetError(DescTextEdit, "Nama Barang harus diisi!");
+                        }
+                        check1 = Repository.Item.checkNamaExistsInventor(currentData);
+                        if (!check1.Item1)
+                        {
+                            dxErrorProvider1.SetError(DescTextEdit, "Nama Barang ini sudah dipakai!");
+                        }
+                        if (currentData.IDUOM == Guid.Empty)
+                        {
+                            dxErrorProvider1.SetError(IDUOMSearchLookUpEdit, "Satuan harus diisi!");
+                        }
+
+                        if (currentData.QtyMax < currentData.QtyMin)
+                        {
+                            dxErrorProvider1.SetError(DescTextEdit, "Qty maksimum harus diatas qty minimum!");
+                        }
+
+                        if (!dxErrorProvider1.HasErrors)
+                        {
+                            var save = Repository.Item.saveInventor(currentData);
+                            if (save.Item1)
+                            {
+                                currentData = save.Item2;
+
+                                refreshData();
+                                gridView1.ClearSelection();
+                                gridView1.FocusedRowHandle = gridView1.LocateByDisplayText(0, colID, currentData.ID.ToString());
+                                gridView1.MakeRowVisible(gridView1.FocusedRowHandle);
+                                gridView1.SelectRow(gridView1.FocusedRowHandle);
+                            }
+                        }
+                        else
+                        {
+                            MsgBoxHelper.MsgWarn($"{this.Name}.mnSimpan_ItemClick", string.Join(", ", (from x in dxErrorProvider1.GetControlsWithError()
+                                                                                                       select new { errMsg = dxErrorProvider1.GetError(x) }).Select(o => o.errMsg).ToList()));
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -386,6 +395,11 @@ namespace E4Storage.App.UI
                     MsgBoxHelper.MsgError($"{this.Name}.gridView1_RowClick", ex);
                 }
             }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            mnRefresh.PerformClick();
         }
     }
 }

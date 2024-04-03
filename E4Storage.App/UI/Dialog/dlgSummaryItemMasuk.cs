@@ -41,7 +41,7 @@ namespace E4Storage.App.UI.Dialog
                     {
                         Guid IDInventor = Guid.Empty;
                         Guid.TryParse((IDInventorSearchLookUpEdit.EditValue ?? "").ToString(), out IDInventor);
-                        this.data = (from x in data.Item2.Where(o => o.IDInventor == IDInventor)
+                        this.data = (from x in data.Item2.Where(o => o.IDInventor == IDInventor || IDInventor == Guid.Empty)
                                      group x by new { x.IDInventor, x.NamaBarang, x.IDUOM, Tanggal = x.Tanggal.Date } into grp
                                      select new Model
                                      {
@@ -103,6 +103,7 @@ namespace E4Storage.App.UI.Dialog
         private void gv1_DatasourceChanged(object sender, EventArgs e)
         {
             Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
         }
 
         private void dlgSummaryItem_Load(object sender, EventArgs e)
@@ -173,8 +174,14 @@ namespace E4Storage.App.UI.Dialog
 
         public void saveLayouts()
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
-            Constant.layoutsHelper.SaveLayouts(this.Name, searchLookUpEdit1View);
+            saveLayouts(gridView1);
+            saveLayouts(searchLookUpEdit1View);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
     }
 }

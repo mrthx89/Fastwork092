@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using E4Storage.App.Model.ViewModel;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace E4Storage.App.UI
 {
@@ -142,12 +143,19 @@ namespace E4Storage.App.UI
 
         private void gridView1_DataSourceChange(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, gridView1);
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
         }
 
         private void frmLaporanStokMasuk_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Constant.layoutsHelper.SaveLayouts(this.Name, gridView1);
+            saveLayouts(gridView1);
+        }
+
+        private void saveLayouts(GridView gv1)
+        {
+            if (gv1.Tag != null && gv1.Tag.ToString() == "true")
+                Constant.layoutsHelper.SaveLayouts(this.Name, gv1);
         }
 
         private void mnBaru_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -319,6 +327,36 @@ namespace E4Storage.App.UI
         {
             new Dialog.flyoutSummaryBeltMasuk(this, new Dialog.dlgSummaryBeltMasuk(dateEdit1.DateTime.Date, dateEdit2.DateTime.Date))
                 .ShowFormPopup();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            mnReload.PerformClick();
+        }
+
+        private void btnSummaryItem_Click(object sender, EventArgs e)
+        {
+            mnSummaryItem.PerformClick();
+        }
+
+        private void btnSummaryBelt_Click(object sender, EventArgs e)
+        {
+            mnSummaryBelt.PerformClick();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            mnBaru.PerformClick();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            mnEdit.PerformClick();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            mnDelete.PerformClick();
         }
     }
 }

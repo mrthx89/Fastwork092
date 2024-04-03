@@ -80,6 +80,12 @@ namespace E4Storage.App.UI
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnHapus = new DevExpress.XtraEditors.SimpleButton();
+            this.btnNew = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSummaryBelt = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSummaryItem = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReload = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stokMasukBindingSource)).BeginInit();
@@ -132,6 +138,7 @@ namespace E4Storage.App.UI
             new DevExpress.XtraBars.LinkPersistInfo(this.mnSummaryItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnSummaryBelt)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnBaru
             // 
@@ -185,7 +192,7 @@ namespace E4Storage.App.UI
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1094, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1009, 20);
             // 
             // barDockControlBottom
             // 
@@ -193,7 +200,7 @@ namespace E4Storage.App.UI
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 583);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1094, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1009, 0);
             // 
             // barDockControlLeft
             // 
@@ -207,7 +214,7 @@ namespace E4Storage.App.UI
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1094, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1009, 20);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 563);
             // 
@@ -232,7 +239,7 @@ namespace E4Storage.App.UI
             this.repositoryItemInventor,
             this.repositoryItemBelt,
             this.repositoryItemCategory});
-            this.gridControl1.Size = new System.Drawing.Size(1094, 527);
+            this.gridControl1.Size = new System.Drawing.Size(1009, 527);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -305,22 +312,20 @@ namespace E4Storage.App.UI
             this.colNoPO.Caption = "No Form";
             this.colNoPO.FieldName = "DocNo";
             this.colNoPO.Name = "colNoPO";
-            this.colNoPO.Visible = true;
-            this.colNoPO.VisibleIndex = 2;
             // 
             // colNoSJ
             // 
             this.colNoSJ.FieldName = "NoSJ";
             this.colNoSJ.Name = "colNoSJ";
             this.colNoSJ.Visible = true;
-            this.colNoSJ.VisibleIndex = 3;
+            this.colNoSJ.VisibleIndex = 2;
             // 
             // colSupplier
             // 
             this.colSupplier.FieldName = "Supplier";
             this.colSupplier.Name = "colSupplier";
             this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 4;
+            this.colSupplier.VisibleIndex = 3;
             // 
             // colIDInventor
             // 
@@ -329,7 +334,7 @@ namespace E4Storage.App.UI
             this.colIDInventor.FieldName = "IDInventor";
             this.colIDInventor.Name = "colIDInventor";
             this.colIDInventor.Visible = true;
-            this.colIDInventor.VisibleIndex = 5;
+            this.colIDInventor.VisibleIndex = 4;
             this.colIDInventor.Width = 79;
             // 
             // repositoryItemInventor
@@ -346,7 +351,7 @@ namespace E4Storage.App.UI
             this.colIDUOM.FieldName = "IDUOM";
             this.colIDUOM.Name = "colIDUOM";
             this.colIDUOM.Visible = true;
-            this.colIDUOM.VisibleIndex = 7;
+            this.colIDUOM.VisibleIndex = 6;
             // 
             // repositoryItemUOM
             // 
@@ -366,14 +371,14 @@ namespace E4Storage.App.UI
             this.colQty.FieldName = "Qty";
             this.colQty.Name = "colQty";
             this.colQty.Visible = true;
-            this.colQty.VisibleIndex = 8;
+            this.colQty.VisibleIndex = 7;
             // 
             // colKeterangan
             // 
             this.colKeterangan.FieldName = "Keterangan";
             this.colKeterangan.Name = "colKeterangan";
             this.colKeterangan.Visible = true;
-            this.colKeterangan.VisibleIndex = 9;
+            this.colKeterangan.VisibleIndex = 8;
             this.colKeterangan.Width = 79;
             // 
             // colNamaBarang
@@ -381,7 +386,7 @@ namespace E4Storage.App.UI
             this.colNamaBarang.FieldName = "NamaBarang";
             this.colNamaBarang.Name = "colNamaBarang";
             this.colNamaBarang.Visible = true;
-            this.colNamaBarang.VisibleIndex = 6;
+            this.colNamaBarang.VisibleIndex = 5;
             this.colNamaBarang.Width = 137;
             // 
             // colIDUserEntri
@@ -391,7 +396,7 @@ namespace E4Storage.App.UI
             this.colIDUserEntri.FieldName = "IDUserEntri";
             this.colIDUserEntri.Name = "colIDUserEntri";
             this.colIDUserEntri.Visible = true;
-            this.colIDUserEntri.VisibleIndex = 10;
+            this.colIDUserEntri.VisibleIndex = 9;
             this.colIDUserEntri.Width = 84;
             // 
             // repositoryItemUser
@@ -408,7 +413,7 @@ namespace E4Storage.App.UI
             this.colTglEntri.FieldName = "TglEntri";
             this.colTglEntri.Name = "colTglEntri";
             this.colTglEntri.Visible = true;
-            this.colTglEntri.VisibleIndex = 11;
+            this.colTglEntri.VisibleIndex = 10;
             // 
             // colIDUserEdit
             // 
@@ -417,7 +422,7 @@ namespace E4Storage.App.UI
             this.colIDUserEdit.FieldName = "IDUserEdit";
             this.colIDUserEdit.Name = "colIDUserEdit";
             this.colIDUserEdit.Visible = true;
-            this.colIDUserEdit.VisibleIndex = 12;
+            this.colIDUserEdit.VisibleIndex = 11;
             this.colIDUserEdit.Width = 80;
             // 
             // colTglEdit
@@ -427,7 +432,7 @@ namespace E4Storage.App.UI
             this.colTglEdit.FieldName = "TglEdit";
             this.colTglEdit.Name = "colTglEdit";
             this.colTglEdit.Visible = true;
-            this.colTglEdit.VisibleIndex = 13;
+            this.colTglEdit.VisibleIndex = 12;
             // 
             // colIDUserHapus
             // 
@@ -450,7 +455,7 @@ namespace E4Storage.App.UI
             this.colPIC.FieldName = "PIC";
             this.colPIC.Name = "colPIC";
             this.colPIC.Visible = true;
-            this.colPIC.VisibleIndex = 14;
+            this.colPIC.VisibleIndex = 13;
             // 
             // colRow
             // 
@@ -458,7 +463,7 @@ namespace E4Storage.App.UI
             this.colRow.FieldName = "Row";
             this.colRow.Name = "colRow";
             this.colRow.Visible = true;
-            this.colRow.VisibleIndex = 15;
+            this.colRow.VisibleIndex = 14;
             // 
             // colCabinet
             // 
@@ -472,7 +477,7 @@ namespace E4Storage.App.UI
             this.colCabinet.FieldName = "Cabinet";
             this.colCabinet.Name = "colCabinet";
             this.colCabinet.Visible = true;
-            this.colCabinet.VisibleIndex = 16;
+            this.colCabinet.VisibleIndex = 15;
             // 
             // colIDBelt
             // 
@@ -481,7 +486,7 @@ namespace E4Storage.App.UI
             this.colIDBelt.FieldName = "IDBelt";
             this.colIDBelt.Name = "colIDBelt";
             this.colIDBelt.Visible = true;
-            this.colIDBelt.VisibleIndex = 17;
+            this.colIDBelt.VisibleIndex = 16;
             // 
             // repositoryItemBelt
             // 
@@ -505,7 +510,7 @@ namespace E4Storage.App.UI
             this.colIDCategory.FieldName = "IDCategory";
             this.colIDCategory.Name = "colIDCategory";
             this.colIDCategory.Visible = true;
-            this.colIDCategory.VisibleIndex = 18;
+            this.colIDCategory.VisibleIndex = 17;
             // 
             // repositoryItemCategory
             // 
@@ -524,6 +529,12 @@ namespace E4Storage.App.UI
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnEdit);
+            this.panelControl1.Controls.Add(this.btnHapus);
+            this.panelControl1.Controls.Add(this.btnNew);
+            this.panelControl1.Controls.Add(this.btnSummaryBelt);
+            this.panelControl1.Controls.Add(this.btnSummaryItem);
+            this.panelControl1.Controls.Add(this.btnReload);
             this.panelControl1.Controls.Add(this.dateEdit2);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.dateEdit1);
@@ -531,7 +542,7 @@ namespace E4Storage.App.UI
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 20);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1094, 36);
+            this.panelControl1.Size = new System.Drawing.Size(1009, 36);
             this.panelControl1.TabIndex = 0;
             // 
             // dateEdit2
@@ -584,11 +595,86 @@ namespace E4Storage.App.UI
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Periode";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question;
+            this.btnEdit.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Appearance.Options.UseBackColor = true;
+            this.btnEdit.Appearance.Options.UseFont = true;
+            this.btnEdit.Location = new System.Drawing.Point(795, 8);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(98, 22);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "&Edit [F2]";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHapus.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
+            this.btnHapus.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHapus.Appearance.Options.UseBackColor = true;
+            this.btnHapus.Appearance.Options.UseFont = true;
+            this.btnHapus.Location = new System.Drawing.Point(899, 8);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(98, 22);
+            this.btnHapus.TabIndex = 15;
+            this.btnHapus.Text = "&Hapus [F4]";
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNew.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
+            this.btnNew.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.Appearance.Options.UseBackColor = true;
+            this.btnNew.Appearance.Options.UseFont = true;
+            this.btnNew.Location = new System.Drawing.Point(691, 8);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(98, 22);
+            this.btnNew.TabIndex = 13;
+            this.btnNew.Text = "&Baru [F1]";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnSummaryBelt
+            // 
+            this.btnSummaryBelt.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSummaryBelt.Appearance.Options.UseFont = true;
+            this.btnSummaryBelt.Location = new System.Drawing.Point(504, 8);
+            this.btnSummaryBelt.Name = "btnSummaryBelt";
+            this.btnSummaryBelt.Size = new System.Drawing.Size(98, 22);
+            this.btnSummaryBelt.TabIndex = 12;
+            this.btnSummaryBelt.Text = "Summary &Belt";
+            this.btnSummaryBelt.Click += new System.EventHandler(this.btnSummaryBelt_Click);
+            // 
+            // btnSummaryItem
+            // 
+            this.btnSummaryItem.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSummaryItem.Appearance.Options.UseFont = true;
+            this.btnSummaryItem.Location = new System.Drawing.Point(400, 8);
+            this.btnSummaryItem.Name = "btnSummaryItem";
+            this.btnSummaryItem.Size = new System.Drawing.Size(98, 22);
+            this.btnSummaryItem.TabIndex = 11;
+            this.btnSummaryItem.Text = "Summary &Item";
+            this.btnSummaryItem.Click += new System.EventHandler(this.btnSummaryItem_Click);
+            // 
+            // btnReload
+            // 
+            this.btnReload.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Appearance.Options.UseFont = true;
+            this.btnReload.Location = new System.Drawing.Point(296, 8);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(98, 22);
+            this.btnReload.TabIndex = 10;
+            this.btnReload.Text = "&Reload [F5]";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // frmLaporanStokMasuk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 583);
+            this.ClientSize = new System.Drawing.Size(1009, 583);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -674,5 +760,11 @@ namespace E4Storage.App.UI
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
         private DevExpress.XtraBars.BarButtonItem mnSummaryItem;
         private DevExpress.XtraBars.BarButtonItem mnSummaryBelt;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.SimpleButton btnHapus;
+        private DevExpress.XtraEditors.SimpleButton btnNew;
+        private DevExpress.XtraEditors.SimpleButton btnSummaryBelt;
+        private DevExpress.XtraEditors.SimpleButton btnSummaryItem;
+        private DevExpress.XtraEditors.SimpleButton btnReload;
     }
 }

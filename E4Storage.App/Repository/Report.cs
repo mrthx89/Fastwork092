@@ -29,7 +29,7 @@ namespace E4Storage.App.Repository
                                     select new { grp.Key.IDInventor, SaldoAwal = grp.Sum(o => o.QtyMasuk - o.QtyKeluar) };
 
                     var dataMutasi = from k in context.TStockCards
-                                     where DbFunctions.TruncateTime(k.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(k.Tanggal) <= tglSampai.Date
+                                     where DbFunctions.TruncateTime(k.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(k.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                      group k by new { k.IDInventor } into grp
                                      select new
                                      {
@@ -72,7 +72,7 @@ namespace E4Storage.App.Repository
                 {
                     var dataSaldo = from k in context.TStockCards
                                     from i in context.TInventors.Where(o => o.ID == k.IDInventor).DefaultIfEmpty()
-                                    where k.IDInventor == IDInventor && DbFunctions.TruncateTime(k.Tanggal) < tglDari.Date
+                                    where k.IDInventor == IDInventor && DbFunctions.TruncateTime(k.Tanggal) < DbFunctions.TruncateTime(tglDari)
                                     group k by new { k.IDInventor, i.IDUOM, i.Desc } into grp
                                     select new
                                     {
@@ -85,7 +85,7 @@ namespace E4Storage.App.Repository
                     List<Model.ViewModel.KartuStok> dataKartu = (from k in context.TStockCards
                                                                  from i in context.TInventors.Where(o => o.ID == k.IDInventor).DefaultIfEmpty()
                                                                  from t in context.TTypeTransactions.Where(o => o.ID == k.IDType).DefaultIfEmpty()
-                                                                 where k.IDInventor == IDInventor && DbFunctions.TruncateTime(k.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(k.Tanggal) <= tglSampai.Date
+                                                                 where k.IDInventor == IDInventor && DbFunctions.TruncateTime(k.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(k.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                                                  orderby k.Tanggal, t.NoUrut
                                                                  select new Model.ViewModel.KartuStok
                                                                  {

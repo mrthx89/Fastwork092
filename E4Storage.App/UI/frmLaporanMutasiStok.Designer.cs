@@ -50,6 +50,8 @@ namespace E4Storage.App.UI
             this.colQtyMasuk = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQtyKeluar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSaldoAkhir = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQtyMin = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQtyMax = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemUser = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemBelt = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -58,8 +60,7 @@ namespace E4Storage.App.UI
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.colQtyMin = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colQtyMax = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnReload = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MutasiStokBindingSource)).BeginInit();
@@ -100,6 +101,7 @@ namespace E4Storage.App.UI
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.mnReload, true)});
             this.bar1.Text = "Tools";
+            this.bar1.Visible = false;
             // 
             // mnReload
             // 
@@ -193,7 +195,6 @@ namespace E4Storage.App.UI
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_DataSourceChange);
-            this.gridView1.RowStyle += this.gridView1_RowStyle;
             // 
             // colIDInventor
             // 
@@ -304,6 +305,30 @@ namespace E4Storage.App.UI
             this.colSaldoAkhir.VisibleIndex = 6;
             this.colSaldoAkhir.Width = 99;
             // 
+            // colQtyMin
+            // 
+            this.colQtyMin.AppearanceCell.Options.UseTextOptions = true;
+            this.colQtyMin.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMin.AppearanceHeader.Options.UseTextOptions = true;
+            this.colQtyMin.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMin.Caption = "Qty Min";
+            this.colQtyMin.DisplayFormat.FormatString = "n0";
+            this.colQtyMin.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyMin.FieldName = "QtyMin";
+            this.colQtyMin.Name = "colQtyMin";
+            // 
+            // colQtyMax
+            // 
+            this.colQtyMax.AppearanceCell.Options.UseTextOptions = true;
+            this.colQtyMax.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMax.AppearanceHeader.Options.UseTextOptions = true;
+            this.colQtyMax.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colQtyMax.Caption = "Qty Max";
+            this.colQtyMax.DisplayFormat.FormatString = "n0";
+            this.colQtyMax.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyMax.FieldName = "QtyMax";
+            this.colQtyMax.Name = "colQtyMax";
+            // 
             // repositoryItemUser
             // 
             this.repositoryItemUser.AutoHeight = false;
@@ -327,6 +352,7 @@ namespace E4Storage.App.UI
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnReload);
             this.panelControl1.Controls.Add(this.dateEdit2);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.dateEdit1);
@@ -387,29 +413,16 @@ namespace E4Storage.App.UI
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Periode";
             // 
-            // colQtyMin
+            // btnReload
             // 
-            this.colQtyMin.AppearanceCell.Options.UseTextOptions = true;
-            this.colQtyMin.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colQtyMin.AppearanceHeader.Options.UseTextOptions = true;
-            this.colQtyMin.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colQtyMin.Caption = "Qty Min";
-            this.colQtyMin.DisplayFormat.FormatString = "n0";
-            this.colQtyMin.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colQtyMin.FieldName = "QtyMin";
-            this.colQtyMin.Name = "colQtyMin";
-            // 
-            // colQtyMax
-            // 
-            this.colQtyMax.AppearanceCell.Options.UseTextOptions = true;
-            this.colQtyMax.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colQtyMax.AppearanceHeader.Options.UseTextOptions = true;
-            this.colQtyMax.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colQtyMax.Caption = "Qty Max";
-            this.colQtyMax.DisplayFormat.FormatString = "n0";
-            this.colQtyMax.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colQtyMax.FieldName = "QtyMax";
-            this.colQtyMax.Name = "colQtyMax";
+            this.btnReload.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Appearance.Options.UseFont = true;
+            this.btnReload.Location = new System.Drawing.Point(296, 8);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(98, 22);
+            this.btnReload.TabIndex = 23;
+            this.btnReload.Text = "&Reload [F5]";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // frmLaporanMutasiStok
             // 
@@ -479,5 +492,6 @@ namespace E4Storage.App.UI
         private DevExpress.XtraGrid.Columns.GridColumn colSaldoAkhir;
         private DevExpress.XtraGrid.Columns.GridColumn colQtyMin;
         private DevExpress.XtraGrid.Columns.GridColumn colQtyMax;
+        private DevExpress.XtraEditors.SimpleButton btnReload;
     }
 }

@@ -14,6 +14,7 @@ using E4Storage.App.Utils;
 using E4Storage.App.Repository;
 using E4Storage.App.Model.ViewModel;
 using E4Storage.App.Model.Entity;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace E4Storage.App.UI
 {
@@ -25,6 +26,13 @@ namespace E4Storage.App.UI
             InitializeComponent();
 
             this.data = data;
+
+            this.searchLookUpEdit1View.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gridView1.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gridView2.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gridView3.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gvBelt.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
+            this.gvCategory.DataSourceChanged += new System.EventHandler(this.gv1_DataSourceChanged);
         }
 
         private void frmEntriStokMasterData_Load(object sender, EventArgs e)
@@ -269,8 +277,12 @@ namespace E4Storage.App.UI
 
         private void gv1_DataSourceChanged(object sender, EventArgs e)
         {
-            Constant.layoutsHelper.RestoreLayouts(this.Name, (DevExpress.XtraGrid.Views.Grid.GridView)sender);
-            ((DevExpress.XtraGrid.Views.Grid.GridView)sender).Tag = "true";
+            Constant.layoutsHelper.RestoreLayouts(this.Name, (GridView)sender);
+            ((GridView)sender).Tag = "true";
+            if (((GridView)sender).Columns["ID"] != null)
+            {
+                ((GridView)sender).Columns["ID"].Visible = false;
+            }
         }
 
         private void IDInventorSearchLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -344,6 +356,22 @@ namespace E4Storage.App.UI
                     }
                 }
             }
+        }
+
+        private void mnBatal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            mnSimpan.PerformClick();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            mnBatal.PerformClick();
         }
     }
 }

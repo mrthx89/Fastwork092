@@ -25,7 +25,7 @@ namespace E4Storage.App.Repository
                 {
                     var datas = from s in context.TStockMasterDatas
                                 from i in context.TInventors.Where(o => s.IDInventor == o.ID).DefaultIfEmpty()
-                                where DbFunctions.TruncateTime(s.Tanggal) >= tglDari.Date && DbFunctions.TruncateTime(s.Tanggal) <= tglSampai.Date
+                                where DbFunctions.TruncateTime(s.Tanggal) >= DbFunctions.TruncateTime(tglDari) && DbFunctions.TruncateTime(s.Tanggal) <= DbFunctions.TruncateTime(tglSampai)
                                 select new Model.ViewModel.StokMasterData
                                 {
                                     ID = s.ID,
