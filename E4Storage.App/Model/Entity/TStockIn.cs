@@ -19,21 +19,17 @@ namespace E4Storage.App.Model.Entity
         public DateTime Tanggal { get; set; }
         [StringLength(30)]
         public string NoPO { get; set; }
-        [Required]
         [StringLength(30)]
         public string NoSJ { get; set; }
-        [Required]
         [StringLength(150)]
         public string Supplier { get; set; }
         [Required]
         public Guid IDInventor { get; set; }
         [Required]
         public Guid IDUOM { get; set; }
-        [Required]
         [Range(0, float.MaxValue, ErrorMessage = "Qty yang diinputkan salah")]
         public float Qty { get; set; }
         public Guid? IDBelt { get; set; }
-        [Required]
         [StringLength(150)]
         public string PIC { get; set; }
         [StringLength(255)]

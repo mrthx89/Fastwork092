@@ -46,6 +46,7 @@ namespace E4Storage.App.UI
             this.bbiLaporanKartuStok = new DevExpress.XtraBars.BarButtonItem();
             this.bbiManagementUser = new DevExpress.XtraBars.BarButtonItem();
             this.bbiLaporanMutasiStok = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.imageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -55,8 +56,11 @@ namespace E4Storage.App.UI
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionSmall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionLarge)).BeginInit();
@@ -65,6 +69,7 @@ namespace E4Storage.App.UI
             // 
             // ribbonControl1
             // 
+            this.ribbonControl1.ApplicationCaption = "E4 Storage";
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Images = this.imageCollectionSmall;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -82,10 +87,12 @@ namespace E4Storage.App.UI
             this.bbiListBarangKeluar,
             this.bbiLaporanKartuStok,
             this.bbiManagementUser,
-            this.bbiLaporanMutasiStok});
+            this.bbiLaporanMutasiStok,
+            this.barStaticItem1,
+            this.barStaticItem2});
             this.ribbonControl1.LargeImages = this.imageCollectionLarge;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 14;
+            this.ribbonControl1.MaxItemId = 17;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsTouch.ShowTouchUISelectorInQAT = true;
             this.ribbonControl1.OptionsTouch.ShowTouchUISelectorVisibilityItemInQATMenu = true;
@@ -94,7 +101,7 @@ namespace E4Storage.App.UI
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
-            this.ribbonControl1.Size = new System.Drawing.Size(1146, 158);
+            this.ribbonControl1.Size = new System.Drawing.Size(1128, 158);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // imageCollectionSmall
@@ -222,6 +229,19 @@ namespace E4Storage.App.UI
             this.bbiLaporanMutasiStok.Name = "bbiLaporanMutasiStok";
             this.bbiLaporanMutasiStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnMutasiSaldoStok_ItemClick);
             // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            this.barStaticItem1.AllowRightClickInMenu = false;
+            this.barStaticItem1.AutoSize = DevExpress.XtraBars.BarStaticItemSize.None;
+            this.barStaticItem1.Caption = "E4 Storage";
+            this.barStaticItem1.Id = 14;
+            this.barStaticItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barStaticItem1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Far;
+            // 
             // imageCollectionLarge
             // 
             this.imageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -256,7 +276,8 @@ namespace E4Storage.App.UI
             // 
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup7});
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "Settings";
             // 
@@ -279,7 +300,8 @@ namespace E4Storage.App.UI
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup5,
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup6});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Menu Utama";
             // 
@@ -306,23 +328,51 @@ namespace E4Storage.App.UI
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Laporan";
             // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            this.ribbonPageGroup6.AllowTextClipping = false;
+            this.ribbonPageGroup6.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup6.ItemLinks.Add(this.barStaticItem1, true, "", "", false, false);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
+            // 
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.ItemLinks.Add(this.barStatusUser);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 633);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1146, 24);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1128, 24);
             // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            this.ribbonPageGroup7.AllowTextClipping = false;
+            this.ribbonPageGroup7.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup7.ItemLinks.Add(this.barStaticItem2);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            this.ribbonPageGroup7.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
+            // 
+            // barStaticItem2
+            // 
+            this.barStaticItem2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            this.barStaticItem2.AutoSize = DevExpress.XtraBars.BarStaticItemSize.None;
+            this.barStaticItem2.Caption = "E4 Storage";
+            this.barStaticItem2.Id = 16;
+            this.barStaticItem2.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barStaticItem2.ItemAppearance.Normal.Options.UseFont = true;
+            this.barStaticItem2.Name = "barStaticItem2";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 657);
+            this.ClientSize = new System.Drawing.Size(1128, 657);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.IconOptions.Image = global::E4Storage.App.Properties.Resources.inventory;
@@ -370,6 +420,10 @@ namespace E4Storage.App.UI
         private DevExpress.XtraBars.BarButtonItem bbiLaporanKartuStok;
         private DevExpress.XtraBars.BarButtonItem bbiManagementUser;
         private DevExpress.XtraBars.BarButtonItem bbiLaporanMutasiStok;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem2;
     }
 }
 

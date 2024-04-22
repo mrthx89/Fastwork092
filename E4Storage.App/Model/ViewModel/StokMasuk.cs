@@ -15,20 +15,14 @@ namespace E4Storage.App.Model.ViewModel
         public DateTime Tanggal { get; set; }
         [StringLength(30)]
         public string DocNo { get; set; }
-        [Required]
         [StringLength(30)]
         public string NoSJ { get; set; }
-        [Required]
         [StringLength(150)]
         public string Supplier { get; set; }
-        [Required]
         public Guid IDInventor { get; set; }
-        [Required]
         public Guid IDUOM { get; set; }
-        [Required]
         public float Qty { get; set; }
         public Guid? IDBelt { get; set; }
-        [Required]
         [StringLength(150)]
         public string PIC { get; set; }
         [StringLength(255)]

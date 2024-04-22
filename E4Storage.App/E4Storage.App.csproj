@@ -164,6 +164,10 @@
     <Compile Include="Migrations\202401140339127_StockIn2.designer.cs">
       <DependentUpon>202401140339127_StockIn2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404221412310_TStockInRev1.cs" />
+    <Compile Include="Migrations\202404221412310_TStockInRev1.designer.cs">
+      <DependentUpon>202404221412310_TStockInRev1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AppSetting.cs" />
     <Compile Include="Model\Entity\BaseTable.cs" />
@@ -388,6 +392,9 @@
     <EmbeddedResource Include="Migrations\202401140339127_StockIn2.resx">
       <DependentUpon>202401140339127_StockIn2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404221412310_TStockInRev1.resx">
+      <DependentUpon>202404221412310_TStockInRev1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Dialog\dlgOptionStokMasuk.resx">
       <DependentUpon>dlgOptionStokMasuk.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,7 +457,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -590,6 +597,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="inventory.ico" />
+    <None Include="Resources\epson.png" />
     <None Include="Resources\inventory.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
