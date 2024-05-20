@@ -53,7 +53,8 @@ namespace E4Storage.App
 
                 DevExpress.UserSkins.BonusSkins.Register();
                 SkinManager.EnableFormSkins();
-
+                SkinManager.EnableMdiFormSkins();
+                
                 SetSkin(Constant.appSetting.Theme);
                 sharedData.saveAppConfig(Constant.appSetting);
 

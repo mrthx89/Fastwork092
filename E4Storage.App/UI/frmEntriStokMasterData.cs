@@ -151,16 +151,29 @@ namespace E4Storage.App.UI
         {
             try
             {
-                Guid.TryParse(IDInventorSearchLookUpEdit.EditValue.ToString(), out Guid IDInventor);
-                var item = itemLookUps.FirstOrDefault(o => o.ID == IDInventor);
-                if (item != null)
+                if (IDInventorSearchLookUpEdit.EditValue != null)
                 {
-                    data.IDUOM = item.IDUOM;
-                    data.NamaBarang = item.Desc;
-                    data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Constant.TypeTransaction.stokMasterData).Item2;
-                    
-                    IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
-                    NamaBarangTextEdit.EditValue = item.Desc;
+                    Guid.TryParse(IDInventorSearchLookUpEdit.EditValue.ToString(), out Guid IDInventor);
+                    var item = itemLookUps.FirstOrDefault(o => o.ID == IDInventor);
+                    if (item != null)
+                    {
+                        data.IDUOM = item.IDUOM;
+                        data.NamaBarang = item.Desc;
+                        data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Constant.TypeTransaction.stokMasterData).Item2;
+
+                        IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
+                        NamaBarangTextEdit.EditValue = item.Desc;
+                        SaldoTextEdit.EditValue = data.Saldo;
+                    }
+                }
+                else
+                {
+                    data.IDUOM = Guid.Empty;
+                    data.NamaBarang = "";
+                    data.Saldo = 0;
+
+                    IDUOMSearchLookUpEdit.EditValue = data.IDUOM;
+                    NamaBarangTextEdit.EditValue = data.NamaBarang;
                     SaldoTextEdit.EditValue = data.Saldo;
                 }
             }
@@ -183,7 +196,7 @@ namespace E4Storage.App.UI
                     var callItems = Repository.Item.getLookUpInventors(data.Tanggal, null);
                     if (callItems.Item1)
                     {
-                       itemLookUps = callItems.Item2;
+                        itemLookUps = callItems.Item2;
                     }
                     else
                     {

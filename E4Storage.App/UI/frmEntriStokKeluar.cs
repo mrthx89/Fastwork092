@@ -145,16 +145,29 @@ namespace E4Storage.App.UI
         {
             try
             {
-                Guid.TryParse(IDInventorSearchLookUpEdit.EditValue.ToString(), out Guid IDInventor);
-                var item = itemLookUps.FirstOrDefault(o => o.ID == IDInventor);
-                if (item != null)
+                if (IDInventorSearchLookUpEdit.EditValue != null)
                 {
-                    data.IDUOM = item.IDUOM;
-                    data.NamaBarang = item.Desc;
-                    data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Constant.TypeTransaction.stokOut).Item2;
+                    Guid.TryParse(IDInventorSearchLookUpEdit.EditValue.ToString(), out Guid IDInventor);
+                    var item = itemLookUps.FirstOrDefault(o => o.ID == IDInventor);
+                    if (item != null)
+                    {
+                        data.IDUOM = item.IDUOM;
+                        data.NamaBarang = item.Desc;
+                        data.Saldo = Repository.StokKeluar.getSaldoStok(IDInventor, data.Tanggal, data.ID, Constant.TypeTransaction.stokOut).Item2;
 
-                    IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
-                    NamaBarangTextEdit.EditValue = item.Desc;
+                        IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
+                        NamaBarangTextEdit.EditValue = item.Desc;
+                        SaldoTextEdit.EditValue = data.Saldo;
+                    }
+                }
+                else
+                {
+                    data.IDUOM = Guid.Empty;
+                    data.NamaBarang = "";
+                    data.Saldo = 0;
+
+                    IDUOMSearchLookUpEdit.EditValue = data.IDUOM;
+                    NamaBarangTextEdit.EditValue = data.NamaBarang;
                     SaldoTextEdit.EditValue = data.Saldo;
                 }
             }

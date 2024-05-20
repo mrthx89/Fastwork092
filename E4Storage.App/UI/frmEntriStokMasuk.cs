@@ -134,14 +134,24 @@ namespace E4Storage.App.UI
         {
             try
             {
-                Guid.TryParse(IDInventorSearchLookUpEdit.EditValue.ToString(), out Guid IDInventor);
-                var item = itemLookUps.FirstOrDefault(o => o.ID == IDInventor);
-                if (item != null)
+                if (IDInventorSearchLookUpEdit.EditValue != null)
                 {
-                    data.IDUOM = item.IDUOM;
-                    data.NamaBarang = item.Desc;
-                    IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
-                    NamaBarangTextEdit.EditValue = item.Desc;
+                    Guid.TryParse(IDInventorSearchLookUpEdit.EditValue.ToString(), out Guid IDInventor);
+                    var item = itemLookUps.FirstOrDefault(o => o.ID == IDInventor);
+                    if (item != null)
+                    {
+                        data.IDUOM = item.IDUOM;
+                        data.NamaBarang = item.Desc;
+                        IDUOMSearchLookUpEdit.EditValue = item.IDUOM;
+                        NamaBarangTextEdit.EditValue = item.Desc;
+                    }
+                }
+                else
+                {
+                    data.IDUOM = Guid.Empty;
+                    data.NamaBarang = "";
+                    IDUOMSearchLookUpEdit.EditValue = data.IDUOM;
+                    NamaBarangTextEdit.EditValue = data.NamaBarang;
                 }
             }
             catch (Exception ex)
